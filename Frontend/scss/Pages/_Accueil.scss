@@ -1,0 +1,337 @@
+// Main
+
+// Section 1
+
+#section-1 {
+   background-color: $bg-neutre;
+   height: 57vw;
+   @extend %flex-center;
+   flex-direction: column;
+   justify-content: center;
+
+   h2 {
+      margin-top: -7vw;
+      padding-bottom: 5vw;
+      color: $text-clair;
+      font-size: 2vw;
+   }
+
+   .bloc-section-1 {
+      background-color: $bg-clair;
+      padding: 3.8vw 0;
+      width: 75%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      border-radius: 12px;
+      @extend %boxshadow;
+
+      .bloc-card {
+         @extend %flex-center;
+         flex-direction: column;
+
+         .bloc-recipe {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+
+            .card {
+               position: relative;
+               @extend %flex-center;
+               border-radius: 12px;
+               flex-direction: column;
+               height: 22vw;
+               width: 17vw;
+               overflow: hidden;
+               @extend %boxshadow;
+
+               .card-img {
+                  width: 100%;
+                  height: 100%;
+
+                  img {
+                     width: 100%;
+                     height: 100%;
+                     object-fit: cover;
+                     filter: brightness(80%);
+                  }
+               }
+
+               .card-body {
+                  position: absolute;
+                  bottom: 0;
+                  width: 100%;
+                  padding: 1.5vw;
+                  backdrop-filter: blur(1px);
+                  line-height: 1;
+
+                  p {
+                     color: white;
+                     font-weight: 700;
+                     font-size: calc(5px + 0.8vw);
+                  }
+               }
+            }
+         }
+
+         button {
+            @extend %smallbutton;
+         }
+      }
+   }
+}
+
+// section 2
+
+#section-2 {
+   position: relative;
+   overflow: hidden;
+   @extend %flex-center;
+   height: 22vw;
+   width: 100%;
+
+   #bg-section-2 {
+      overflow: hidden;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+
+      img {
+         width: 100%;
+         height: 100%;
+         // position: fixed;
+         object-fit: cover;
+         top: 0;
+         z-index: -5;
+         filter: brightness(0.3);
+      }
+   }
+
+   .bloc-stats {
+      position: absolute;
+      display: flex;
+      justify-content: space-evenly;
+      width: 75%;
+      color: $text-clair;
+      height: 50%;
+
+      .bloc-qty {
+         display: flex;
+         justify-content: space-evenly;
+         align-items: center;
+         flex-direction: column;
+         height: 100%;
+         width: 17vw;
+      }
+
+      .bg-qty {
+         background-color: rgba(0, 0, 0, 0.6);
+         width: 6.5vw;
+         height: 6.5vw;
+         @extend %flex-center;
+         @extend %boxshadow;
+
+         p {
+            font-size: calc(5px + 1.2vw);
+            font-weight: bold;
+         }
+      }
+
+      p {
+         font-size: calc(5px + 0.8vw);
+      }
+   }
+}
+
+
+// section 3 - etape 1
+
+#step-1 {
+   background-color: $bg-sombre;
+   height: 42vw;
+   position: relative;
+
+   .img-deco {
+      position: absolute;
+      overflow: hidden;
+      top: 5vw;
+      left: 5vw;
+      z-index: 2;
+      width: 34vw;
+      height: 22vw;
+      border-radius: 10vw 0 10vw 0;
+      @extend %boxshadow;
+
+      img {
+         width: 100%;
+         object-fit: cover;
+      }
+   }
+
+   .step-1 {
+      display: flex;
+      position: absolute;
+      right: 0;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      width: 65%;
+      height: 100%;
+      padding: 5vw 5vw 5vw 0;
+
+      p {
+         color: $text-clair;
+         font-size: 4vw;
+         margin-right: 5vw;
+         position: absolute;
+         top: 8vw;
+      }
+   }
+
+   .bloc-title {
+      position: absolute;
+      bottom: 5vw;
+      margin-right: 5vw;
+      @extend %flex-center;
+      flex-direction: column;
+      background-color: $bg-clair;
+      width: 100%;
+      height: 18vw;
+      width: 100%;
+      text-align: center;
+      border-radius: 8vw 8vw 0 0;
+
+      h2 {
+         color: $text-sombre;
+         font-size: 2vw;
+      }
+
+      button {
+         @extend %largebutton;
+      }
+   }
+}
+
+// section 4 - étape 2 
+
+#step-2 {
+   position: relative;
+   height: 42vw;
+   background-color: $bg-neutre;
+
+   .img-deco {
+      position: absolute;
+      overflow: hidden;
+      top: 5vw;
+      right: 5vw;
+      z-index: 2;
+      width: 34vw;
+      height: 22vw;
+      border-radius: 0 10vw 0 10vw;
+      @extend %boxshadow;
+
+      img {
+         width: 100%;
+         object-fit: cover;
+      }
+   }
+
+   .step-2 {
+      display: flex;
+      position: absolute;
+      left: 5vw;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      width: 65%;
+      height: 100%;
+      padding: 5vw 5vw 5vw 0;
+
+      p {
+         color: $text-clair;
+         font-size: 4vw;
+         margin-left: 5vw;
+         position: absolute;
+         top: 8vw;
+      }
+   }
+
+   .bloc-title {
+      position: absolute;
+      bottom: 5vw;
+      margin-left: 5vw;
+      @extend %flex-center;
+      flex-direction: column;
+      background-color: $bg-clair;
+      width: 100%;
+      height: 18vw;
+      width: 100%;
+      text-align: center;
+      border-radius: 8vw 0 0 0;
+
+      h2 {
+         color: $text-sombre;
+         font-size: 2vw;
+      }
+
+      button {
+         @extend %largebutton;
+      }
+   }
+}
+
+// Section 5 - etape 3
+
+#step-3 {
+   position: relative;
+   height: 42vw;
+
+   .bg-step-3 {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+
+      img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         filter: brightness(0.6);
+      }
+   }
+
+   .step-3 {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+
+      p {
+         color: $text-clair;
+         font-size: 4vw;
+      }
+
+      .bloc-title {
+         @extend %flex-center;
+         flex-direction: column;
+         background-color: $bg-clair;
+         width: 64vw;
+         height: 23vw;
+         @extend %boxshadow;
+
+         h2 {
+            color: $text-sombre;
+            font-size: 2vw;
+         }
+
+         button {
+            @extend %largebutton;
+         }
+      }
+   }
+}

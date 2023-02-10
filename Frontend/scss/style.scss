@@ -1,0 +1,22 @@
+@import "./_variables";
+@import "./_settings";
+@import "./_placeholders";
+@import "./Pages/_Accueil.scss";
+@import "./Pages/Ingredients";
+
+// Header
+
+header {
+   @extend %header;
+   .image-header {
+      @extend %image-header;
+   }
+   #menu {
+      @extend %flex-center;
+      @extend %menu;
+   }
+   .title {
+      @extend %title;
+   }
+}
+
