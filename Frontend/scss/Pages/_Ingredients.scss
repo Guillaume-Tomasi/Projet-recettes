@@ -1,6 +1,17 @@
+#ingredient-main {
+#section-1 {
+height: auto;
+padding-top: 2.4vw;
+}
+   h2 {
+      margin-top: 2vw;
+   }
+}
+
 .bloc-1 {
    background-color: $bg-clair;
-   padding: 3.8vw 0;
+   // padding: 1vw 0 3.8vw 0;
+   padding-bottom: 3vw;
    width: 75%;
    display: flex;
    flex-direction: column;
@@ -8,14 +19,20 @@
    align-items: center;
    border-radius: 12px;
    @extend %boxshadow;
+   margin:0;
 }
+
+
+// Nav
 
 .search {
    display: flex;
    height: 100px;
    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
    width: 90%;
+   height: auto;
    justify-content: space-between;
+   padding: 1vw 0;
    align-items: center;
    .filter, .add, .search-bar {
       display: flex;
@@ -27,6 +44,7 @@
          height: 50%;
          margin: 1vw;
          img {
+            width: 2vw;
             height: 100%;
          }
       }
@@ -34,7 +52,7 @@
          // border: 1px solid $bg-neutre;
          border: none;
          border-radius: 5px;
-         height: 1.5vw;
+         height: 2vw;
          width: 15vw;
          font-size: 1vw;
          text-align: start;
@@ -47,8 +65,85 @@
       }
       button {
          margin: 0 1vw 0 0;
-         height: 50%;
+         height: 2.5vw;
          @extend %largebutton;
+      }
+   }
+}
+
+// Filtres actifs
+
+.bloc-filters-active {
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   width: 90%;
+   margin: 1.5vw 0;
+   .filter-active {
+      display: flex;
+      background: white;
+      padding: 0.6vw 1vw 0.6vw 0.6vw;
+      margin-right: 1vw;
+      border-radius: 5px;
+      font-size: 0.9vw;
+      position: relative;
+      // @extend %boxshadow;
+      box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2);
+      .delete-filter {
+         position: absolute;
+         top: -25%;
+         right: -0.6vw;
+         cursor: pointer;
+         width: 1.2vw;
+         .fa-circle-xmark {
+           width: 100%;
+           height: 100%;
+           color: $btn;
+         }
+         
+      }
+   }
+}
+
+// Ingrédients
+
+#card-ingredient-bloc {
+   // border: 1px solid red;
+   width: 90%;
+   display: grid;
+   grid-template-columns: repeat(5, 1fr);
+   justify-items: center;
+   row-gap: 3vw;
+   .card-ingredient {
+      border-radius: 5px;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      width: 12vw;
+      height: 14vw;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      .card-ingredient-img {
+         width: 100%;
+         height: 70%;
+         border-bottom: 1px solid rgba(0,0,0,0.2);
+         img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+         }
+      }
+      .card-ingredient-body {
+         width: 100%;
+         height: 30%;
+         text-align: center;
+         background-color: white;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         padding: 1vw;
+         font-size: calc(5px + 1vw);
+         // border: 1px solid green;
       }
    }
 }

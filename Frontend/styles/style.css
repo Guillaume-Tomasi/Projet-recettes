@@ -95,7 +95,7 @@ header .title {
   justify-content: center;
 }
 #section-1 h2 {
-  margin-top: -7vw;
+  margin-top: -6.9vw;
   padding-bottom: 5vw;
   color: #F2E8CF;
   font-size: 2vw;
@@ -350,15 +350,24 @@ header .title {
   color: #0F0F0F;
   font-size: 2vw;
 }
+#ingredient-main #section-1 {
+  height: auto;
+  padding-top: 2.4vw;
+}
+#ingredient-main h2 {
+  margin-top: 2vw;
+}
+
 .bloc-1 {
   background-color: #F2E8CF;
-  padding: 3.8vw 0;
+  padding-bottom: 3vw;
   width: 75%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   border-radius: 12px;
+  margin: 0;
 }
 
 .search {
@@ -366,7 +375,9 @@ header .title {
   height: 100px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   width: 90%;
+  height: auto;
   justify-content: space-between;
+  padding: 1vw 0;
   align-items: center;
 }
 .search .filter, .search .add, .search .search-bar {
@@ -382,12 +393,13 @@ header .title {
   margin: 1vw;
 }
 .search .filter .img img, .search .add .img img, .search .search-bar .img img {
+  width: 2vw;
   height: 100%;
 }
 .search .filter #search-item, .search .add #search-item, .search .search-bar #search-item {
   border: none;
   border-radius: 5px;
-  height: 1.5vw;
+  height: 2vw;
   width: 15vw;
   font-size: 1vw;
   text-align: start;
@@ -399,5 +411,74 @@ header .title {
 }
 .search .filter button, .search .add button, .search .search-bar button {
   margin: 0 1vw 0 0;
-  height: 50%;
+  height: 2.5vw;
+}
+
+.bloc-filters-active {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 90%;
+  margin: 1.5vw 0;
+}
+.bloc-filters-active .filter-active {
+  display: flex;
+  background: white;
+  padding: 0.6vw 1vw 0.6vw 0.6vw;
+  margin-right: 1vw;
+  border-radius: 5px;
+  font-size: 0.9vw;
+  position: relative;
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2);
+}
+.bloc-filters-active .filter-active .delete-filter {
+  position: absolute;
+  top: -25%;
+  right: -0.6vw;
+  cursor: pointer;
+  width: 1.2vw;
+}
+.bloc-filters-active .filter-active .delete-filter .fa-circle-xmark {
+  width: 100%;
+  height: 100%;
+  color: #BC4749;
+}
+
+#card-ingredient-bloc {
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-items: center;
+  row-gap: 3vw;
+}
+#card-ingredient-bloc .card-ingredient {
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  width: 12vw;
+  height: 14vw;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+#card-ingredient-bloc .card-ingredient .card-ingredient-img {
+  width: 100%;
+  height: 70%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+#card-ingredient-bloc .card-ingredient .card-ingredient-img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#card-ingredient-bloc .card-ingredient .card-ingredient-body {
+  width: 100%;
+  height: 30%;
+  text-align: center;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1vw;
+  font-size: calc(5px + 1vw);
 }
