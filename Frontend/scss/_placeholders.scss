@@ -26,7 +26,8 @@
    border: none;
    background-color: $btn;
    @extend %flex-center;
-   font-size: calc(5px + 0.8vw);
+   // font-size: calc(5px + 0.8vw);
+   font-size: 1.2vw;
    color: $text-clair;
    cursor: pointer;
    border-radius: 5px;
