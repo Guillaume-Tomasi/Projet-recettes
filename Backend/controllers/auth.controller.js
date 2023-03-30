@@ -21,7 +21,7 @@ exports.signup = (req, res, next) => {
    }
 
    if (password.length < 6) {
-      return res.status(400).json({ message: "le mot de passe doit avoir au moins 6 caractères" })
+      return res.status(400).json({ message: "le mot de passe doit contenir au moins 6 caractères" })
    }
 
    User.findOne({ email })
@@ -42,7 +42,7 @@ exports.signup = (req, res, next) => {
                         password: hash
                      });
                      user.save()
-                        .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
+                        .then(() => res.status(201).json({ message: 'Inscription réussie !' }))
                         .catch(error => res.status(400).json({ message: "Les informations saisies sont incorrectes" }));
                   })
                   .catch(error => res.status(500).json({ error: "Erreur interne du serveur" }));

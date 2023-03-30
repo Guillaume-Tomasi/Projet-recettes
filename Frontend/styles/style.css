@@ -14,7 +14,7 @@ a {
   color: #F2E8CF;
 }
 
-header #menu, #step-3 .step-3 .bloc-title, #step-2 .bloc-title, #step-1 .bloc-title, #section-2 .bloc-stats .bg-qty, #section-2, #section-1 .bloc-section-1 .bloc-card .bloc-recipe .card, #section-1 .bloc-section-1 .bloc-card, #section-1, .search .filter button, .search .add button, .search .search-bar button, #step-3 .step-3 .bloc-title button, #step-2 .bloc-title button, #step-1 .bloc-title button, #section-1 .bloc-section-1 .bloc-card button {
+header #menu, #step-3 .step-3 .bloc-title, #step-2 .bloc-title, #step-1 .bloc-title, #section-2 .bloc-stats .bg-qty, #section-2, #section-1 .bloc-section-1 .bloc-card .bloc-recipe .card, #section-1 .bloc-section-1 .bloc-card, #section-1, #auth .auth-bloc .form .signupBtn, #auth .auth-bloc .form .loginBtn, #auth .auth-bloc, .search .filter button, .search .add button, .search .search-bar button, #step-3 .step-3 .bloc-title button, #step-2 .bloc-title button, #step-1 .bloc-title button, #section-1 .bloc-section-1 .bloc-card button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,6 +86,135 @@ header .title {
   margin-top: 8%;
   font-size: 2.5vw;
   text-align: center;
+}
+
+@keyframes slide-down {
+  0% {
+    top: -10%;
+  }
+  30% {
+    top: 5%;
+  }
+  60% {
+    top: 5%;
+    opacity: 1;
+  }
+  100% {
+    top: 5%;
+    opacity: 0;
+    display: none;
+  }
+}
+#auth {
+  width: 100vw;
+  height: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 15%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 50;
+}
+#auth .auth-bloc {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: #F2E8CF;
+  width: 27vw;
+  height: auto;
+  padding: 1vw 0;
+  border-radius: 5px;
+  box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.2);
+}
+#auth .auth-bloc .title {
+  font-size: 1.6vw;
+  color: #0F0F0F;
+  font-weight: bold;
+  padding-bottom: 1.2vw;
+  text-decoration: underline;
+}
+#auth .auth-bloc .form {
+  display: flex;
+  width: 90%;
+  height: 90%;
+}
+#auth .auth-bloc .form form {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+#auth .auth-bloc .form form .input-div {
+  width: 80%;
+  height: 100%;
+  text-align: start;
+  margin: 0.5vw 0;
+}
+#auth .auth-bloc .form form .input-div label {
+  width: 100%;
+  height: 100%;
+  font-size: 0.9vw;
+  font-weight: bold;
+  text-align: start;
+  color: #0F0F0F;
+}
+#auth .auth-bloc .form form .input-div input {
+  width: 100%;
+  height: 2.5vw;
+  padding: 1vw;
+  text-align: start;
+  font-size: 1vw;
+  font-weight: bold;
+  border: none;
+  margin: 0.3vw 0;
+  border-radius: 20px;
+}
+#auth .auth-bloc .form form .input-div input:focus {
+  box-shadow: 0 0 4px 0 #324B30;
+  outline: none;
+}
+#auth .auth-bloc .form form .input-div #pseudo-errorMsg, #auth .auth-bloc .form form .input-div #email-errorMsg, #auth .auth-bloc .form form .input-div #password-errorMsg {
+  text-align: center;
+  color: #BC4749;
+  font-size: 0.9vw;
+}
+#auth .auth-bloc .form .signupBtn, #auth .auth-bloc .form .loginBtn {
+  margin-top: 1vw;
+  border: none;
+  background-color: #BC4749;
+  width: 30%;
+  height: 2vw;
+  font-size: 0.8vw;
+  color: #F2E8CF;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+}
+#auth .auth-bloc #exit-signup, #auth .auth-bloc #exit-login {
+  position: absolute;
+  top: 0.8vw;
+  left: 1vw;
+  height: 2vw;
+}
+#auth .auth-bloc #exit-signup .fa-arrow-left, #auth .auth-bloc #exit-login .fa-arrow-left {
+  cursor: pointer;
+  color: #0F0F0F;
+  width: 100%;
+  height: 100%;
+}
+#auth .auth-bloc #errorMsg {
+  padding-top: 1vw;
+  text-align: center;
+  font-size: 0.9vw;
+  color: #BC4749;
+}
+
+.validate-signup {
+  color: #324B30;
+  font-size: 1.2vw;
 }
 
 #section-1 {

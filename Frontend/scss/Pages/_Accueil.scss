@@ -1,3 +1,150 @@
+// Inscription
+
+#auth {
+   width: 100vw;
+   // height: 57vw;
+   height: 100%;
+   // max-height: 100vh;
+   position: fixed;
+   display: flex;
+   // @extend %flex-center;
+   justify-content: center;
+   align-items:flex-start;
+   padding: 15%;
+   background-color: rgba(0,0,0,0.8);
+   z-index: 50;
+   .auth-bloc {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      
+      background-color: $bg-clair;
+      width: 27vw;
+      height: auto;
+      padding: 1vw 0;
+      @extend %flex-center;
+      border-radius: 5px;
+      box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.2) ;
+      .title {
+         font-size: 1.6vw;
+         color: $text-sombre;
+         font-weight: bold;
+         padding-bottom: 1.2vw;
+         text-decoration: underline;
+      }
+      .form {
+         display: flex;
+         width: 90%;
+         height: 90%;
+         form {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            .input-div {
+               width: 80%;
+               height: 100%;
+               text-align: start;
+               margin: 0.5vw 0;
+               label {
+                     width: 100%;
+                     height: 100%;
+                     font-size: 0.9vw;
+                     font-weight: bold;
+                     text-align: start;
+                     color: $text-sombre;
+                  }
+                  input {
+                     width: 100%;
+                     height: 2.5vw;
+                     padding: 1vw;
+                     text-align: start;
+                     font-size: 1vw;
+                     font-weight: bold;
+                     border: none;
+                     margin: 0.3vw 0;
+                     border-radius: 20px;
+                     // box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+                     &:focus {
+                        box-shadow: 0 0 4px 0 $bg-neutre;
+                        outline: none;
+                     }
+            }
+            #pseudo-errorMsg, #email-errorMsg, #password-errorMsg {
+               text-align: center;
+               color: $text-rouge;
+               font-size: 0.9vw;
+            }
+         }
+         
+         }
+         .signupBtn, .loginBtn {
+            margin-top: 1vw;
+               border: none;
+               background-color: $btn;
+               @extend %flex-center;
+               width: 30%;
+               height: 2vw;
+               font-size: 0.8vw;
+               color: $text-clair;
+               cursor: pointer;
+               border-radius: 5px;
+               // padding: 0.5vw 3vw;
+               box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+            
+         }
+      }
+      #exit-signup, #exit-login {
+         position: absolute;
+         top: 0.8vw;
+         left: 1vw;
+         // width: 2vw;
+         height: 2vw;
+         .fa-arrow-left {
+            cursor: pointer;
+            color: $text-sombre;
+            width: 100%;
+            height: 100%;
+         }
+      }
+      #errorMsg {
+         padding-top: 1vw;
+         text-align: center;
+         font-size: 0.9vw;
+         color: $text-rouge;
+      }
+   }
+}
+
+// Inscription réussie
+
+.validate-signup {
+color: $bg-neutre;
+font-size: 1.2vw;
+}
+
+// .modal {
+//    position: fixed;
+//    // top: -20%;
+//    // left: 50%;
+//    border-radius: 12px;
+//    // transform: translate(-50%, -50%);
+//    background-color: $bg-clair;
+//    color: $bg-neutre;
+//    font-weight: bold;
+//    font-size: 1vw;
+//    width: 15vw;
+//    padding: 0.5vw 1vw;
+//    text-align: center;
+//    // animation-name: slide-down;
+//    // animation-duration: 5s;
+//    // animation-fill-mode: both;
+//    z-index: 900;
+// }
+
+
 // Main
 
 // Section 1
