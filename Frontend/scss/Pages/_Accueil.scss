@@ -1,6 +1,6 @@
 // Inscription
 
-#auth {
+#modal-page {
    width: 100vw;
    // height: 57vw;
    height: 100%;
@@ -13,7 +13,7 @@
    padding: 15%;
    background-color: rgba(0,0,0,0.8);
    z-index: 50;
-   .auth-bloc {
+   .modal-bloc {
       display: flex;
       flex-direction: column;
       position: relative;
@@ -80,7 +80,7 @@
          }
          
          }
-         .signupBtn, .loginBtn {
+         .signupBtn, .loginBtn, .addIngredientBtn {
             margin-top: 1vw;
                border: none;
                background-color: $btn;
@@ -96,7 +96,7 @@
             
          }
       }
-      #exit-signup, #exit-login {
+      #exit-signup, #exit-login, #exit-addIngredient {
          position: absolute;
          top: 0.8vw;
          left: 1vw;
@@ -120,7 +120,7 @@
 
 // Inscription réussie
 
-.validate-signup {
+.validateItem {
 color: $bg-neutre;
 font-size: 1.2vw;
 }

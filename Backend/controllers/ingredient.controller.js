@@ -3,7 +3,7 @@ const Ingredient = require('../models/Ingredient')
 exports.createIngredient = (req, res, next) => {
    const ingredient = new Ingredient({
       userId: req.body.userId,
-      name: req.body.name
+      name: req.body.name,
    });
    ingredient.save()
       .then(() => res.status(201).json({ message: 'ingrédient créé !' }))

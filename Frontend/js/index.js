@@ -1,16 +1,21 @@
-// Affichage inscription
+const Uid = localStorage.getItem('userId');
 
-const signupLink = document.getElementById('signup-link');
-const loginLink = document.getElementById('login-link');
-const emailRegExp = /[a-zA-Z0-9]+[@]{1}[a-zA-Z0-9]+[.]{1}[a-z]{2,5}/;
+if (!Uid || Uid === null) {
+   // Affichage inscription
+   let signupLinkTxt = `<li><a href="#" id="signup-link">Inscription</a></li>`;
+   let loginLinkTxt = `<li><a href="#" id="login-link">Connexion</a></li>`;
 
+   document.querySelector('#menu ul').insertAdjacentHTML("beforeend", signupLinkTxt);
+   document.querySelector('#menu ul').insertAdjacentHTML("beforeend", loginLinkTxt);
 
+   const signupLink = document.getElementById('signup-link');
+   const loginLink = document.getElementById('login-link');
+   const emailRegExp = /[a-zA-Z0-9]+[@]{1}[a-zA-Z0-9]+[.]{1}[a-z]{2,5}/;
 
+   let validSignup = `<div class="validateItem"><p>Inscription réussie !</p></div>`;
 
-let validSignup = `<div class="validate-signup"><p>Inscription réussie !</p></div>`;
-
-let signupText = `<section id="auth">
-      <div class="auth-bloc">
+   let signupText = `<section id="modal-page"> 
+      <div class="modal-bloc">
       <div class="title">Inscription</div>
       <div class="form">
       <form>
@@ -40,12 +45,8 @@ let signupText = `<section id="auth">
       </div>
     </section>`;
 
-
-
-
-
-let loginText = `<section id="auth">
-      <div class="auth-bloc">
+   let loginText = `<section id="modal-page">
+      <div class="modal-bloc">
       <div class="title">Connexion</div>
       <div class="form">
       <form>
@@ -70,182 +71,223 @@ let loginText = `<section id="auth">
       </div>
     </section>`;
 
+   const logUser = async () => {
 
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const userData = { email, password };
 
-
-const logUser = async () => {
-   // Récupérer les valeurs des champs de formulaire
-   const email = document.getElementById("email").value;
-   const password = document.getElementById("password").value;
-
-   // Créer un objet contenant les données de l'utilisateur
-   const userData = { email, password };
-
-   // Envoyer les données via une requête POST à l'API backend
-   await fetch('http://localhost:3000/api/user/login', {
-      method: 'POST',
-      headers: {
-         "Accept": "application/json",
-         'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(userData)
-   })
-      .then(res => {
-         return res.json();
-
+      await fetch('http://localhost:3000/api/user/login', {
+         method: 'POST',
+         headers: {
+            "Accept": "application/json",
+            'Content-Type': 'application/json'
+         },
+         body: JSON.stringify(userData),
       })
-      .then(data => {
-         if (data.error) document.getElementById('errorMsg').textContent = data.error;
-         else {
-            localStorage.setItem('id', data.userId);
-            localStorage.setItem('token', data.token);
-            location.reload();
-         }
-      })
-      .catch(error => {
-         console.log(error);
-      })
-}
-
-// Fonction Inscription utilisateur
-
-const signUser = async () => {
-   // Récupérer les valeurs des champs de formulaire
-   let pseudo = document.getElementById("pseudo").value;
-   let email = document.getElementById("email").value;
-   let password = document.getElementById("password").value;
-
-   // Créer un objet contenant les données de l'utilisateur
-   const userData = { pseudo, email, password };
-
-   // Envoyer les données via une requête POST à l'API backend
-   await fetch('http://localhost:3000/api/user/signup', {
-      method: 'POST',
-      headers: {
-         "Accept": "application/json",
-         'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(userData)
-   })
-      .then(res => {
-         if (res.ok) {
-            // document.getElementById('auth').remove();
-            document.querySelector('.form').remove();
-            document.getElementById('errorMsg').textContent = "";
-            document.querySelector('.title').insertAdjacentHTML("afterend", validSignup);
-            // document.querySelector('header').insertAdjacentHTML("beforebegin", validSignup);
-         } else {
+         .then(res => {
             return res.json();
-         }
-      })
-      .then(data => {
-         if (data.message)
-            document.getElementById('errorMsg').textContent = data.message;
-
-      })
-      .catch(error => {
-         console.log(error);
-      })
-}
-
-
-
-
-loginLink.addEventListener('click', () => {
-   document.querySelector('header').insertAdjacentHTML("beforebegin", loginText);
-   // document.querySelector('body').style.overflow = "hidden";
-
-   const exitLogin = document.getElementById('exit-login');
-   const loginBtn = document.querySelector('.loginBtn');
-
-   if (loginBtn) {
-      document.body.style.overflow = "hidden";
-
-      email.addEventListener('blur', () => {
-         if (email.value == "") document.getElementById('email-errorMsg').textContent = "Email obligatoire";
-
-         else if (!emailRegExp.test(email.value)) document.getElementById('email-errorMsg').textContent = "Email invalide";
-
-         else document.getElementById('email-errorMsg').textContent = "";
-      })
-
-      password.addEventListener('blur', () => {
-         if (password.value == "") document.getElementById('password-errorMsg').textContent = "Mot de passe obligatoire";
-
-         else document.getElementById('password-errorMsg').textContent = "";
-
-      })
-
-
-
-      loginBtn.addEventListener('click', (e) => {
-         e.preventDefault();
-         logUser();
-      });
+         })
+         .then(data => {
+            if (data.error) document.getElementById('errorMsg').textContent = data.error;
+            else {
+               localStorage.setItem('userId', data.userId);
+               localStorage.setItem('token', data.token);
+               location.reload();
+            }
+         })
+         .catch(error => {
+            console.log(error);
+         })
    }
 
-   exitLogin.addEventListener('click', () => {
-      document.getElementById('auth').remove();
-      document.body.style.overflow = "visible";
-   });
-})
+   // Fonction Inscription utilisateur
 
+   const signUser = async () => {
 
+      let pseudo = document.getElementById("pseudo").value;
+      let email = document.getElementById("email").value;
+      let password = document.getElementById("password").value;
+      const userData = { pseudo, email, password };
 
+      await fetch('http://localhost:3000/api/user/signup', {
+         method: 'POST',
+         headers: {
+            "Accept": "application/json",
+            'Content-Type': 'application/json'
+         },
+         body: JSON.stringify(userData)
+      })
+         .then(res => {
+            if (res.ok) {
+               document.querySelector('.form').remove();
+               document.getElementById('errorMsg').textContent = "";
+               document.querySelector('.title').insertAdjacentHTML("afterend", validSignup);
+            } else {
+               return res.json();
+            }
+         })
+         .then(data => {
+            if (data.message) {
+               document.getElementById('errorMsg').textContent = data.message;
+            }
+         })
+         .catch(error => {
+            console.log(error);
+         })
+   }
 
-// Affichage / Gestion des erreurs inscription
+   loginLink.addEventListener('click', () => {
+      document.querySelector('header').insertAdjacentHTML("beforebegin", loginText);
 
-if (signupLink) {
-   signupLink.addEventListener('click', () => {
-      // document.querySelector('#auth').remove();
-      document.querySelector('header').insertAdjacentHTML("beforebegin", signupText);
+      const exitLogin = document.getElementById('exit-login');
+      const loginBtn = document.querySelector('.loginBtn');
 
-      const exitSignup = document.getElementById('exit-signup');
-      const signupBtn = document.querySelector('.signupBtn');
-
-      if (signupBtn) {
+      if (loginBtn) {
          document.body.style.overflow = "hidden";
 
-         pseudo.addEventListener('blur', () => {
-
-            if (pseudo.value == "") document.getElementById('pseudo-errorMsg').textContent = "Pseudo obligatoire";
-
-            else if (!/^(?=[a-zA-Z0-9]{3,30}$)(?=(.*[a-zA-Z]){3,})[a-zA-Z0-9]*$/.test(pseudo.value)) document.getElementById('pseudo-errorMsg').textContent = "Le pseudo doit être compris entre 3 et 30 caractères alphanumériques, et doit contenir au moins 3 lettres";
-
-            else document.getElementById('pseudo-errorMsg').textContent = "";
-         })
-
          email.addEventListener('blur', () => {
-            if (email.value == "") document.getElementById('email-errorMsg').textContent = "Email obligatoire";
-
-            else if (!emailRegExp.test(email.value)) document.getElementById('email-errorMsg').textContent = "Email invalide";
-
-            else document.getElementById('email-errorMsg').textContent = "";
+            if (email.value == "") {
+               document.getElementById('email-errorMsg').textContent = "Email obligatoire";
+            }
+            else if (!emailRegExp.test(email.value)) {
+               document.getElementById('email-errorMsg').textContent = "Email invalide";
+            }
+            else {
+               document.getElementById('email-errorMsg').textContent = "";
+            }
          })
 
          password.addEventListener('blur', () => {
-            if (password.value == "") document.getElementById('password-errorMsg').textContent = "Mot de passe obligatoire";
-
-            else if (password.value.length < 6) document.getElementById('password-errorMsg').textContent = "le mot de passe doit contenir au moins 6 caractères";
-
-            else document.getElementById('password-errorMsg').textContent = "";
-
+            if (password.value == "") {
+               document.getElementById('password-errorMsg').textContent = "Mot de passe obligatoire";
+            }
+            else {
+               document.getElementById('password-errorMsg').textContent = "";
+            }
          })
 
-
-         signupBtn.addEventListener('click', (e) => {
+         loginBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            signUser();
+            logUser();
          });
       }
 
-      exitSignup.addEventListener('click', () => {
-         document.getElementById('auth').remove();
+      exitLogin.addEventListener('click', () => {
+         document.getElementById('modal-page').remove();
          document.body.style.overflow = "visible";
-
       });
-   });
+   })
+
+   // Affichage / Gestion des erreurs inscription
+
+   if (signupLink) {
+      signupLink.addEventListener('click', () => {
+
+         document.querySelector('header').insertAdjacentHTML("beforebegin", signupText);
+
+         const exitSignup = document.getElementById('exit-signup');
+         const signupBtn = document.querySelector('.signupBtn');
+
+         if (signupBtn) {
+            document.body.style.overflow = "hidden";
+
+            pseudo.addEventListener('blur', () => {
+
+               if (pseudo.value == "") {
+                  document.getElementById('pseudo-errorMsg').textContent = "Pseudo obligatoire";
+               }
+               else if (!/^(?=[a-zA-Z0-9]{3,30}$)(?=(.*[a-zA-Z]){3,})[a-zA-Z0-9]*$/.test(pseudo.value)) {
+                  document.getElementById('pseudo-errorMsg').textContent = "Le pseudo doit être compris entre 3 et 30 caractères alphanumériques, et doit contenir au moins 3 lettres";
+               }
+               else {
+                  document.getElementById('pseudo-errorMsg').textContent = "";
+               }
+            })
+
+            email.addEventListener('blur', () => {
+               if (email.value == "") {
+                  document.getElementById('email-errorMsg').textContent = "Email obligatoire";
+               }
+               else if (!emailRegExp.test(email.value)) {
+                  document.getElementById('email-errorMsg').textContent = "Email invalide";
+               }
+               else {
+                  document.getElementById('email-errorMsg').textContent = "";
+               }
+            })
+
+            password.addEventListener('blur', () => {
+               if (password.value == "") {
+                  document.getElementById('password-errorMsg').textContent = "Mot de passe obligatoire";
+               }
+               else if (password.value.length < 6) {
+                  document.getElementById('password-errorMsg').textContent = "le mot de passe doit contenir au moins 6 caractères";
+               }
+               else {
+                  document.getElementById('password-errorMsg').textContent = "";
+               }
+            })
+
+            signupBtn.addEventListener('click', (e) => {
+
+               e.preventDefault();
+               signUser();
+            });
+         }
+
+         exitSignup.addEventListener('click', () => {
+
+            document.getElementById('modal-page').remove();
+            document.body.style.overflow = "visible";
+         });
+      });
+   }
 }
+
+else {
+   let logoutLinkTxt = `<li><a href="#" id="logout-link">Déconnexion</a></li>`;
+
+   document.querySelector('#menu ul').insertAdjacentHTML("beforeend", logoutLinkTxt);
+   const logoutLink = document.getElementById('logout-link');
+
+   const logoutUser = async () => {
+      const userId = localStorage.getItem('userId');
+      const token = localStorage.getItem('token');
+
+      if (!token || !userId) return;
+
+      await fetch(`http://localhost:3000/api/user/logout`, {
+         method: 'POST',
+         headers: {
+            "Authorization": `Bearer ${token}`
+         }
+      })
+         .then(res => {
+            if (res.ok) {
+
+               localStorage.removeItem('userId');
+               localStorage.removeItem('token');
+               location.reload();
+            } else {
+               throw new Error('Logout failed');
+            }
+         })
+         .catch(error => {
+            console.log(error);
+         });
+   };
+   if (logoutLink) {
+      logoutLink.addEventListener('click', () => {
+         logoutUser();
+         location.reload();
+      })
+   }
+
+
+
+}
+
 
 
 

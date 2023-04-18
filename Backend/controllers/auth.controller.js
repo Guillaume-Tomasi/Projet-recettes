@@ -65,13 +65,14 @@ exports.login = (req, res, next) => {
                if (!valid) {
                   return res.status(401).json({ error: 'Mot de passe incorrect !' });
                }
+               const token = jwt.sign(
+                  { userId: user._id },
+                  'RANDOM_TOKEN_SECRET',
+                  { expiresIn: '72h' }
+               );
                res.status(200).json({
                   userId: user._id,
-                  token: jwt.sign(
-                     { userId: user._id },
-                     'RANDOM_TOKEN_SECRET',
-                     { expiresIn: '24h' }
-                  )
+                  token: token
                });
             })
             .catch(error => res.status(500).json({ error }))
@@ -79,3 +80,6 @@ exports.login = (req, res, next) => {
       .catch(error => res.status(500).json({ error }));
 };
 
+exports.logout = (req, res, next) => {
+   res.status(200).json({ message: "Déconnexion réussie !" });
+};
