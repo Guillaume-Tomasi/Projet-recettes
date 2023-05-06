@@ -1,4 +1,38 @@
 
+let addRecipeText = `<section id="modal-page">
+      <div class="modal-bloc">
+        <div class="title">Ajouter un ingrédient</div>
+        <div class="form">
+          <form>
+            <div class="input-div">
+              <label for="name">Nom :</label>
+              <input type="text" id="name" name="name" required />
+              <div id="name-errorMsg"></div>
+            </div>
+
+            <div class="input-div">
+              <label for="name">Ingrédient :</label>
+              <select name="ingredient" id="ingredient" required>
+              <option value="">Sélectionnez un ingrédient</option>
+              </select>
+              <div id="name-errorMsg"></div>
+            </div>
+
+            <input type="submit" value="Ajouter" class="addIngredientBtn" />
+          </form>
+        </div>
+        <div id="exit-addIngredient">
+          <i class="fa-solid fa-arrow-left"></i>
+        </div>
+        <div id="errorMsg"></div>
+      </div>
+    </section>`
+
+
+
+
+
+
 const getRecipes = async () => {
    await fetch('http://localhost:3000/api/recipe')
       .then(res => res.json())
@@ -41,3 +75,34 @@ const searchRecipes = () => {
 };
 const searchInput = document.getElementById('search-item');
 searchInput.addEventListener('input', searchRecipes);
+
+
+
+
+
+
+
+
+const addRecipeLink = document.querySelector('.add');
+
+addRecipeLink.addEventListener('click', async () => {
+   document.querySelector('header').insertAdjacentHTML("beforebegin", addRecipeText);
+   document.body.style.overflow = "hidden";
+
+   const select = document.getElementById('ingredient');
+
+   try {
+      const response = await fetch('http://localhost:3000/api/ingredient');
+      const data = await response.json();
+      data.ingredients.forEach(ingredient => {
+         const option = document.createElement("option");
+         option.text = ingredient.name;
+         select.add(option);
+      });
+   } catch (err) {
+      console.log(err);
+      // Afficher un message d'erreur à l'utilisateur
+   }
+
+
+})

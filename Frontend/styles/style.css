@@ -14,7 +14,9 @@ a {
   color: #F2E8CF;
 }
 
-header #menu, #step-3 .step-3 .bloc-title, #step-2 .bloc-title, #step-1 .bloc-title, #section-2 .bloc-stats .bg-qty, #section-2, #section-1 .bloc-section-1 .bloc-card .bloc-recipe .card, #section-1 .bloc-section-1 .bloc-card, #section-1, #modal-page .modal-bloc .form .signupBtn, #modal-page .modal-bloc .form .loginBtn, #modal-page .modal-bloc .form .addIngredientBtn, #modal-page .modal-bloc, .search .filter button, .search .add button, .search .search-bar button, #step-3 .step-3 .bloc-title button, #step-2 .bloc-title button, #step-1 .bloc-title button, #section-1 .bloc-section-1 .bloc-card button {
+header #menu, #modal-page .modal-bloc .form .signupBtn,
+#modal-page .modal-bloc .form .loginBtn,
+#modal-page .modal-bloc .form .addIngredientBtn, #modal-page .modal-bloc, #step-3 .step-3 .bloc-title, #step-2 .bloc-title, #step-1 .bloc-title, #section-2 .bloc-stats .bg-qty, #section-2, #section-1 .bloc-section-1 .bloc-card .bloc-recipe .card, #section-1 .bloc-section-1 .bloc-card, #section-1, .search .filter button, .search .add button, .search .search-bar button, #step-3 .step-3 .bloc-title button, #step-2 .bloc-title button, #step-1 .bloc-title button, #section-1 .bloc-section-1 .bloc-card button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,118 +107,6 @@ header .title {
     display: none;
   }
 }
-#modal-page {
-  width: 100vw;
-  height: 100%;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 15%;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 50;
-}
-#modal-page .modal-bloc {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  background-color: #F2E8CF;
-  width: 27vw;
-  height: auto;
-  padding: 1vw 0;
-  border-radius: 5px;
-  box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.2);
-}
-#modal-page .modal-bloc .title {
-  font-size: 1.6vw;
-  color: #0F0F0F;
-  font-weight: bold;
-  padding-bottom: 1.2vw;
-  text-decoration: underline;
-}
-#modal-page .modal-bloc .form {
-  display: flex;
-  width: 90%;
-  height: 90%;
-}
-#modal-page .modal-bloc .form form {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-#modal-page .modal-bloc .form form .input-div {
-  width: 80%;
-  height: 100%;
-  text-align: start;
-  margin: 0.5vw 0;
-}
-#modal-page .modal-bloc .form form .input-div label {
-  width: 100%;
-  height: 100%;
-  font-size: 0.9vw;
-  font-weight: bold;
-  text-align: start;
-  color: #0F0F0F;
-}
-#modal-page .modal-bloc .form form .input-div input {
-  width: 100%;
-  height: 2.5vw;
-  padding: 1vw;
-  text-align: start;
-  font-size: 1vw;
-  font-weight: bold;
-  border: none;
-  margin: 0.3vw 0;
-  border-radius: 20px;
-}
-#modal-page .modal-bloc .form form .input-div input:focus {
-  box-shadow: 0 0 4px 0 #324B30;
-  outline: none;
-}
-#modal-page .modal-bloc .form form .input-div #pseudo-errorMsg, #modal-page .modal-bloc .form form .input-div #email-errorMsg, #modal-page .modal-bloc .form form .input-div #password-errorMsg {
-  text-align: center;
-  color: #BC4749;
-  font-size: 0.9vw;
-}
-#modal-page .modal-bloc .form .signupBtn, #modal-page .modal-bloc .form .loginBtn, #modal-page .modal-bloc .form .addIngredientBtn {
-  margin-top: 1vw;
-  border: none;
-  background-color: #BC4749;
-  width: 30%;
-  height: 2vw;
-  font-size: 0.8vw;
-  color: #F2E8CF;
-  cursor: pointer;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
-}
-#modal-page .modal-bloc #exit-signup, #modal-page .modal-bloc #exit-login, #modal-page .modal-bloc #exit-addIngredient {
-  position: absolute;
-  top: 0.8vw;
-  left: 1vw;
-  height: 2vw;
-}
-#modal-page .modal-bloc #exit-signup .fa-arrow-left, #modal-page .modal-bloc #exit-login .fa-arrow-left, #modal-page .modal-bloc #exit-addIngredient .fa-arrow-left {
-  cursor: pointer;
-  color: #0F0F0F;
-  width: 100%;
-  height: 100%;
-}
-#modal-page .modal-bloc #errorMsg {
-  padding-top: 1vw;
-  text-align: center;
-  font-size: 0.9vw;
-  color: #BC4749;
-}
-
-.validateItem {
-  color: #324B30;
-  font-size: 1.2vw;
-}
-
 #section-1 {
   background-color: #324B30;
   height: 57vw;
@@ -653,4 +543,158 @@ header .title {
   color: #F2E8CF;
   padding: 1vw;
   font-size: calc(5px + 1.2vw);
+}
+
+#modal-page {
+  width: 100vw;
+  height: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 15%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 50;
+}
+#modal-page .modal-bloc {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: #F2E8CF;
+  width: 27vw;
+  height: auto;
+  padding: 1vw 0;
+  border-radius: 5px;
+  box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.2);
+}
+#modal-page .modal-bloc .title {
+  font-size: 1.6vw;
+  color: #0F0F0F;
+  font-weight: bold;
+  padding-bottom: 1.2vw;
+  text-decoration: underline;
+}
+#modal-page .modal-bloc .form {
+  display: flex;
+  width: 90%;
+  height: 90%;
+}
+#modal-page .modal-bloc .form form {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+#modal-page .modal-bloc .form form .input-div {
+  width: 80%;
+  height: 100%;
+  text-align: start;
+  margin: 0.5vw 0;
+}
+#modal-page .modal-bloc .form form .input-div label {
+  width: 100%;
+  height: 100%;
+  font-size: 0.9vw;
+  font-weight: bold;
+  text-align: start;
+  color: #0F0F0F;
+}
+#modal-page .modal-bloc .form form .input-div input {
+  width: 100%;
+  height: 2.5vw;
+  padding: 1vw;
+  text-align: start;
+  font-size: 1vw;
+  font-weight: bold;
+  border: none;
+  margin: 0.3vw 0;
+  border-radius: 20px;
+}
+#modal-page .modal-bloc .form form .input-div input:focus {
+  box-shadow: 0 0 4px 0 #324B30;
+  outline: none;
+}
+#modal-page .modal-bloc .form form .input-div #pseudo-errorMsg,
+#modal-page .modal-bloc .form form .input-div #email-errorMsg,
+#modal-page .modal-bloc .form form .input-div #password-errorMsg {
+  text-align: center;
+  color: #BC4749;
+  font-size: 0.9vw;
+}
+#modal-page .modal-bloc .form .signupBtn,
+#modal-page .modal-bloc .form .loginBtn,
+#modal-page .modal-bloc .form .addIngredientBtn {
+  margin-top: 1vw;
+  border: none;
+  background-color: #BC4749;
+  width: 30%;
+  height: 2vw;
+  font-size: 0.8vw;
+  color: #F2E8CF;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+}
+#modal-page .modal-bloc #exit-signup,
+#modal-page .modal-bloc #exit-login,
+#modal-page .modal-bloc #exit-addIngredient {
+  position: absolute;
+  top: 0.8vw;
+  left: 1vw;
+  height: 2vw;
+}
+#modal-page .modal-bloc #exit-signup .fa-arrow-left,
+#modal-page .modal-bloc #exit-login .fa-arrow-left,
+#modal-page .modal-bloc #exit-addIngredient .fa-arrow-left {
+  cursor: pointer;
+  color: #0F0F0F;
+  width: 100%;
+  height: 100%;
+}
+#modal-page .modal-bloc #errorMsg {
+  padding-top: 1vw;
+  text-align: center;
+  font-size: 0.9vw;
+  color: #BC4749;
+}
+
+.validateItem {
+  color: #324B30;
+  font-size: 1.2vw;
+}
+
+.ingredient-list-bloc {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 1vw;
+  justify-items: center;
+  width: 85%;
+}
+.ingredient-list-bloc .ingredient-list-card {
+  width: 7vw;
+  margin-bottom: 0.8vw;
+}
+.ingredient-list-bloc .ingredient-list-card .img-ingredient-list {
+  width: 100%;
+  height: 5vw;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  margin-bottom: 0.5vw;
+}
+.ingredient-list-bloc .ingredient-list-card .img-ingredient-list img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.ingredient-list-bloc .ingredient-list-card .ing-body {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ingredient-list-bloc .ingredient-list-card .ing-body p {
+  font-size: 0.8vw;
 }
