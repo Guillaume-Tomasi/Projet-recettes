@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link
+      href="http://fonts.googleapis.com/css?family=Lato:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <title>Kwisto | Ajouter une recette</title>
+  </head>
+  <body>
+    <!-- <header>
+      <div class="image-header">
+        <img src="./images/Page ingredients/header.jpg" alt="image de fond" />
+      </div>
+      <nav id="menu">
+        <ul>
+          <li><a href="/Frontend/index.html">Accueil</a></li>
+          <li><a href="/Frontend/ingredients.html">Ingrédients</a></li>
+          <li><a href="/Frontend/recettes.html">Recettes</a></li>
+          <li><a href="#">Courses</a></li>
+        </ul>
+      </nav>
+      <div class="title">
+        <h1>Kwisto</h1>
+        <p>Choisissez vos ingrédients</p>
+      </div>
+    </header> -->
+    <main id="add-recipe-main">
+      <h2>Nouvelle recette</h2>
+      <div class="bloc-1">
+        <section id="title">
+          <div id="bloc-title">
+            <h3>Titre</h3>
+            <input
+              type="text"
+              id="recipe-name"
+              placeholder="Nom de la recette"
+            />
+          </div>
+        </section>
+
+        <section id="type">
+          <div id="bloc-type">
+            <h3>Type de recette</h3>
+            <div class="bloc-radio">
+              <label>
+                <input type="radio" name="type" value="entree" />
+                <span class="radio-custom"></span> Entrée
+              </label>
+              <label>
+                <input type="radio" name="type" value="plat" />
+                <span class="radio-custom"></span> Plat
+              </label>
+              <label>
+                <input type="radio" name="type" value="dessert" />
+                <span class="radio-custom"></span> Dessert
+              </label>
+              <label>
+                <input type="radio" name="type" value="other" />
+                <span class="radio-custom"></span> Autre
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <section id="ingredients">
+          <div id="bloc-ingredients">
+            <h3>Ingrédients (0)</h3>
+            <div class="bloc-selected-ingredients1">
+              <div class="img-ingredient">
+                <img
+                  src="/Frontend/images/Page accueil/burger.jpg"
+                  alt="burger"
+                />
+              </div>
+              <div class="ingredient-detail">
+                <div class="ingredient-name">Burger</div>
+                <div class="ingredient-quantity">300g</div>
+              </div>
+              <div class="delete-ingredient">
+                <svg
+                  class="delete-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512"
+                >
+                  <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                  <path
+                    d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="border-bottom-ingredient"></div>
+
+            <div class="bloc-selected-ingredients1">
+              <div class="img-ingredient">
+                <img
+                  src="/Frontend/images/Page accueil/burger.jpg"
+                  alt="burger"
+                />
+              </div>
+              <div class="ingredient-detail">
+                <div class="ingredient-name">Tomates</div>
+                <div class="ingredient-quantity">1kg</div>
+              </div>
+              <div class="delete-ingredient">
+                <svg
+                  class="delete-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512"
+                >
+                  <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                  <path
+                    d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <div class="add-ingredient"></div>
+          </div>
+        </section>
+
+        <section id="steps">
+          <h3>Etapes (0)</h3>
+        </section>
+        <section id="picture">
+          <h3>Photo</h3>
+        </section>
+      </div>
+    </main>
+    <!-- <script src="./js/index.js"></script> -->
+    <!-- <script src="./js/ingredient-page.js"></script> -->
+    <script
+      src="https://kit.fontawesome.com/8f6b4cabb0.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

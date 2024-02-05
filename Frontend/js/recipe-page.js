@@ -1,7 +1,7 @@
 
 let addRecipeText = `<section id="modal-page">
       <div class="modal-bloc">
-        <div class="title">Ajouter un ingrédient</div>
+        <div class="title">Ajouter un ingrédienhh</div>
         <div class="form">
           <form>
             <div class="input-div">
@@ -12,9 +12,7 @@ let addRecipeText = `<section id="modal-page">
 
             <div class="input-div">
               <label for="name">Ingrédient :</label>
-              <select name="ingredient" id="ingredient" required>
-              <option value="">Sélectionnez un ingrédient</option>
-              </select>
+              <button class="addIngredientBtn">Ajouter un ingrédient<button/>
               <div id="name-errorMsg"></div>
             </div>
 
@@ -83,26 +81,3 @@ searchInput.addEventListener('input', searchRecipes);
 
 
 
-const addRecipeLink = document.querySelector('.add');
-
-addRecipeLink.addEventListener('click', async () => {
-   document.querySelector('header').insertAdjacentHTML("beforebegin", addRecipeText);
-   document.body.style.overflow = "hidden";
-
-   const select = document.getElementById('ingredient');
-
-   try {
-      const response = await fetch('http://localhost:3000/api/ingredient');
-      const data = await response.json();
-      data.ingredients.forEach(ingredient => {
-         const option = document.createElement("option");
-         option.text = ingredient.name;
-         select.add(option);
-      });
-   } catch (err) {
-      console.log(err);
-      // Afficher un message d'erreur à l'utilisateur
-   }
-
-
-})

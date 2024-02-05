@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -16,7 +17,7 @@ a {
 
 header #menu, #modal-page .modal-bloc .form .signupBtn,
 #modal-page .modal-bloc .form .loginBtn,
-#modal-page .modal-bloc .form .addIngredientBtn, #modal-page .modal-bloc, #step-3 .step-3 .bloc-title, #step-2 .bloc-title, #step-1 .bloc-title, #section-2 .bloc-stats .bg-qty, #section-2, #section-1 .bloc-section-1 .bloc-card .bloc-recipe .card, #section-1 .bloc-section-1 .bloc-card, #section-1, .search .filter button, .search .add button, .search .search-bar button, #step-3 .step-3 .bloc-title button, #step-2 .bloc-title button, #step-1 .bloc-title button, #section-1 .bloc-section-1 .bloc-card button {
+#modal-page .modal-bloc .form .addIngredientBtn, #modal-page .modal-bloc, #add-recipe-main, #step-3 .step-3 .bloc-title, #step-2 .bloc-title, #step-1 .bloc-title, #section-2 .bloc-stats .bg-qty, #section-2, #section-1 .bloc-section-1 .bloc-card .bloc-recipe .card, #section-1 .bloc-section-1 .bloc-card, #section-1, .search .filter button, .search .add button, .search .search-bar button, #step-3 .step-3 .bloc-title button, #step-2 .bloc-title button, #step-1 .bloc-title button, #section-1 .bloc-section-1 .bloc-card button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -543,6 +544,165 @@ header .title {
   color: #F2E8CF;
   padding: 1vw;
   font-size: calc(5px + 1.2vw);
+}
+
+#add-recipe-main {
+  background-color: #324B30;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+}
+#add-recipe-main .bloc-1 {
+  width: 40vw;
+  max-width: 640px;
+  height: auto;
+}
+#add-recipe-main h2 {
+  margin-top: -6.9vw;
+  padding-bottom: 5vw;
+  color: #F2E8CF;
+  font-size: 2vw;
+}
+#add-recipe-main h3 {
+  font-size: 1.2vw;
+  color: #0F0F0F;
+  padding-bottom: 1.5vw;
+}
+#add-recipe-main section {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2vw;
+  text-align: center;
+}
+
+#bloc-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+#bloc-title #recipe-name {
+  margin-bottom: 1.5vw;
+  border: none;
+  border-radius: 5px;
+  height: 2vw;
+  width: 100%;
+  font-size: 1vw;
+  text-align: start;
+  padding-left: 2%;
+}
+#bloc-title #recipe-name:focus {
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+#type {
+  font-size: calc(5px + 0.6vw);
+}
+
+#bloc-type {
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.bloc-radio {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 1.5vw;
+}
+
+label {
+  display: flex;
+}
+
+.radio-custom {
+  width: calc(5px + 0.8vw);
+  height: calc(5px + 0.8vw);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+input[type=radio]:hover + .radio-custom {
+  border-color: #BC4749;
+  /* Couleur de la bordure au survol */
+}
+
+input[type=radio] {
+  display: none;
+}
+
+input[type=radio]:checked + .radio-custom {
+  background-color: #BC4749;
+  /* Couleur de fond lorsque le bouton radio est sélectionné */
+}
+
+#bloc-ingredients {
+  width: 100%;
+}
+
+.bloc-selected-ingredients1 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.4vw 1vw;
+}
+
+.img-ingredient {
+  width: 2vw;
+  height: 2vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+.img-ingredient img {
+  width: 100%;
+  height: 100%;
+}
+
+.ingredient-detail {
+  margin-left: 0.6vw;
+  font-size: calc(5px + 0.4vw);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  height: 2vw;
+  max-width: 50%;
+}
+.ingredient-detail .ingredient-name {
+  font-weight: bold;
+}
+
+.delete-ingredient {
+  width: 1vw;
+  height: 1.2vw;
+  margin-left: auto;
+}
+.delete-ingredient:hover .delete-icon path {
+  fill: #BC4749;
+}
+
+.delete-icon path {
+  fill: #0F0F0F;
+  transition: fill 0.2s;
+}
+
+.border-bottom-ingredient {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 40%;
+  height: 1px;
+  margin-left: 2vw;
+  margin-right: auto;
 }
 
 #modal-page {
