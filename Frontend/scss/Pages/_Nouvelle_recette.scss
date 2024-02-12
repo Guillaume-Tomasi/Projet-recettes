@@ -12,17 +12,24 @@
         flex-direction: column;
         justify-content: center;
    
-        h2 {
-           margin-top: -6.9vw;
+        h1 {
+         //   margin-top: -6.9vw;
            padding-bottom: 5vw;
            color: $text-clair;
-           font-size: 2vw;
+           font-size: calc(5px + 1vw);
         }
 
-        h3 {
-         font-size: 1.2vw;
+        h2 {
+         font-size: calc(5px + 1vw);
+        }
+
+
+        p {
+         // font-size: 1.2vw;
+         font-size: calc(5px + 0.6vw);
          color: $text-sombre;
          padding-bottom: 1.5vw;
+         font-weight: bold;
         }
         section {
          width: 90%;
@@ -34,6 +41,167 @@
         }
 }
 
+
+
+#bloc-add-ingredient-page {
+   display: none;
+   width: 100%;
+   height: 100%;
+   position: fixed;
+   background: rgba(0, 0, 0, 0.2);
+   transition: background 0.5s;
+
+}
+
+#add-ingredient-page {
+   display: none;
+   position: fixed;
+   background-color: white;
+   width: 40%;
+   max-width: 900px;
+   height: 100%;
+   left: -40%;
+   padding: 28px 30px;
+   transition: left 0.5s ease-in-out;
+
+#add-ingredient-header {
+
+   height: 2vw;
+   display: flex;
+   justify-content: space-between;
+   position: relative;
+   align-items: center;
+   // margin-bottom: 1vw;
+
+   #quit-icon {
+   width: 28px;
+   height: 28px;
+   position: absolute;
+   top: 0;
+   right: 0;
+   cursor: pointer;
+
+   
+   .quit-icon {
+      width: 100%;
+      height: 100%;
+   }
+   
+   }
+}
+
+.bloc-new-ingredient {
+   display: flex;
+   // border: 1px solid red;
+   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+   padding: 1vw 0; 
+   justify-content: space-around;
+   align-items: center;
+
+   label {
+      font-weight: bold;
+      margin-bottom: 0.3vw;
+   }
+   #ingredient, #qty, #unity, #ingredient-added, #qty-added, #unity-added {
+      // margin-bottom: 1.5vw;
+         border: none;
+         background-color: $bg-clair;
+         border-radius: 12px;
+         width: 100%;
+         font-weight: bold;
+         height: 1.7vw;
+         text-align: center;
+         // margin-right: 0.6vw;
+         font-size: calc(5px + 0.4vw);
+         
+         text-align: start;
+         padding: 0.5vw 1vw 0.5vw 0.5vw;
+      
+         &:focus {
+            box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2);
+            outline: none;
+         }
+         
+      }
+      #ingredient, #ingredient-added {
+         width: 12vw;
+      }
+   
+
+   .delete-new-ingredient, .add-new-ingredient {
+      display: flex;
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.2);
+      height: 1.5vw;
+      align-items: center;
+      border-radius: 30px;
+      font-size: calc(5px + 0.4vw);
+      margin-top: 1vw;
+      padding: 1%;
+      transition:  0.3s;
+      &:hover {
+         background-color: $btn;
+         color: $text-clair;
+         path {
+            fill: $text-clair;
+         }
+      }
+      .delete-new-ingredient-icon, .add-new-ingredient-icon {
+         width: 1vw;
+         height: 1vw;
+         // margin: 5%;
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+      }
+      .delete-icon, .add-icon {
+         width: 75%;
+         height: 75%;
+      }
+
+   }
+   .add-new-ingredient {
+      margin-right: 0.7vw;
+   }
+}
+
+
+
+}
+
+
+
+.submit-btn {
+   display: flex;
+   justify-content: center;
+   margin-top: 2vw;
+
+   button {
+      background-color: $btn;
+      color: $text-clair;
+      border: none;
+      width: 5vw;
+      height: 2.2vw;
+      border-radius: 50px;
+      font-size: calc(5px + 0.6vw);
+      text-align: center;
+      box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+         background-color: rgba(188, 71, 73, 0.9);
+      }
+   }
+}
+
+
+
+
+
+
+
+
 #bloc-title {
    // background-color: red;
    display: flex;
@@ -44,7 +212,7 @@
    #recipe-name {
       margin-bottom: 1.5vw;
       border: none;
-         border-radius: 5px;
+         border-radius: 12px;
          height: 2vw;
          width: 100%;
          font-size: 1vw;
@@ -113,7 +281,7 @@ input[type="radio"]:checked+.radio-custom {
    width: 100%;
 }
 
-.bloc-selected-ingredients1 {
+.bloc-selected-ingredients, .bloc-add-ingredients {
    display: flex;
    align-items: center;
    justify-content: flex-start;
@@ -127,6 +295,7 @@ input[type="radio"]:checked+.radio-custom {
    height: 2vw;
    object-fit: cover;
    border-radius: 50%;
+   background-color: $bg-clair;
    overflow: hidden;
    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
    // border: 1px solid rgba(0, 0, 0, 0.2);
@@ -136,7 +305,7 @@ input[type="radio"]:checked+.radio-custom {
    }
 }
 
-.ingredient-detail {
+.ingredient-detail, .add-ingredient {
    margin-left: 0.6vw;
       font-size: calc(5px + 0.4vw);
       display: flex;
@@ -151,7 +320,7 @@ input[type="radio"]:checked+.radio-custom {
       }
 }
 
-.delete-ingredient {
+.delete-ingredient, .add-ingredient-btn {
    width: 1vw;
    height: 1.2vw;
    margin-left: auto;
@@ -176,3 +345,25 @@ input[type="radio"]:checked+.radio-custom {
       margin-right: auto;
 
    }
+
+   .bloc-add-ingredients {
+      background-color: white;
+      border-radius: 12px;
+      cursor: pointer;
+      .img-ingredient {
+         box-shadow: none;
+      }
+   }
+
+      .add-ingredient {
+         font-size: calc(5px + 0.6vw);
+      }
+
+
+      .add-ingredient-btn {
+         path {
+            fill: $text-rouge;
+         }
+      }
+
+      
