@@ -619,18 +619,18 @@ header .title {
   width: 100%;
   height: 100%;
 }
-#add-ingredient-page .bloc-new-ingredient {
+#add-ingredient-page .bloc-new-ingredient-added, #add-ingredient-page .bloc-new-ingredient {
   display: flex;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   padding: 1vw 0;
   justify-content: space-around;
   align-items: center;
 }
-#add-ingredient-page .bloc-new-ingredient label {
+#add-ingredient-page .bloc-new-ingredient-added label, #add-ingredient-page .bloc-new-ingredient label {
   font-weight: bold;
   margin-bottom: 0.3vw;
 }
-#add-ingredient-page .bloc-new-ingredient #ingredient, #add-ingredient-page .bloc-new-ingredient #qty, #add-ingredient-page .bloc-new-ingredient #unity, #add-ingredient-page .bloc-new-ingredient #ingredient-added, #add-ingredient-page .bloc-new-ingredient #qty-added, #add-ingredient-page .bloc-new-ingredient #unity-added {
+#add-ingredient-page .bloc-new-ingredient-added #ingredient, #add-ingredient-page .bloc-new-ingredient-added #qty, #add-ingredient-page .bloc-new-ingredient-added #unity, #add-ingredient-page .bloc-new-ingredient-added #ingredient-added, #add-ingredient-page .bloc-new-ingredient-added #qty-added, #add-ingredient-page .bloc-new-ingredient-added #unity-added, #add-ingredient-page .bloc-new-ingredient #ingredient, #add-ingredient-page .bloc-new-ingredient #qty, #add-ingredient-page .bloc-new-ingredient #unity, #add-ingredient-page .bloc-new-ingredient #ingredient-added, #add-ingredient-page .bloc-new-ingredient #qty-added, #add-ingredient-page .bloc-new-ingredient #unity-added {
   border: none;
   background-color: #F2E8CF;
   border-radius: 12px;
@@ -642,45 +642,88 @@ header .title {
   text-align: start;
   padding: 0.5vw 1vw 0.5vw 0.5vw;
 }
-#add-ingredient-page .bloc-new-ingredient #ingredient:focus, #add-ingredient-page .bloc-new-ingredient #qty:focus, #add-ingredient-page .bloc-new-ingredient #unity:focus, #add-ingredient-page .bloc-new-ingredient #ingredient-added:focus, #add-ingredient-page .bloc-new-ingredient #qty-added:focus, #add-ingredient-page .bloc-new-ingredient #unity-added:focus {
+#add-ingredient-page .bloc-new-ingredient-added #ingredient:focus, #add-ingredient-page .bloc-new-ingredient-added #qty:focus, #add-ingredient-page .bloc-new-ingredient-added #unity:focus, #add-ingredient-page .bloc-new-ingredient-added #ingredient-added:focus, #add-ingredient-page .bloc-new-ingredient-added #qty-added:focus, #add-ingredient-page .bloc-new-ingredient-added #unity-added:focus, #add-ingredient-page .bloc-new-ingredient #ingredient:focus, #add-ingredient-page .bloc-new-ingredient #qty:focus, #add-ingredient-page .bloc-new-ingredient #unity:focus, #add-ingredient-page .bloc-new-ingredient #ingredient-added:focus, #add-ingredient-page .bloc-new-ingredient #qty-added:focus, #add-ingredient-page .bloc-new-ingredient #unity-added:focus {
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2);
   outline: none;
 }
-#add-ingredient-page .bloc-new-ingredient #ingredient, #add-ingredient-page .bloc-new-ingredient #ingredient-added {
+#add-ingredient-page .bloc-new-ingredient-added #ingredient, #add-ingredient-page .bloc-new-ingredient-added #ingredient-added, #add-ingredient-page .bloc-new-ingredient #ingredient, #add-ingredient-page .bloc-new-ingredient #ingredient-added {
   width: 12vw;
 }
-#add-ingredient-page .bloc-new-ingredient .delete-new-ingredient, #add-ingredient-page .bloc-new-ingredient .add-new-ingredient {
+#add-ingredient-page .bloc-new-ingredient-added #suggestions, #add-ingredient-page .bloc-new-ingredient #suggestions {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  margin-top: 0.3vw;
+  width: 100%;
+  height: auto;
+}
+#add-ingredient-page .bloc-new-ingredient-added #suggestions .ingredient-suggestion, #add-ingredient-page .bloc-new-ingredient #suggestions .ingredient-suggestion {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 0 0.6vw;
+  padding: 0.5vw 0;
+}
+#add-ingredient-page .bloc-new-ingredient-added #suggestions .ingredient-suggestion:hover, #add-ingredient-page .bloc-new-ingredient #suggestions .ingredient-suggestion:hover {
+  cursor: pointer;
+}
+#add-ingredient-page .bloc-new-ingredient-added #suggestions .ingredient-suggestion:hover .name-ingredient-suggestion, #add-ingredient-page .bloc-new-ingredient #suggestions .ingredient-suggestion:hover .name-ingredient-suggestion {
+  color: #BC4749;
+}
+#add-ingredient-page .bloc-new-ingredient-added #suggestions .ingredient-suggestion .img-ingredient-suggestion, #add-ingredient-page .bloc-new-ingredient #suggestions .ingredient-suggestion .img-ingredient-suggestion {
+  width: 0.9vw;
+  height: 0.9vw;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+#add-ingredient-page .bloc-new-ingredient-added #suggestions .ingredient-suggestion .img-ingredient-suggestion img, #add-ingredient-page .bloc-new-ingredient #suggestions .ingredient-suggestion .img-ingredient-suggestion img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+#add-ingredient-page .bloc-new-ingredient-added #suggestions .ingredient-suggestion .name-ingredient-suggestion, #add-ingredient-page .bloc-new-ingredient #suggestions .ingredient-suggestion .name-ingredient-suggestion {
+  margin-left: 0.4vw;
+  font-size: calc(5px + 0.5vw);
+}
+#add-ingredient-page .bloc-new-ingredient-added .delete-new-ingredient, #add-ingredient-page .bloc-new-ingredient-added .add-new-ingredient, #add-ingredient-page .bloc-new-ingredient .delete-new-ingredient, #add-ingredient-page .bloc-new-ingredient .add-new-ingredient {
   display: flex;
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.2);
-  height: 1.5vw;
+  height: 1.4vw;
   align-items: center;
   border-radius: 30px;
   font-size: calc(5px + 0.4vw);
-  margin-top: 1vw;
+  margin-top: 1.2vw;
   padding: 1%;
-  transition: 0.3s;
+  transition: 0.2s;
 }
-#add-ingredient-page .bloc-new-ingredient .delete-new-ingredient:hover, #add-ingredient-page .bloc-new-ingredient .add-new-ingredient:hover {
+#add-ingredient-page .bloc-new-ingredient-added .delete-new-ingredient:hover, #add-ingredient-page .bloc-new-ingredient-added .add-new-ingredient:hover, #add-ingredient-page .bloc-new-ingredient .delete-new-ingredient:hover, #add-ingredient-page .bloc-new-ingredient .add-new-ingredient:hover {
   background-color: #BC4749;
   color: #F2E8CF;
 }
-#add-ingredient-page .bloc-new-ingredient .delete-new-ingredient:hover path, #add-ingredient-page .bloc-new-ingredient .add-new-ingredient:hover path {
+#add-ingredient-page .bloc-new-ingredient-added .delete-new-ingredient:hover path, #add-ingredient-page .bloc-new-ingredient-added .add-new-ingredient:hover path, #add-ingredient-page .bloc-new-ingredient .delete-new-ingredient:hover path, #add-ingredient-page .bloc-new-ingredient .add-new-ingredient:hover path {
   fill: #F2E8CF;
 }
-#add-ingredient-page .bloc-new-ingredient .delete-new-ingredient .delete-new-ingredient-icon, #add-ingredient-page .bloc-new-ingredient .delete-new-ingredient .add-new-ingredient-icon, #add-ingredient-page .bloc-new-ingredient .add-new-ingredient .delete-new-ingredient-icon, #add-ingredient-page .bloc-new-ingredient .add-new-ingredient .add-new-ingredient-icon {
+#add-ingredient-page .bloc-new-ingredient-added .delete-new-ingredient .delete-new-ingredient-icon, #add-ingredient-page .bloc-new-ingredient-added .delete-new-ingredient .add-new-ingredient-icon, #add-ingredient-page .bloc-new-ingredient-added .add-new-ingredient .delete-new-ingredient-icon, #add-ingredient-page .bloc-new-ingredient-added .add-new-ingredient .add-new-ingredient-icon, #add-ingredient-page .bloc-new-ingredient .delete-new-ingredient .delete-new-ingredient-icon, #add-ingredient-page .bloc-new-ingredient .delete-new-ingredient .add-new-ingredient-icon, #add-ingredient-page .bloc-new-ingredient .add-new-ingredient .delete-new-ingredient-icon, #add-ingredient-page .bloc-new-ingredient .add-new-ingredient .add-new-ingredient-icon {
   width: 1vw;
   height: 1vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-#add-ingredient-page .bloc-new-ingredient .delete-new-ingredient .delete-icon, #add-ingredient-page .bloc-new-ingredient .delete-new-ingredient .add-icon, #add-ingredient-page .bloc-new-ingredient .add-new-ingredient .delete-icon, #add-ingredient-page .bloc-new-ingredient .add-new-ingredient .add-icon {
+#add-ingredient-page .bloc-new-ingredient-added .delete-new-ingredient .delete-icon, #add-ingredient-page .bloc-new-ingredient-added .delete-new-ingredient .add-icon, #add-ingredient-page .bloc-new-ingredient-added .add-new-ingredient .delete-icon, #add-ingredient-page .bloc-new-ingredient-added .add-new-ingredient .add-icon, #add-ingredient-page .bloc-new-ingredient .delete-new-ingredient .delete-icon, #add-ingredient-page .bloc-new-ingredient .delete-new-ingredient .add-icon, #add-ingredient-page .bloc-new-ingredient .add-new-ingredient .delete-icon, #add-ingredient-page .bloc-new-ingredient .add-new-ingredient .add-icon {
   width: 75%;
   height: 75%;
 }
-#add-ingredient-page .bloc-new-ingredient .add-new-ingredient {
+#add-ingredient-page .bloc-new-ingredient-added .add-new-ingredient, #add-ingredient-page .bloc-new-ingredient .add-new-ingredient {
   margin-right: 0.7vw;
+}
+#add-ingredient-page .bloc-new-ingredient {
+  border-bottom: none;
+  align-items: flex-start;
 }
 
 .submit-btn {
