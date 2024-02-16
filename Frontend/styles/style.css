@@ -650,7 +650,7 @@ header .title {
   width: 12vw;
 }
 #add-ingredient-page .bloc-new-ingredient-added #suggestions, #add-ingredient-page .bloc-new-ingredient #suggestions {
-  display: flex;
+  display: none;
   flex-direction: column;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 12px;

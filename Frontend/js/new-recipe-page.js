@@ -3,44 +3,64 @@ const addIngredientPage = document.querySelector('#add-ingredient-page');
 const blocAddIngredientPage = document.querySelector('#bloc-add-ingredient-page');
 const quitIcon = document.querySelector('#quit-icon');
 const inputNameIngredient = document.querySelector('#ingredient');
+const suggestionsContainer = document.querySelector('#suggestions');
 
 
-// let allIngredients = [];
+let allIngredients = [];
 
 const getIngredients = async () => {
    await fetch('http://localhost:3000/api/ingredient')
       .then(res => res.json())
       .then(data => {
-         const ingredients = data.ingredients.map(ingredient => {
-            return {
-               name: ingredient.name,
-               image: ingredient.image,
-
-            }
-         });
-         for (let i = 0; i < ingredients.length; i++) {
-            // console.log(ingredients[i].image);
-            let suggestionList = `<ul id="suggestions">
-   <li class="ingredient-suggestion">
-      <div class="img-ingredient-suggestion">
-         <img
-            src="${ingredients[i].image}"
-            alt="${ingredients[i].name}"
-         />
-      </div>
-      <div class="name-ingredient-suggestion">${ingredients[i].name}</div>
-   </li>
-</ul>`;
-
-            document.querySelector('.add-name-ingredient').insertAdjacentHTML('beforeend', suggestionList);
-         }
+         allIngredients = data.ingredients;
       })
       .catch(err => console.log(err))
 };
 
-inputNameIngredient.addEventListener('focus', () => {
-   getIngredients();
-})
+const filterAndDisplaySuggestions = (searchText) => {
+
+   suggestionsContainer.innerHTML = '';
+
+   const filteredIngredients = allIngredients.filter(ingredient =>
+      ingredient.name.toLowerCase().startsWith(searchText.toLowerCase())
+   );
+
+   filteredIngredients.forEach(ingredient => {
+      let suggestionItem = `<li class="ingredient-suggestion">
+               <div class="img-ingredient-suggestion">
+                  <img
+                     src="${ingredient.image}"
+                     alt="${ingredient.name}"
+                  />
+               </div>
+               <div class="name-ingredient-suggestion">${ingredient.name}</div>
+            </li>`;
+
+      suggestionsContainer.insertAdjacentHTML('beforeend', suggestionItem);
+   });
+}
+
+inputNameIngredient.addEventListener('input', async () => {
+   const searchText = inputNameIngredient.value.trim();
+
+   if (allIngredients.length === 0) {
+      await getIngredients();
+   }
+
+   filterAndDisplaySuggestions(searchText);
+
+   if (searchText === '' || searchText !== '' && suggestionsContainer.children.length === 0) {
+
+      suggestionsContainer.style.display = "none";
+      return
+   }
+
+   suggestionsContainer.style.display = "flex";
+
+});
+
+
+
 
 
 
@@ -49,6 +69,8 @@ inputNameIngredient.addEventListener('focus', () => {
 // Ajout du bloc "Ajouter un ingrédient"
 
 blocAddIngredients.addEventListener('click', (event) => {
+
+
    // Afficher la page d'ajout d'ingrédients
    blocAddIngredientPage.style.display = "block";
    addIngredientPage.style.display = "block";
