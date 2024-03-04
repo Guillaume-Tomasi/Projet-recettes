@@ -1,16 +1,20 @@
 #add-recipe-main {
-  
+   width: 100%;
+//   height: 100%;
+  min-height: 100vh;
+background-color: $bg-neutre;
+   height: 100%;
+   @extend %flex-center;
+   flex-direction: column;
+   justify-content: center;
       .bloc-1 {
          width: 40vw;
          max-width: 640px;
          height: auto;
+         max-height: 100%;
       }
 
-        background-color: $bg-neutre;
-        height: 100vh;
-        @extend %flex-center;
-        flex-direction: column;
-        justify-content: center;
+        
    
         h1 {
          //   margin-top: -6.9vw;
@@ -43,7 +47,7 @@
 
 
 
-#bloc-add-ingredient-page {
+#bloc-add-ingredient-page, #bloc-add-step-page {
    display: none;
    width: 100%;
    height: 100%;
@@ -53,7 +57,7 @@
 
 }
 
-#add-ingredient-page {
+#add-ingredient-page, #add-step-page {
    display: none;
    position: fixed;
    background-color: white;
@@ -64,7 +68,7 @@
    padding: 28px 30px;
    transition: left 0.5s ease-in-out;
 
-#add-ingredient-header {
+#add-ingredient-header, #add-step-header {
 
    height: 2vw;
    display: flex;
@@ -73,7 +77,7 @@
    align-items: center;
    // margin-bottom: 1vw;
 
-   #quit-icon {
+   .quit-icon {
    width: 28px;
    height: 28px;
    position: absolute;
@@ -82,7 +86,7 @@
    cursor: pointer;
 
    
-   .quit-icon {
+   .quit-icon-img {
       width: 100%;
       height: 100%;
    }
@@ -95,23 +99,42 @@
    // border: 1px solid red;
    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
    padding: 1vw 0; 
-   justify-content: space-around;
+   justify-content: space-between;
    align-items: center;
+   flex-wrap: wrap;
+
+   .add-name-ingredient, .add-qty-ingredient, .add-unity-ingredient {
+     
+      margin-right: 0.5vw;  
+   }
+   .add-name-ingredient {
+      width: 13vw;
+   }
+   .add-qty-ingredient, .add-unity-ingredient {
+      width: 6vw;
+   }
+   .error-message {
+      // border: 1px solid blue;
+      display: flex;
+      justify-content: flex-start;
+      width: 100%;
+      position: relative;
+      bottom: 0;
+   }
 
    label {
       font-weight: bold;
       margin-bottom: 0.3vw;
    }
-   #ingredient, #qty, #unity, #ingredient-added, #qty-added, #unity-added {
+   #ingredient, #qty, #unity, .ingredient-added, .qty-added, .unity-added {
       // margin-bottom: 1.5vw;
          border: none;
          background-color: $bg-clair;
-         border-radius: 12px;
+         border-radius: 8px;
          width: 100%;
          font-weight: bold;
          height: 1.7vw;
          text-align: center;
-         // margin-right: 0.6vw;
          font-size: calc(5px + 0.4vw);
          
          text-align: start;
@@ -123,9 +146,9 @@
          }
          
       }
-      #ingredient, #ingredient-added {
-         width: 12vw;
-      }
+      
+      
+      
 
       #suggestions {
          display: none;
@@ -139,6 +162,7 @@
          .ingredient-suggestion {
             display: flex;
             align-items: center;
+            height: 1.7vw;
             border-bottom: 1px solid rgba(0, 0, 0, 0.1);
             margin: 0 0.6vw;
             padding: 0.5vw 0;
@@ -175,6 +199,7 @@
    .delete-new-ingredient, .add-new-ingredient {
       display: flex;
       cursor: pointer;
+      border: none;
       background-color: rgba(0, 0, 0, 0.2);
       height: 1.4vw;
       align-items: center;
@@ -190,6 +215,7 @@
             fill: $text-clair;
          }
       }
+      
       .delete-new-ingredient-icon, .add-new-ingredient-icon {
          width: 1vw;
          height: 1vw;
@@ -204,8 +230,10 @@
       }
 
    }
+   
    .add-new-ingredient {
       margin-right: 0.7vw;
+      
    }
 }
 
@@ -222,8 +250,11 @@
 
 .submit-btn {
    display: flex;
+   flex-direction: column;
+   align-items: center;
    justify-content: center;
    margin-top: 2vw;
+   text-align: center;
 
    button {
       background-color: $btn;
@@ -290,14 +321,16 @@
    display: flex;
    justify-content: space-around;
    align-items: center;
-         margin-bottom: 1.5vw;
-}
-
-label {
-   display: flex;
+   margin-bottom: 1.5vw;
+   label {
+      display: flex;
+      cursor: pointer;
+   }
+   
 }
 
 .radio-custom {
+   cursor: pointer;
    width: calc(5px + 0.8vw);
    height: calc(5px + 0.8vw);
    border: 1px solid rgba(0, 0, 0, 0.3);
@@ -326,11 +359,14 @@ input[type="radio"]:checked+.radio-custom {
 
 
 
-#bloc-ingredients {
+#bloc-ingredients, #bloc-steps {
    width: 100%;
+   
 }
 
-.bloc-selected-ingredients, .bloc-add-ingredients {
+
+
+.bloc-selected-ingredients, .bloc-add-ingredients, .bloc-add-steps {
    display: flex;
    align-items: center;
    justify-content: flex-start;
@@ -354,7 +390,7 @@ input[type="radio"]:checked+.radio-custom {
    }
 }
 
-.ingredient-detail, .add-ingredient {
+.ingredient-detail, .add-ingredient, .add-step {
    margin-left: 0.6vw;
       font-size: calc(5px + 0.4vw);
       display: flex;
@@ -369,10 +405,13 @@ input[type="radio"]:checked+.radio-custom {
       }
 }
 
-.delete-ingredient, .add-ingredient-btn {
+.delete-ingredient, .add-ingredient-btn, .add-step-btn {
    width: 1vw;
    height: 1.2vw;
    margin-left: auto;
+   display: flex;
+   justify-content: center;
+   cursor: pointer;
    &:hover {
       .delete-icon path {
          fill: $text-rouge;
@@ -395,7 +434,7 @@ input[type="radio"]:checked+.radio-custom {
 
    }
 
-   .bloc-add-ingredients {
+   .bloc-add-ingredients, .bloc-add-steps {
       background-color: white;
       border-radius: 12px;
       cursor: pointer;
@@ -404,15 +443,196 @@ input[type="radio"]:checked+.radio-custom {
       }
    }
 
-      .add-ingredient {
+      .add-ingredient, .add-step {
          font-size: calc(5px + 0.6vw);
       }
 
 
-      .add-ingredient-btn {
+      .add-ingredient-btn, .add-step-btn {
          path {
             fill: $text-rouge;
          }
       }
 
       
+
+
+
+
+
+
+.bloc-new-step {
+display: flex;
+   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+   padding: 1vw 0;
+   justify-content: center;
+   align-items: flex-start;
+   flex-wrap: wrap;
+
+   .title-step {
+         margin-bottom: 0.4vw;
+         font-size: calc(5px + 0.4vw);
+      }
+}
+.add-description {
+   width: 50%;
+display: grid;
+padding: 0 0.4vw;
+grid-template-columns: 1fr 1fr;
+}
+.characters-count {
+   text-align: end;
+   color: rgba(0, 0, 0, 0.4);
+}
+
+
+#description {
+   grid-column: 1 / span 2;
+   background-color: $bg-clair;
+   border-radius: 12px;
+   border: none;
+   padding: 0.5vw 1vw 0.5vw 0.5vw;
+   font-size: calc(5px + 0.5vw);
+   resize: vertical;
+   min-width: 100%;
+   max-width: 100%;
+   &:focus {
+      outline: none;
+   }
+
+}
+
+
+.select-ingredients {
+   display: flex;
+      flex-direction: column;
+      flex-basis: calc(50%);
+      padding: 0 0.4vw;
+   #ingredients-step {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.2vw;
+      align-items: center;
+
+      .select-ingredient-step {
+         display: flex;
+         // justify-content: space-around;
+
+         width: 100%;
+
+         label {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-size: calc(5px + 0.4vw);
+            transition: 0.3s ;
+         }
+
+         
+         .custom-checkbox {
+            position: relative;
+               width: 16px;
+               height: 16px;
+               border: 1px solid rgba(0, 0, 0, 0.4);
+               display: inline-block;
+               border-radius: 4px;
+               margin-right: 0.3vw;
+               transition: 0.3s;
+         }
+         
+         input[type='checkbox']:hover+.custom-checkbox {
+            border-color: rgba(188, 71, 73, 0.9);
+         }
+         input[type='checkbox'] {
+            display: none;
+         }
+         
+         .custom-checkbox-checked {
+            position: absolute;
+            border-radius: 4px;
+            width: 16px;
+            height: 16px;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.3s;
+         }
+         input[type='checkbox']:checked~.custom-checkbox-checked {
+            visibility: visible;
+            opacity: 1;
+         }
+         .custom-checkbox-checked svg {
+            width: 100%;
+            height: 100%;
+            path {
+               fill: rgba(188, 71, 73, 0.9);
+            }
+         }
+         input[type='checkbox']:checked~.custom-checkbox {
+            border: 1px solid rgba(188, 71, 73, 0.9);
+         }
+
+         
+         
+
+         .img-ingredient-step {
+            width: 25px;
+            height: 25px;
+            overflow: hidden;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            margin-right: 0.3vw;
+
+            img {
+               object-fit: cover;  
+               width: 100%;
+               height: 100%;
+            }
+         }
+      }
+      
+   }
+}
+
+
+
+
+.add-new-step {
+   display: flex;
+      cursor: pointer;
+      border: none;
+      background-color: rgba(0, 0, 0, 0.2);
+      height: 1.4vw;
+      align-items: center;
+      border-radius: 30px;
+      font-size: calc(5px + 0.4vw);
+      margin-top: 1.2vw;
+      padding: 1%;
+      transition: 0.2s;
+      margin-right: 0.7vw;
+      text-align: center;
+   
+      &:hover {
+         background-color: $btn;
+         color: $text-clair;
+   
+         path {
+            fill: $text-clair;
+         }
+      }
+      .delete-new-step-icon, .add-new-step-icon {
+         width: 1vw;
+         height: 1vw;
+         // margin: 5%;
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+      }
+      .delete-icon, .add-icon {
+         width: 75%;
+         height: 75%;
+      }
+   }
+  
+
+
+   
