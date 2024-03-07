@@ -473,6 +473,59 @@ display: flex;
          margin-bottom: 0.4vw;
          font-size: calc(5px + 0.4vw);
       }
+
+.delete-new-step {
+   display: flex;
+   cursor: pointer;
+   border: none;
+   background-color: rgba(0, 0, 0, 0.2);
+   height: 1.4vw;
+   align-items: center;
+   border-radius: 30px;
+   font-size: calc(5px + 0.4vw);
+   margin-top: 1.2vw;
+   padding: 1%;
+   transition: 0.2s;
+
+   &:hover {
+      background-color: $btn;
+      color: $text-clair;
+
+      path {
+         fill: $text-clair;
+      }
+   }
+
+   .delete-new-step-icon {
+      width: 1vw;
+      height: 1vw;
+      // margin: 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+   }
+
+   .delete-icon {
+      width: 75%;
+      height: 75%;
+   }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 .add-description {
    width: 50%;
@@ -486,7 +539,7 @@ grid-template-columns: 1fr 1fr;
 }
 
 
-#description {
+#description, .description {
    grid-column: 1 / span 2;
    background-color: $bg-clair;
    border-radius: 12px;
@@ -508,7 +561,7 @@ grid-template-columns: 1fr 1fr;
       flex-direction: column;
       flex-basis: calc(50%);
       padding: 0 0.4vw;
-   #ingredients-step {
+   .ingredients-step {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 0.2vw;

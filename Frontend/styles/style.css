@@ -932,6 +932,37 @@ input[type=radio]:checked + .radio-custom {
   margin-bottom: 0.4vw;
   font-size: calc(5px + 0.4vw);
 }
+.bloc-new-step .delete-new-step {
+  display: flex;
+  cursor: pointer;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 1.4vw;
+  align-items: center;
+  border-radius: 30px;
+  font-size: calc(5px + 0.4vw);
+  margin-top: 1.2vw;
+  padding: 1%;
+  transition: 0.2s;
+}
+.bloc-new-step .delete-new-step:hover {
+  background-color: #BC4749;
+  color: #F2E8CF;
+}
+.bloc-new-step .delete-new-step:hover path {
+  fill: #F2E8CF;
+}
+.bloc-new-step .delete-new-step .delete-new-step-icon {
+  width: 1vw;
+  height: 1vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.bloc-new-step .delete-new-step .delete-icon {
+  width: 75%;
+  height: 75%;
+}
 
 .add-description {
   width: 50%;
@@ -945,7 +976,7 @@ input[type=radio]:checked + .radio-custom {
   color: rgba(0, 0, 0, 0.4);
 }
 
-#description {
+#description, .description {
   grid-column: 1/span 2;
   background-color: #F2E8CF;
   border-radius: 12px;
@@ -956,7 +987,7 @@ input[type=radio]:checked + .radio-custom {
   min-width: 100%;
   max-width: 100%;
 }
-#description:focus {
+#description:focus, .description:focus {
   outline: none;
 }
 
@@ -966,24 +997,24 @@ input[type=radio]:checked + .radio-custom {
   flex-basis: 50%;
   padding: 0 0.4vw;
 }
-.select-ingredients #ingredients-step {
+.select-ingredients .ingredients-step {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.2vw;
   align-items: center;
 }
-.select-ingredients #ingredients-step .select-ingredient-step {
+.select-ingredients .ingredients-step .select-ingredient-step {
   display: flex;
   width: 100%;
 }
-.select-ingredients #ingredients-step .select-ingredient-step label {
+.select-ingredients .ingredients-step .select-ingredient-step label {
   cursor: pointer;
   display: flex;
   align-items: center;
   font-size: calc(5px + 0.4vw);
   transition: 0.3s;
 }
-.select-ingredients #ingredients-step .select-ingredient-step .custom-checkbox {
+.select-ingredients .ingredients-step .select-ingredient-step .custom-checkbox {
   position: relative;
   width: 16px;
   height: 16px;
@@ -993,13 +1024,13 @@ input[type=radio]:checked + .radio-custom {
   margin-right: 0.3vw;
   transition: 0.3s;
 }
-.select-ingredients #ingredients-step .select-ingredient-step input[type=checkbox]:hover + .custom-checkbox {
+.select-ingredients .ingredients-step .select-ingredient-step input[type=checkbox]:hover + .custom-checkbox {
   border-color: rgba(188, 71, 73, 0.9);
 }
-.select-ingredients #ingredients-step .select-ingredient-step input[type=checkbox] {
+.select-ingredients .ingredients-step .select-ingredient-step input[type=checkbox] {
   display: none;
 }
-.select-ingredients #ingredients-step .select-ingredient-step .custom-checkbox-checked {
+.select-ingredients .ingredients-step .select-ingredient-step .custom-checkbox-checked {
   position: absolute;
   border-radius: 4px;
   width: 16px;
@@ -1008,21 +1039,21 @@ input[type=radio]:checked + .radio-custom {
   opacity: 0;
   transition: 0.3s;
 }
-.select-ingredients #ingredients-step .select-ingredient-step input[type=checkbox]:checked ~ .custom-checkbox-checked {
+.select-ingredients .ingredients-step .select-ingredient-step input[type=checkbox]:checked ~ .custom-checkbox-checked {
   visibility: visible;
   opacity: 1;
 }
-.select-ingredients #ingredients-step .select-ingredient-step .custom-checkbox-checked svg {
+.select-ingredients .ingredients-step .select-ingredient-step .custom-checkbox-checked svg {
   width: 100%;
   height: 100%;
 }
-.select-ingredients #ingredients-step .select-ingredient-step .custom-checkbox-checked svg path {
+.select-ingredients .ingredients-step .select-ingredient-step .custom-checkbox-checked svg path {
   fill: rgba(188, 71, 73, 0.9);
 }
-.select-ingredients #ingredients-step .select-ingredient-step input[type=checkbox]:checked ~ .custom-checkbox {
+.select-ingredients .ingredients-step .select-ingredient-step input[type=checkbox]:checked ~ .custom-checkbox {
   border: 1px solid rgba(188, 71, 73, 0.9);
 }
-.select-ingredients #ingredients-step .select-ingredient-step .img-ingredient-step {
+.select-ingredients .ingredients-step .select-ingredient-step .img-ingredient-step {
   width: 25px;
   height: 25px;
   overflow: hidden;
@@ -1030,7 +1061,7 @@ input[type=radio]:checked + .radio-custom {
   border: 1px solid rgba(0, 0, 0, 0.1);
   margin-right: 0.3vw;
 }
-.select-ingredients #ingredients-step .select-ingredient-step .img-ingredient-step img {
+.select-ingredients .ingredients-step .select-ingredient-step .img-ingredient-step img {
   -o-object-fit: cover;
      object-fit: cover;
   width: 100%;
