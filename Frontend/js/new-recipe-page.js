@@ -383,13 +383,14 @@ const submitBtnStep = document.getElementById('submit-new-step');
 
 let addedStep = [];
 
-let blocNewStepText = `<form class="bloc-new-step">
+let blocNewStepText = `<form class="bloc-new-step" id="bloc-new-step">
             <div class="add-description">
-              <h3 class="title-step">Description de l'étape ${addedStep.length + 1}</h3>
+              <h3 class="title-step" id="title-step-description">Description de l'étape 1</h3>
               <span class="characters-count">0/400</span>
               <textarea
                 name="description"
-                id="description"
+                id="description-0"
+                class="description"
                 cols="30"
                 rows="6"
                 maxlength="400"
@@ -397,12 +398,10 @@ let blocNewStepText = `<form class="bloc-new-step">
               ></textarea>
             </div>
             <div class="select-ingredients">
-              <h3 class="title-step">Ingrédients pour l'étape ${addedStep.length + 1}</h3>
-              <div id="ingredients-step">
-                
+              <h3 class="title-step" id="title-step-ingredients">Ingrédients pour l'étape 1</h3>
+              <div id="ingredients-step-0" class="ingredients-step">
               </div>
             </div>
-
             <button type="submit" class="add-new-step">
               <div class="add-new-step-icon">
                 <svg
@@ -419,20 +418,28 @@ let blocNewStepText = `<form class="bloc-new-step">
             </button>
           </form>`
 
+   ;
 
-
-const updateCharacterCount = () => {
-   const descriptionTextarea = document.getElementById('description');
-   const charactersCountSpan = document.querySelector('.characters-count');
+const updateCharacterCount = (id) => {
+   const descriptionTextarea = document.getElementById(`description-step-${id}`);
+   const charactersCountSpan = descriptionTextarea.parentElement.querySelector('.characters-count');
    const currentCount = descriptionTextarea.value.length;
    charactersCountSpan.textContent = `${currentCount}/400`;
+   console.log(charactersCountSpan);
 };
 
+
 const updateIngredientsForSteps = () => {
-   const ingredientStep = document.getElementById('ingredients-step');
+   const ingredientSteps = document.querySelectorAll('.ingredients-step');
+   const ingredientAddStep = document.querySelector('#bloc-new-step .ingredients-step');
+   const textAreaAddStep = document.querySelector('#bloc-new-step .description');
 
-   ingredientStep.innerHTML = '';
 
+
+
+   ingredientSteps.forEach(ingredientStep => {
+      ingredientStep.innerHTML = '';
+   })
    let ingredientImg = null;
 
    addedIngredients.forEach((ingredient) => {
@@ -444,34 +451,71 @@ const updateIngredientsForSteps = () => {
       }
 
       let ingredientsForSteps = `<div class="select-ingredient-step">
-                  <label for="${ingredient.name}">
-                    <input type="checkbox" name="${ingredient.name}" id="${ingredient.name}" />
-                    <span class="custom-checkbox"></span>
-                    <div class="custom-checkbox-checked">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 448 512"
-                      >
-                        <path
-                          d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zM337 209L209 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L303 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"
-                        />
-                      </svg>
-                    </div>
+                       <label for="${ingredient.name}-${addedStep.length}">
+                         <input type="checkbox" name="${ingredient.name}" id="${ingredient.name}-${addedStep.length}" />
+                         <span class="custom-checkbox"></span>
+                         <div class="custom-checkbox-checked">
+                           <svg
+                             xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 448 512"
+                           >
+                             <path
+                               d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zM337 209L209 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L303 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"
+                             />
+                           </svg>
+                         </div>
 
-                    <div class="img-ingredient-step">
-                      <img
-                        src="${ingredientImg}"
-                        alt="${ingredient.name}"
-                      />
-                    </div>
-                    ${ingredient.name}
-                  </label>
-                </div>`
-      ingredientStep.insertAdjacentHTML('beforeend', ingredientsForSteps)
+                         <div class="img-ingredient-step">
+                           <img
+                             src="${ingredientImg}"
+                             alt="${ingredient.name}"
+                           />
+                         </div>
+                         ${ingredient.name}
+                       </label>
+                     </div>`;
+      ingredientAddStep.insertAdjacentHTML('beforeend', ingredientsForSteps);
+
+
+      addedStep.forEach((step, index) => {
+         const ingredientStepAdded = document.getElementById(`ingredients-step-${index}`);
+
+         let ingredientsForSteps = `<div class="select-ingredient-step">
+                       <label for="${ingredient.name}-${index}">
+                         <input type="checkbox" name="${ingredient.name}" id="${ingredient.name}-${index}" />
+                         <span class="custom-checkbox"></span>
+                         <div class="custom-checkbox-checked">
+                           <svg
+                             xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 448 512"
+                           >
+                             <path
+                               d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zM337 209L209 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L303 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"
+                             />
+                           </svg>
+                         </div>
+
+                         <div class="img-ingredient-step">
+                           <img
+                             src="${ingredientImg}"
+                             alt="${ingredient.name}"
+                           />
+                         </div>
+                         ${ingredient.name}
+                       </label>
+                     </div>`;
+         ingredientStepAdded.insertAdjacentHTML('beforeend', ingredientsForSteps);
+
+      })
+
+   });
+   ingredientAddStep.id = `ingredients-step-${addedStep.length}`;
+   textAreaAddStep.id = `description-step-${addedStep.length}`;
+   textAreaAddStep.addEventListener('input', () => updateCharacterCount(addedStep.length));
+   addedStep.forEach((step, index) => {
+      let textAreaAddedStep = document.getElementById(`description-step-${index}`)
+      textAreaAddedStep.addEventListener('input', () => updateCharacterCount(index));
    })
-   updateCharacterCount();
-   document.getElementById('description').addEventListener('input', updateCharacterCount);
-
 }
 
 const updateSteps = () => {
@@ -479,22 +523,11 @@ const updateSteps = () => {
       bloc.remove();
    });
    addedStep.forEach((step, index) => {
-      // Récupération de la description de l'étape
-      // const description = document.querySelector(`#description-step-${index}`).value.trim();
-
-      // Récupération des ingrédients cochés pour l'étape
-      // const checkedIngredients = [];
-      // document.querySelectorAll(`#ingredients-step-${index} input[type="checkbox"]:checked`).forEach(checkbox => {
-      //    checkedIngredients.push(checkbox.name);
-      // });
-
-      // Maintenant, vous pouvez utiliser 'description' et 'checkedIngredients' comme vous le souhaitez.
-      // console.log(`Étape ${index + 1}: Description - ${description}, Ingrédients cochés - ${checkedIngredients}`);
 
       let blocStepText = `<form class="bloc-new-step bloc-added-step" id="bloc-new-step-${index}">
             <div class="add-description">
               <h3 class="title-step">Description de l'étape ${index + 1}</h3>
-              <span class="characters-count">0/400</span>
+              <span class="characters-count">${step.description.length}/400</span>
               <textarea
                 name="description-step-${index}"
                 id="description-step-${index}"
@@ -522,9 +555,10 @@ const updateSteps = () => {
             </button>
           </form>`
 
-      document.getElementById('add-step-header').insertAdjacentHTML('afterend', blocStepText);
+      document.getElementById('bloc-new-step').insertAdjacentHTML('beforebegin', blocStepText);
 
    });
+
 }
 
 
@@ -541,9 +575,7 @@ const closeAddStepPage = () => {
 };
 
 blocAddSteps.addEventListener('click', () => {
-   // document.querySelectorAll('.bloc-new-step').forEach(bloc => {
-   //    bloc.remove();
-   // })
+
    // Afficher la page d'ajout d'étapes
    blocAddStepPage.style.display = "block";
    addStepPage.style.display = "block";
@@ -563,7 +595,7 @@ blocAddSteps.addEventListener('click', () => {
 
    document.querySelector('#add-step-header .quit-icon').addEventListener('click', closeAddStepPage);
 
-
+   updateSteps();
    submitBtnStep.insertAdjacentHTML('beforebegin', blocNewStepText);
 
    updateIngredientsForSteps();
@@ -572,8 +604,9 @@ blocAddSteps.addEventListener('click', () => {
 
    addNewStepBtn.addEventListener('click', (e) => {
       e.preventDefault();
+
       const newStep = {
-         description: document.querySelector(`#description`).value.trim(),
+         description: document.querySelector(`#bloc-new-step .description`).value.trim(),
          ingredients: []
       };
       document.querySelectorAll(`#ingredients-step input[type="checkbox"]:checked`).forEach(checkbox => {
@@ -581,8 +614,11 @@ blocAddSteps.addEventListener('click', () => {
       });
       addedStep.push(newStep);
       updateSteps();
+      updateIngredientsForSteps();
+      document.getElementById('title-step-description').innerHTML = `Description de l'étape ${addedStep.length + 1}`;
+      document.getElementById('title-step-ingredients').innerHTML = `Ingrédients pour l'étape ${addedStep.length + 1}`;
 
-      console.log(addedStep);
    })
 
 })
+
