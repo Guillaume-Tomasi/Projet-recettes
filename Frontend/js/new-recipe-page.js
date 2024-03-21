@@ -381,7 +381,11 @@ const submitBtnStep = document.getElementById('submit-new-step');
 
 
 
+
+
 let addedStep = [];
+
+
 
 let blocNewStepText = `<form class="bloc-new-step" id="bloc-new-step">
             <div class="add-description">
@@ -420,12 +424,45 @@ let blocNewStepText = `<form class="bloc-new-step" id="bloc-new-step">
 
    ;
 
+
+// const deleteStep = (id) => {
+//    addedStep.splice(id, 1);
+//    document.getElementById(`bloc-new-step-${id}`).remove();
+//    updateSteps();
+//    updateStepCount();
+//    updateIngredientsForSteps();
+
+// }
+
+const deleteStep = (event) => {
+   event.preventDefault();
+   const button = event.target.closest('.delete-new-step');
+   const index = parseInt(button.id.split('-')[3]);
+   addedStep.splice(index, 1);
+   updateSteps();
+   updateStepCount();
+   updateIngredientsForSteps();
+
+}
+
+
+const updateStepCount = () => {
+   document.getElementById('title-step-description').innerHTML = `Description de l'étape ${addedStep.length + 1}`;
+   document.getElementById('title-step-ingredients').innerHTML = `Ingrédients pour l'étape ${addedStep.length + 1}`;
+   document.querySelector(`#bloc-new-step .description`).value = '';
+   document.querySelector('#bloc-new-step .characters-count').textContent = '0/400';
+
+
+}
+
+
 const updateCharacterCount = (id) => {
    const descriptionTextarea = document.getElementById(`description-step-${id}`);
-   const charactersCountSpan = descriptionTextarea.parentElement.querySelector('.characters-count');
-   const currentCount = descriptionTextarea.value.length;
-   charactersCountSpan.textContent = `${currentCount}/400`;
-   console.log(charactersCountSpan);
+   if (descriptionTextarea) {
+      const charactersCountSpan = descriptionTextarea.parentElement.querySelector('.characters-count');
+      const currentCount = descriptionTextarea.value.length;
+      charactersCountSpan.textContent = `${currentCount}/400`;
+   }
 };
 
 
@@ -482,7 +519,7 @@ const updateIngredientsForSteps = () => {
 
          let ingredientsForSteps = `<div class="select-ingredient-step">
                        <label for="${ingredient.name}-${index}">
-                         <input type="checkbox" name="${ingredient.name}" id="${ingredient.name}-${index}" />
+                         <input type="checkbox" name="${ingredient.name}" id="${ingredient.name}-${index}" ${step.ingredients.includes(ingredient.name) ? 'checked' : ''} />
                          <span class="custom-checkbox"></span>
                          <div class="custom-checkbox-checked">
                            <svg
@@ -514,7 +551,10 @@ const updateIngredientsForSteps = () => {
    textAreaAddStep.addEventListener('input', () => updateCharacterCount(addedStep.length));
    addedStep.forEach((step, index) => {
       let textAreaAddedStep = document.getElementById(`description-step-${index}`)
-      textAreaAddedStep.addEventListener('input', () => updateCharacterCount(index));
+      if (textAreaAddedStep) {
+
+         textAreaAddedStep.addEventListener('input', () => updateCharacterCount(index));
+      }
    })
 }
 
@@ -546,7 +586,7 @@ const updateSteps = () => {
               </div>
             </div>
 
-            <button type="submit" class="delete-new-step">
+            <button type="submit" id="delete-new-step-${index}" class="delete-new-step">
               <div class="delete-new-step-icon">
               
                 <svg class="delete-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg>
@@ -557,6 +597,11 @@ const updateSteps = () => {
 
       document.getElementById('bloc-new-step').insertAdjacentHTML('beforebegin', blocStepText);
 
+      document.querySelectorAll('.delete-new-step').forEach(button => {
+         button.removeEventListener('click', deleteStep);
+         button.addEventListener('click', deleteStep);
+      });
+
    });
 
 }
@@ -566,24 +611,21 @@ const updateSteps = () => {
 
 // Fonction pour fermer la page d'ajout d'étapes
 const closeAddStepPage = () => {
+   const blocNewStep = document.getElementById('bloc-new-step');
    addStepPage.style.left = "-40vw";
    setTimeout(() => { // Utilisation d'un délai pour déclencher la transition après le changement de display
       addStepPage.style.display = "none";
       blocAddStepPage.style.display = "none";
       document.body.style.pointerEvents = 'auto';
+      blocNewStep.remove();
    }, 500);
 };
 
 blocAddSteps.addEventListener('click', () => {
 
-   // Afficher la page d'ajout d'étapes
    blocAddStepPage.style.display = "block";
    addStepPage.style.display = "block";
-
-   // Désactiver les interactions pour tous les autres éléments
    document.body.style.pointerEvents = 'none';
-
-   // Activer les interactions pour la page d'ajout d'étapes
    addStepPage.style.pointerEvents = 'auto';
    addStepPage.querySelectorAll('*').forEach(child => {
       child.style.pointerEvents = 'auto';
@@ -595,13 +637,22 @@ blocAddSteps.addEventListener('click', () => {
 
    document.querySelector('#add-step-header .quit-icon').addEventListener('click', closeAddStepPage);
 
-   updateSteps();
    submitBtnStep.insertAdjacentHTML('beforebegin', blocNewStepText);
+   updateSteps();
+   updateStepCount();
+
 
    updateIngredientsForSteps();
 
-   const addNewStepBtn = document.querySelector('.add-new-step');
 
+
+
+
+
+
+
+
+   const addNewStepBtn = document.querySelector('.add-new-step');
    addNewStepBtn.addEventListener('click', (e) => {
       e.preventDefault();
 
@@ -609,16 +660,33 @@ blocAddSteps.addEventListener('click', () => {
          description: document.querySelector(`#bloc-new-step .description`).value.trim(),
          ingredients: []
       };
-      document.querySelectorAll(`#ingredients-step input[type="checkbox"]:checked`).forEach(checkbox => {
+      document.querySelectorAll(`#bloc-new-step input[type="checkbox"]:checked`).forEach(checkbox => {
          newStep.ingredients.push(checkbox.name);
+
       });
+
       addedStep.push(newStep);
       updateSteps();
       updateIngredientsForSteps();
-      document.getElementById('title-step-description').innerHTML = `Description de l'étape ${addedStep.length + 1}`;
-      document.getElementById('title-step-ingredients').innerHTML = `Ingrédients pour l'étape ${addedStep.length + 1}`;
+      updateStepCount();
 
-   })
+
+      // const deleteNewStepButtons = document.querySelectorAll('.delete-new-step');
+
+      // deleteNewStepButtons.forEach(button => {
+      //    button.addEventListener('click', (e) => {
+      //       e.preventDefault();
+      //       const index = parseInt(button.id.split('-')[3]);
+      //       console.log(index);
+      //       deleteStep(index);
+      //    });
+      // });
+   });
+
+
+
+
+
 
 })
 
