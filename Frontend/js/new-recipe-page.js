@@ -24,7 +24,6 @@ const updateIngredientsCount = () => {
    const blocIngredientsText = document.querySelector('#bloc-ingredients > p');
    blocIngredientsText.innerHTML = '';
    blocIngredientsText.innerHTML = ingredientsCount;
-   // blocIngredientsText.insertAdjacentHTML('afterbegin', ingredientsCount);
 
 }
 
@@ -143,6 +142,9 @@ const deleteNewIngredient = (event) => {
    addedIngredients.splice(index, 1);
    updateIngredients();
 }
+
+
+
 
 const updateBlocIngredients = () => {
    blocIngredients.innerHTML = '';
@@ -376,14 +378,15 @@ submitNewIngredients.addEventListener('click', () => {
 const blocAddSteps = document.querySelector('.bloc-add-steps');
 const blocAddStepPage = document.querySelector('#bloc-add-step-page');
 const addStepPage = document.querySelector('#add-step-page');
-const submitBtnStep = document.getElementById('submit-new-step');
-
-
+const submitNewStepBtn = document.getElementById('submit-new-step');
+const blocSteps = document.getElementById('bloc-added-steps');
+const submitStepsBtn = document.getElementById('submit-new-step-btn');
 
 
 
 
 let addedStep = [];
+let stepCount = `Etapes (${addedStep.length})`;
 
 
 
@@ -420,19 +423,10 @@ let blocNewStepText = `<form class="bloc-new-step" id="bloc-new-step">
               </div>
               <span>Ajouter</span>
             </button>
-          </form>`
-
-   ;
+          </form>`;
 
 
-// const deleteStep = (id) => {
-//    addedStep.splice(id, 1);
-//    document.getElementById(`bloc-new-step-${id}`).remove();
-//    updateSteps();
-//    updateStepCount();
-//    updateIngredientsForSteps();
 
-// }
 
 const deleteStep = (event) => {
    event.preventDefault();
@@ -440,17 +434,27 @@ const deleteStep = (event) => {
    const index = parseInt(button.id.split('-')[3]);
    addedStep.splice(index, 1);
    updateSteps();
-   updateStepCount();
+   numberOfSteps();
    updateIngredientsForSteps();
+   stepCount = `Etapes (${addedStep.length})`;
+   updateStepsCount();
 
 }
 
+const updateStepsCount = () => {
+   const blocStepText = document.querySelector('#bloc-steps > p');
+   blocStepText.innerHTML = '';
+   blocStepText.innerHTML = stepCount;
+}
 
-const updateStepCount = () => {
+updateStepsCount();
+
+const numberOfSteps = () => {
    document.getElementById('title-step-description').innerHTML = `Description de l'étape ${addedStep.length + 1}`;
    document.getElementById('title-step-ingredients').innerHTML = `Ingrédients pour l'étape ${addedStep.length + 1}`;
    document.querySelector(`#bloc-new-step .description`).value = '';
-   document.querySelector('#bloc-new-step .characters-count').textContent = '0/400';
+   document.querySelector('#bloc-new-step .characters-count').textContent = '0/400'; blocSteps;
+
 
 
 }
@@ -606,7 +610,34 @@ const updateSteps = () => {
 
 }
 
+const updateBlocSteps = () => {
 
+   blocSteps.innerHTML = '';
+
+   addedStep.forEach((step, index) => {
+
+      let selectedStepText = `<div class="bloc-selected-steps" id="bloc-selected-steps-${index}">
+                
+                <div class="step-detail">
+                  <div class="step-index">Étape ${index + 1}</div>
+                  <div class="step-description">
+                    ${step.description}
+                  </div>
+                </div>
+              </div>`;
+      // <div class="img-ingredient">
+      //    <img src="${ingredientImg}" alt="${ingredient.name}" />
+      // </div>
+      blocSteps.insertAdjacentHTML('beforeend', selectedStepText);
+      stepCount = `Etapes (${addedStep.length})`;
+      updateStepsCount();
+
+   })
+
+
+
+
+}
 
 
 // Fonction pour fermer la page d'ajout d'étapes
@@ -637,18 +668,12 @@ blocAddSteps.addEventListener('click', () => {
 
    document.querySelector('#add-step-header .quit-icon').addEventListener('click', closeAddStepPage);
 
-   submitBtnStep.insertAdjacentHTML('beforebegin', blocNewStepText);
+   submitNewStepBtn.insertAdjacentHTML('beforebegin', blocNewStepText);
    updateSteps();
-   updateStepCount();
+   numberOfSteps();
 
 
    updateIngredientsForSteps();
-
-
-
-
-
-
 
 
 
@@ -668,25 +693,74 @@ blocAddSteps.addEventListener('click', () => {
       addedStep.push(newStep);
       updateSteps();
       updateIngredientsForSteps();
-      updateStepCount();
+      numberOfSteps();
 
-
-      // const deleteNewStepButtons = document.querySelectorAll('.delete-new-step');
-
-      // deleteNewStepButtons.forEach(button => {
-      //    button.addEventListener('click', (e) => {
-      //       e.preventDefault();
-      //       const index = parseInt(button.id.split('-')[3]);
-      //       console.log(index);
-      //       deleteStep(index);
-      //    });
-      // });
    });
-
-
-
 
 
 
 })
 
+submitStepsBtn.addEventListener('click', (e) => {
+   e.preventDefault();
+
+   addedStep.forEach((step, index) => {
+      step.description = '';
+      step.ingredients = [];
+
+      step.description = document.querySelector(`#bloc-new-step-${index} .description`).value.trim();
+      document.querySelectorAll(`#bloc-new-step-${index} input[type="checkbox"]:checked`).forEach(checkbox => {
+         step.ingredients.push(checkbox.name);
+      });
+   })
+
+   closeAddStepPage();
+   updateBlocSteps();
+})
+
+// Photo
+
+const addPhotoBtn = document.getElementById('submit-photo-btn');
+const addPhotoInput = document.getElementById('add-photo-input');
+const photoRecipeImg = document.querySelector('#photo-recipe img');
+
+addPhotoBtn.addEventListener('click', () => {
+   addPhotoInput.click();
+
+   addPhotoInput.addEventListener('change', () => {
+      const file = addPhotoInput.files[0];
+
+      if (file) {
+         const reader = new FileReader();
+
+         reader.onload = function (event) {
+            photoRecipeImg.src = event.target.result;
+         };
+
+         reader.readAsDataURL(file);
+      }
+   });
+})
+
+// Enregistrer recette 
+
+const submitRecipeBtn = document.getElementById('submit-recipe');
+
+submitRecipeBtn.addEventListener('click', (e) => {
+   e.preventDefault();
+
+   const formData = {
+      recipeName: "",
+      type: "",
+      ingredients: [],
+      steps: [],
+      photo: "",
+   }
+
+   formData.recipeName = document.querySelector('#recipe-name').value;
+   formData.type = document.querySelector('input[name="type"]:checked').value;
+   formData.ingredients = addedIngredients;
+   formData.steps = addedStep;
+   formData.photo = photoRecipeImg.src;
+   console.log(formData);
+})

@@ -152,7 +152,7 @@
             <p>Type de recette</p>
             <div class="bloc-radio">
               <label>
-                <input type="radio" name="type" value="entree" />
+                <input type="radio" name="type" value="entrée" />
                 <span class="radio-custom"></span> Entrée
               </label>
               <label>
@@ -164,7 +164,7 @@
                 <span class="radio-custom"></span> Dessert
               </label>
               <label>
-                <input type="radio" name="type" value="other" />
+                <input type="radio" name="type" value="autre" />
                 <span class="radio-custom"></span> Autre
               </label>
             </div>
@@ -208,9 +208,19 @@
 
         <section id="picture">
           <p>Photo</p>
+          <div id="recipe-img">
+            <input type="file" accept="image/*" id="add-photo-input" />
+            <div id="photo-recipe">
+              <img
+                src="/Frontend/images/Page recettes/photo-1543339308-43e59d6b73a6.jpg"
+                alt=""
+              />
+            </div>
+            <button type="button" id="submit-photo-btn">Ajouter</button>
+          </div>
         </section>
 
-        <div class="submit-btn">
+        <div class="submit-btn" id="submit-recipe">
           <button type="submit">Enregistrer</button>
         </div>
       </div>

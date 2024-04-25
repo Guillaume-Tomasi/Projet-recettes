@@ -842,7 +842,7 @@ input[type=radio]:checked + .radio-custom {
   width: 100%;
 }
 
-.bloc-selected-ingredients, .bloc-add-ingredients, .bloc-add-steps {
+.bloc-selected-ingredients, .bloc-add-ingredients, .bloc-selected-steps, .bloc-add-steps {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -1100,6 +1100,79 @@ input[type=radio]:checked + .radio-custom {
 .add-new-step .delete-icon, .add-new-step .add-icon {
   width: 75%;
   height: 75%;
+}
+
+#bloc-added-steps {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.bloc-selected-steps {
+  padding-left: 3.5vw;
+  margin-bottom: 0.5vw;
+}
+
+.step-detail {
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+.step-index {
+  color: rgba(0, 0, 0, 0.4);
+  margin-bottom: 5px;
+  font-size: calc(5px + 0.6vw);
+  text-align: start;
+}
+
+.step-description {
+  font-size: calc(5px + 0.6vw);
+  text-align: start;
+}
+
+#recipe-img {
+  border: 1px solid white;
+  background-color: white;
+  border-radius: 12px;
+  width: 12.5vw;
+  height: 12.5vw;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#recipe-img #photo-recipe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+#recipe-img #photo-recipe img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#recipe-img input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+#recipe-img #submit-photo-btn {
+  background-color: #BC4749;
+  color: #F2E8CF;
+  border: none;
+  width: 4vw;
+  height: 1.5vw;
+  border-radius: 20px;
+  font-size: calc(5px + 0.4vw);
+  text-align: center;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
 }
 
 #modal-page {

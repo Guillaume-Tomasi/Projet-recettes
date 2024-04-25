@@ -3,7 +3,7 @@ const Recipe = require('../models/Recipe');
 exports.createRecipe = (req, res, next) => {
    const { name, ingredients } = req.body;
    const recipe = new Recipe({
-      userId: req.body.userId,
+      // userId: req.body.userId,
       name,
       ingredients
    });
