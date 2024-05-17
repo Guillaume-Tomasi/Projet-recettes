@@ -78,9 +78,10 @@ let addIngredientText = `<section id="modal-page">
     </section>`;
 
 const addIngredient = async () => {
-   let userId = localStorage.getItem('userId');
+   // let userId = localStorage.getItem('userId');
    let name = document.getElementById("name").value;
-   const ingredientData = { userId, name };
+   // const ingredientData = { userId, name };
+   const ingredientData = { name };
 
    await fetch('http://localhost:3000/api/ingredient', {
       method: 'POST',

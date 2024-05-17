@@ -50,7 +50,7 @@
             </div>
           </div>
 
-          <form class="bloc-new-ingredient">
+          <div class="bloc-new-ingredient">
             <div class="add-name-ingredient">
               <label for="ingredient">Ingrédient</label>
               <input
@@ -92,7 +92,7 @@
                 <option value="Pincée">Pincée</option>
               </select>
             </div>
-            <button type="submit" class="add-new-ingredient">
+            <button type="button" class="add-new-ingredient">
               <div class="add-new-ingredient-icon">
                 <svg
                   class="add-icon"
@@ -106,9 +106,9 @@
               </div>
               <span>Ajouter</span>
             </button>
-          </form>
+          </div>
           <div class="submit-btn">
-            <button type="submit" id="submit-new-ingredients">Valider</button>
+            <button type="button" id="submit-new-ingredients">Valider</button>
           </div>
         </div>
       </div>
@@ -130,12 +130,13 @@
             </div>
           </div>
           <div class="submit-btn" id="submit-new-step">
-            <button type="submit" id="submit-new-step-btn">Valider</button>
+            <button type="button" id="submit-new-step-btn">Valider</button>
+            <div class="step-err-message"></div>
           </div>
         </div>
       </div>
 
-      <div class="bloc-1">
+      <form class="bloc-1" action="" id="form-recipe">
         <section id="title">
           <div id="bloc-title">
             <p>Titre</p>
@@ -143,7 +144,9 @@
               type="text"
               id="recipe-name"
               placeholder="Nom de la recette"
+              required
             />
+            <div class="err-message"></div>
           </div>
         </section>
 
@@ -168,6 +171,7 @@
                 <span class="radio-custom"></span> Autre
               </label>
             </div>
+            <div class="err-message"></div>
           </div>
         </section>
 
@@ -186,6 +190,7 @@
                 </svg>
               </div>
             </div>
+            <div class="err-message"></div>
           </div>
         </section>
 
@@ -203,6 +208,7 @@
                 </svg>
               </div>
             </div>
+            <div class="err-message"></div>
           </div>
         </section>
 
@@ -221,9 +227,11 @@
         </section>
 
         <div class="submit-btn" id="submit-recipe">
-          <button type="submit">Enregistrer</button>
+          <button type="button" form="form-recipe" id="submit-recipe-btn">
+            Enregistrer
+          </button>
         </div>
-      </div>
+      </form>
     </main>
     <!-- <script src="./js/index.js"></script> -->
     <!-- <script src="./js/ingredient-page.js"></script> -->

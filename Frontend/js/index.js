@@ -291,12 +291,42 @@ else {
 
 
 
+// Affichage stats site
+
+const getAllIngredients = async () => {
+   await fetch('http://localhost:3000/api/ingredient')
+      .then(res => res.json())
+      .then(data => {
+         document.querySelector('#bloc-qty-ingredients > .bg-qty > p').textContent = data.ingredients.length;
+
+      })
+      .catch(err => console.log(err))
+};
+
+const getAllRecipes = async () => {
+   await fetch('http://localhost:3000/api/recipe')
+      .then(res => res.json())
+      .then(data => {
+         document.querySelector('#bloc-qty-recipes > .bg-qty > p').textContent = data.recipes.length;
+
+      })
+      .catch(err => console.log(err))
+};
 
 
+const getAllUsers = async () => {
+   await fetch('http://localhost:3000/api/user')
+      .then(res => res.json())
+      .then(data => {
+         document.querySelector('#bloc-qty-users > .bg-qty > p').textContent = data.length;
 
+      })
+      .catch(err => console.log(err))
+};
 
-
-
+getAllIngredients();
+getAllRecipes();
+getAllUsers();
 
 
 

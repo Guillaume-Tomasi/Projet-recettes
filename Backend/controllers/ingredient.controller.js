@@ -2,7 +2,7 @@ const Ingredient = require('../models/Ingredient')
 
 exports.createIngredient = (req, res, next) => {
    const ingredient = new Ingredient({
-      userId: req.body.userId,
+      // userId: req.body.userId,
       name: req.body.name,
    });
    ingredient.save()

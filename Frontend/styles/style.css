@@ -200,7 +200,7 @@ header .title {
   color: #F2E8CF;
   height: 50%;
 }
-#section-2 .bloc-stats .bloc-qty {
+#section-2 .bloc-stats #bloc-qty-ingredients, #section-2 .bloc-stats #bloc-qty-recipes, #section-2 .bloc-stats #bloc-qty-users {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -574,12 +574,19 @@ header .title {
   padding-bottom: 1.5vw;
   font-weight: bold;
 }
-#add-recipe-main section {
+#add-recipe-main #title, #add-recipe-main #type, #add-recipe-main #ingredients {
   width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 2vw;
+  text-align: center;
+}
+#add-recipe-main #steps, #add-recipe-main #picture {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
@@ -778,7 +785,6 @@ header .title {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 #bloc-title #recipe-name {
-  margin-bottom: 1.5vw;
   border: none;
   border-radius: 12px;
   height: 2vw;
@@ -806,7 +812,6 @@ header .title {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-bottom: 1.5vw;
 }
 .bloc-radio label {
   display: flex;
@@ -1173,6 +1178,16 @@ input[type=radio]:checked + .radio-custom {
   z-index: 1;
   margin: 0;
   padding: 0;
+}
+
+.err-message {
+  box-sizing: border-box;
+  color: red;
+  width: 100%;
+  text-align: left;
+  padding: 0.2vw;
+  font-size: calc(5px + 0.5vw);
+  height: 1.5vw;
 }
 
 #modal-page {

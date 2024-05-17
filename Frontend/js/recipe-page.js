@@ -39,6 +39,7 @@ const getRecipes = async () => {
             return {
                name: recipe.name,
                image: recipe.image,
+
             }
          });
          for (let i = 0; i < recipes.length; i++) {

@@ -1,7 +1,7 @@
 const express = require('express');
 require('dotenv').config({ path: './config/.env' });
 require('./config/dbConfig');
-// const path = require('path');
+const path = require('path');
 const cors = require('cors');
 
 const userRoutes = require('./routes/user.routes');
@@ -13,15 +13,18 @@ app.use(express.json());
 
 app.use(cors(
    {
+      origin: '*',
       credentials: true,
-      origin: true,
    }
 ));
 
+
+
 // Routes
-// app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/user', userRoutes);
 app.use('/api/ingredient', ingredientRoutes);
 app.use('/api/recipe', recipeRoutes);
 
 module.exports = app;
+

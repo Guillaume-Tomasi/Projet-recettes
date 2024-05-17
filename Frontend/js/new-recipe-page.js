@@ -1,3 +1,4 @@
+
 const blocAddIngredients = document.querySelector('.bloc-add-ingredients');
 const blocAddIngredientPage = document.querySelector('#bloc-add-ingredient-page');
 const addIngredientPage = document.querySelector('#add-ingredient-page');
@@ -10,6 +11,8 @@ const addIngredientBtn = document.querySelector('.add-new-ingredient');
 const form = document.querySelector('.bloc-new-ingredient');
 const submitNewIngredients = document.getElementById('submit-new-ingredients');
 const blocIngredients = document.getElementById('bloc-added-ingredients');
+
+
 
 
 let allIngredients = [];
@@ -96,11 +99,12 @@ const updateIngredients = () => {
                 step="1"
                 max="1000"
                 value="${ingredient.quantity}"
+                disabled
               />
             </div>
             <div class="add-unity-ingredient">
               <label for="unity-added-${index}">Unité</label>
-              <select name="unity" id="unity-added-${index}" class="unity-added">
+              <select name="unity" id="unity-added-${index}" class="unity-added" disabled>
                <option value="" ${ingredient.unit === '' ? 'selected' : ''}>Choisir</option>
        <option value="g" ${ingredient.unit === 'g' ? 'selected' : ''}>g</option>
        <option value="mg" ${ingredient.unit === 'mg' ? 'selected' : ''}>mg</option>
@@ -352,6 +356,7 @@ submitNewIngredients.addEventListener('click', () => {
       if (errorMsgSubmitIngredient) {
          errorMsgSubmitIngredient.remove();
       }
+      updateIngredients();
       updateBlocIngredients();
 
       addIngredientPage.style.left = "-40vw";
@@ -390,7 +395,7 @@ let stepCount = `Etapes (${addedStep.length})`;
 
 
 
-let blocNewStepText = `<form class="bloc-new-step" id="bloc-new-step">
+let blocNewStepText = `<div class="bloc-new-step" id="bloc-new-step">
             <div class="add-description">
               <h3 class="title-step" id="title-step-description">Description de l'étape 1</h3>
               <span class="characters-count">0/400</span>
@@ -402,6 +407,7 @@ let blocNewStepText = `<form class="bloc-new-step" id="bloc-new-step">
                 rows="6"
                 maxlength="400"
                 placeholder="Préchauffer le four..."
+                
               ></textarea>
             </div>
             <div class="select-ingredients">
@@ -409,7 +415,7 @@ let blocNewStepText = `<form class="bloc-new-step" id="bloc-new-step">
               <div id="ingredients-step-0" class="ingredients-step">
               </div>
             </div>
-            <button type="submit" class="add-new-step">
+            <button type="button" class="add-new-step">
               <div class="add-new-step-icon">
                 <svg
                   class="add-icon"
@@ -423,7 +429,7 @@ let blocNewStepText = `<form class="bloc-new-step" id="bloc-new-step">
               </div>
               <span>Ajouter</span>
             </button>
-          </form>`;
+          </div>`;
 
 
 
@@ -523,7 +529,7 @@ const updateIngredientsForSteps = () => {
 
          let ingredientsForSteps = `<div class="select-ingredient-step">
                        <label for="${ingredient.name}-${index}">
-                         <input type="checkbox" name="${ingredient.name}" id="${ingredient.name}-${index}" ${step.ingredients.includes(ingredient.name) ? 'checked' : ''} />
+                         <input type="checkbox" name="${ingredient.name}" id="${ingredient.name}-${index}" ${step.ingredients.includes(ingredient.name) ? 'checked' : ''} disabled/>
                          <span class="custom-checkbox"></span>
                          <div class="custom-checkbox-checked">
                            <svg
@@ -568,7 +574,7 @@ const updateSteps = () => {
    });
    addedStep.forEach((step, index) => {
 
-      let blocStepText = `<form class="bloc-new-step bloc-added-step" id="bloc-new-step-${index}">
+      let blocStepText = `<div class="bloc-new-step bloc-added-step" id="bloc-new-step-${index}">
             <div class="add-description">
               <h3 class="title-step">Description de l'étape ${index + 1}</h3>
               <span class="characters-count">${step.description.length}/400</span>
@@ -580,24 +586,25 @@ const updateSteps = () => {
                 rows="6"
                 maxlength="400"
                 placeholder="Préchauffer le four..."
-               
+                disabled
+
               >${step.description}</textarea>
             </div>
             <div class="select-ingredients">
               <h3 class="title-step">Ingrédients pour l'étape ${index + 1}</h3>
               <div id="ingredients-step-${index}" class="ingredients-step">
-                
+
               </div>
             </div>
 
-            <button type="submit" id="delete-new-step-${index}" class="delete-new-step">
+            <button type="button" id="delete-new-step-${index}" class="delete-new-step">
               <div class="delete-new-step-icon">
-              
+
                 <svg class="delete-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg>
               </div>
               <span>Supprimer</span>
             </button>
-          </form>`
+          </div>`
 
       document.getElementById('bloc-new-step').insertAdjacentHTML('beforebegin', blocStepText);
 
@@ -617,7 +624,7 @@ const updateBlocSteps = () => {
    addedStep.forEach((step, index) => {
 
       let selectedStepText = `<div class="bloc-selected-steps" id="bloc-selected-steps-${index}">
-                
+
                 <div class="step-detail">
                   <div class="step-index">Étape ${index + 1}</div>
                   <div class="step-description">
@@ -633,10 +640,6 @@ const updateBlocSteps = () => {
       updateStepsCount();
 
    })
-
-
-
-
 }
 
 
@@ -678,22 +681,29 @@ blocAddSteps.addEventListener('click', () => {
 
 
    const addNewStepBtn = document.querySelector('.add-new-step');
+   const descriptionStep = document.querySelector(`#bloc-new-step .description`);
+
    addNewStepBtn.addEventListener('click', (e) => {
       e.preventDefault();
-
+      document.querySelector('.step-err-message').innerHTML = '';
       const newStep = {
-         description: document.querySelector(`#bloc-new-step .description`).value.trim(),
+         description: descriptionStep.value.trim(),
          ingredients: []
       };
       document.querySelectorAll(`#bloc-new-step input[type="checkbox"]:checked`).forEach(checkbox => {
          newStep.ingredients.push(checkbox.name);
 
       });
+      if (descriptionStep.value && descriptionStep.value.length >= 10) {
 
-      addedStep.push(newStep);
-      updateSteps();
-      updateIngredientsForSteps();
-      numberOfSteps();
+         addedStep.push(newStep);
+         updateSteps();
+         updateIngredientsForSteps();
+         numberOfSteps();
+      } else {
+         document.querySelector('.step-err-message').innerHTML = 'Veuillez entrer un description contenant au moins 10 caractères.';
+      }
+
 
    });
 
@@ -704,18 +714,22 @@ blocAddSteps.addEventListener('click', () => {
 submitStepsBtn.addEventListener('click', (e) => {
    e.preventDefault();
 
-   addedStep.forEach((step, index) => {
-      step.description = '';
-      step.ingredients = [];
+   // addedStep.forEach((step, index) => {
+   //    // if (step.description.length < 10) {
+   //    //    document.querySelector('.step-err-message').innerHTML = 'Chaque description doit contenir au moins 10 caractères.';
+   //    // }
+   //    step.description = '';
+   //    step.ingredients = [];
 
-      step.description = document.querySelector(`#bloc-new-step-${index} .description`).value.trim();
-      document.querySelectorAll(`#bloc-new-step-${index} input[type="checkbox"]:checked`).forEach(checkbox => {
-         step.ingredients.push(checkbox.name);
-      });
-   })
+   //    step.description = document.querySelector(`#bloc-new-step-${index} .description`).value.trim();
+   //    document.querySelectorAll(`#bloc-new-step-${index} input[type="checkbox"]:checked`).forEach(checkbox => {
+   //       step.ingredients.push(checkbox.name);
+   //    });
+   // })
 
    closeAddStepPage();
    updateBlocSteps();
+
 })
 
 // Photo
@@ -723,44 +737,141 @@ submitStepsBtn.addEventListener('click', (e) => {
 const addPhotoBtn = document.getElementById('submit-photo-btn');
 const addPhotoInput = document.getElementById('add-photo-input');
 const photoRecipeImg = document.querySelector('#photo-recipe img');
+const MAX_IMAGE_SIZE_MB = 5;
 
-addPhotoBtn.addEventListener('click', () => {
-   addPhotoInput.click();
 
-   addPhotoInput.addEventListener('change', () => {
-      const file = addPhotoInput.files[0];
+addPhotoInput.addEventListener('change', (e) => {
+   e.preventDefault();
+   const file = addPhotoInput.files[0];
 
-      if (file) {
-         const reader = new FileReader();
+   if (file) {
 
-         reader.onload = function (event) {
-            photoRecipeImg.src = event.target.result;
-         };
-
-         reader.readAsDataURL(file);
+      if (file.size > MAX_IMAGE_SIZE_MB * 1024 * 1024) {
+         alert("L'image est trop volumineuse. Veuillez sélectionner une image de taille inférieure à " + MAX_IMAGE_SIZE_MB + " MB.");
+         addPhotoInput.value = '';
+         return;
       }
-   });
+
+      const reader = new FileReader();
+
+      reader.onload = (event) => {
+         event.preventDefault();
+         photoRecipeImg.src = event.target.result;
+      };
+
+      reader.readAsDataURL(file);
+   }
+});
+
+addPhotoBtn.addEventListener('click', (e) => {
+   e.preventDefault();
+   addPhotoInput.click();
 })
 
-// Enregistrer recette 
+// Enregistrer une recette
 
-const submitRecipeBtn = document.getElementById('submit-recipe');
+const addNewRecipe = async (formData) => {
 
-submitRecipeBtn.addEventListener('click', (e) => {
+   try {
+      const response = await fetch('http://localhost:3000/api/recipe', {
+         method: 'POST',
+         body: formData,
+         mode: 'cors',
+      });
+
+      if (response.ok) {
+         console.log("Recette ajoutée");
+         window.location.href = 'http://127.0.0.1:5500/Frontend/recettes.html';
+
+      } else {
+         const data = await response.json();
+         console.log(data);
+
+      }
+   } catch (error) {
+      console.log(error);
+   }
+}
+
+
+const submitRecipeBtn = document.getElementById('submit-recipe-btn');
+let formData;
+
+const verifForm = async () => {
+   const recipeNameValue = document.querySelector('#recipe-name').value;
+   const typeInput = document.querySelector('input[name="type"]:checked');
+
+   document.querySelectorAll('.err-message').forEach(errMsg => errMsg.innerHTML = '');
+
+   try {
+      const response = await fetch('http://localhost:3000/api/recipe');
+      const data = await response.json();
+
+      const recipeExists = data.recipes.some(recipe => recipe.name.toLowerCase() === recipeNameValue.toLowerCase());
+      if (recipeExists) document.querySelector('#bloc-title > .err-message').innerHTML = `'${recipeNameValue}' existe déjà dans la base de données`;
+
+      // Verification nom recette
+      if (!recipeNameValue) {
+         document.querySelector('#bloc-title > .err-message').innerHTML = 'Veuillez entrer un nom de recette';
+      } else if (recipeNameValue.length > 0 && recipeNameValue.length < 2 || recipeNameValue.length > 30) {
+         document.querySelector('#bloc-title > .err-message').innerHTML = 'Veuillez entrer un nom contenant entre 2 et 30 caractères';
+      }
+
+      // Verification type recette
+      if (!typeInput) {
+         document.querySelector('#bloc-type > .err-message').innerHTML = 'veuillez selectionner le type de recette';
+      }
+
+      // Verification ingredients
+      if (addedIngredients.length < 2) {
+         document.querySelector('#bloc-ingredients > .err-message').innerHTML = 'Vous devez ajouter au moins 2 ingrédients';
+      }
+
+      // Verification etapes
+      if (addedStep.length < 2) {
+         document.querySelector('#bloc-steps > .err-message').innerHTML = 'Vous devez ajouter au moins 2 étapes';
+      }
+
+      // Submit le formulaire si aucune erreur n'est trouvée
+      if (!recipeExists && recipeNameValue && (recipeNameValue.length >= 2 && recipeNameValue.length <= 30) && typeInput && addedIngredients.length >= 2 && addedStep.length >= 2) {
+         formData = new FormData();
+
+         formData.append('name', recipeNameValue);
+         formData.append('type', typeInput.value);
+         formData.append('ingredients', JSON.stringify(addedIngredients));
+         formData.append('steps', JSON.stringify(addedStep));
+         if (addPhotoInput.files[0]) {
+            formData.append('image', addPhotoInput.files[0]);
+         }
+         return true;
+      }
+
+
+   } catch (error) {
+      console.log(error);
+      return false;
+   }
+};
+
+submitRecipeBtn.addEventListener('click', async (e) => {
    e.preventDefault();
 
-   const formData = {
-      recipeName: "",
-      type: "",
-      ingredients: [],
-      steps: [],
-      photo: "",
-   }
+   const isFormValid = await verifForm();
+   if (isFormValid) addNewRecipe(formData);
 
-   formData.recipeName = document.querySelector('#recipe-name').value;
-   formData.type = document.querySelector('input[name="type"]:checked').value;
-   formData.ingredients = addedIngredients;
-   formData.steps = addedStep;
-   formData.photo = photoRecipeImg.src;
-   console.log(formData);
-})
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
