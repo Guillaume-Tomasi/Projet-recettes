@@ -3,8 +3,8 @@ const uniqueValidator = require('mongoose-unique-validator');
 
 const ingredientSchema = mongoose.Schema({
    // userId: { type: String, required: true },
-   name: { type: String, required: true, minlength: 2, maxlength: 30, unique: true },
-   image: { type: String, default: 'http://localhost:5500/Frontend/images/Page ingredients/default.jpg' }
+   name: { type: String, required: true, minlength: 2, maxlength: 15, unique: true },
+   image: { type: String }
 });
 
 ingredientSchema.plugin(uniqueValidator);

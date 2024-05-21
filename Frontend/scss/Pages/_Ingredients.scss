@@ -153,3 +153,18 @@ padding-top: 2.4vw;
       }
    }
 }
+
+#add-photo-input {
+   display: none;
+}
+
+.input-div {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+
+}
+
+#recipe-img {
+   margin-top: 0.3vw;
+}

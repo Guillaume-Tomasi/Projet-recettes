@@ -1,13 +1,23 @@
 const Ingredient = require('../models/Ingredient')
 
 exports.createIngredient = (req, res, next) => {
+
+   let imagepath = 'http://localhost:5500/Frontend/images/Page ingredients/default.jpg'; // Chemin par défaut
+
+   if (req.file) {
+      imagepath = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`;
+   }
+
+
    const ingredient = new Ingredient({
       // userId: req.body.userId,
       name: req.body.name,
+      image: imagepath
    });
    ingredient.save()
       .then(() => res.status(201).json({ message: 'ingrédient créé !' }))
-      .catch(error => res.status(400).json({ message: "Les informations saisies sont incorrectes" }));
+      .catch(error => res.status(400).json({ error }));
+   // .catch(error => res.status(400).json({ message: "Les informations saisies sont incorrectes" }));
 };
 
 exports.getIngredient = (req, res, next) => {
