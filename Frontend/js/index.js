@@ -313,7 +313,7 @@ const getAllRecipes = async () => {
       const recipes = data.recipes.slice(-3);
 
       const blocSection = document.querySelector('.bloc-section-1');
-      blocSection.innerHTML = ''; // Clear previous content if necessary
+      blocSection.innerHTML = '';
 
       recipes.forEach((recipe, index) => {
 
@@ -328,11 +328,15 @@ const getAllRecipes = async () => {
                 </div>
               </div>
             </div>
-            <a href="#">
+            <a href="./recette-individuelle.html?id=${recipe._id}">
               <button>Voir</button>
             </a>
           </div>`;
          document.querySelector('.bloc-section-1').insertAdjacentHTML('afterbegin', recipeCard);
+         document.getElementById(`card-${index}`).style.cursor = "pointer";
+         document.getElementById(`card-${index}`).addEventListener('click', () => {
+            window.location = `./recette-individuelle.html?id=${recipe._id}`;
+         })
       });
 
       document.querySelector('#bloc-qty-recipes > .bg-qty > p').textContent = data.recipes.length;

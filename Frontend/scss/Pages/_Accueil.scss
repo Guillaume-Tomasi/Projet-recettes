@@ -52,6 +52,7 @@
       .bloc-card {
          @extend %flex-center;
          flex-direction: column;
+         
 
          .bloc-recipe {
             display: flex;

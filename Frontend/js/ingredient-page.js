@@ -87,40 +87,7 @@ let addIngredientText = `<section id="modal-page">
       </div>
     </section>`;
 
-// const addIngredient = async () => {
-//    let name = document.getElementById("name").value;
-//    const ingredientData = { name };
 
-//    await fetch('http://localhost:3000/api/ingredient', {
-//       method: 'POST',
-//       headers: {
-//          "Accept": "application/json",
-//          'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify(ingredientData)
-//    })
-//       .then(res => {
-//          if (res.ok) {
-//             document.querySelector('.form').remove();
-//             document.getElementById('errorMsg').textContent = "";
-//             document.querySelector('.title').insertAdjacentHTML("afterend", addedIngredient);
-//             setTimeout(() => {
-//                window.location.reload();
-//             }, 2000);
-//          } else {
-//             return res.json();
-//          }
-//       })
-//       .then(data => {
-//          if (data.message) {
-//             document.getElementById('errorMsg').textContent = data.message;
-//             console.log(data);
-//          }
-//       })
-//       .catch(error => {
-//          console.log(error);
-//       })
-// }
 
 let formData;
 

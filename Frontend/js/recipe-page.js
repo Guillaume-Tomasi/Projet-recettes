@@ -1,84 +1,109 @@
+let params = new URLSearchParams(document.location.search);
+let id = params.get("id");
 
-let addRecipeText = `<section id="modal-page">
-      <div class="modal-bloc">
-        <div class="title">Ajouter un ingrédienhh</div>
-        <div class="form">
-          <form>
-            <div class="input-div">
-              <label for="name">Nom :</label>
-              <input type="text" id="name" name="name" required />
-              <div id="name-errorMsg"></div>
-            </div>
+let recipe = [];
+let ingredientDetails = [];
 
-            <div class="input-div">
-              <label for="name">Ingrédient :</label>
-              <button class="addIngredientBtn">Ajouter un ingrédient<button/>
-              <div id="name-errorMsg"></div>
-            </div>
+// Récupération de la recette
 
-            <input type="submit" value="Ajouter" class="addIngredientBtn" />
-          </form>
-        </div>
-        <div id="exit-addIngredient">
-          <i class="fa-solid fa-arrow-left"></i>
-        </div>
-        <div id="errorMsg"></div>
-      </div>
-    </section>`
+const getRecipe = async () => {
+   try {
+      const response = await fetch(`http://localhost:3000/api/recipe/${id}`);
+      if (!response.ok) {
+         throw new Error(`Une erreur s'est produite ! Status: ${response.status}`);
+      }
+      const data = await response.json();
 
+      if (data.ingredients && data.steps && data.ingredients.length > 0 && data.steps.length > 0) {
+         data.ingredients = JSON.parse(data.ingredients[0]);
+         data.steps = JSON.parse(data.steps[0]);
+      }
 
+      recipe = data;
+   } catch (error) {
+      console.error('Erreur de récupération de la recette:', error);
+   }
+};
 
+const getIngredients = async (ingredientRecipe) => {
+   try {
+      const response = await fetch(`http://localhost:3000/api/ingredient`);
+      if (!response.ok) {
+         throw new Error(`Une erreur s'est produite ! Status: ${response.status}`);
+      }
+      const data = await response.json();
 
-
-
-const getRecipes = async () => {
-   await fetch('http://localhost:3000/api/recipe')
-      .then(res => res.json())
-      .then(data => {
-         const recipes = data.recipes.map(recipe => {
-            return {
-               name: recipe.name,
-               image: recipe.image,
-
-            }
-         });
-         for (let i = 0; i < recipes.length; i++) {
-            let recipeCard = `<div class="card-recipe">
-   <div class="card-recipe-img">
-      <img src="${recipes[i].image}" alt="recette" />
-   </div>
-   <div class="card-recipe-body">
-      <p>${recipes[i].name}</p>
-   </div>
-</div>`;
-
-            document.getElementById('card-recipe-bloc').insertAdjacentHTML('afterbegin', recipeCard)
+      data.ingredients.forEach(ingredient => {
+         if (ingredient.name === ingredientRecipe) {
+            ingredientDetails.push(ingredient);
          }
       })
-      .catch(err => console.log(err))
-};
-getRecipes();
 
-const searchRecipes = () => {
-   const searchValue = searchInput.value.toLowerCase();
-   const cards = document.querySelectorAll('.card-recipe');
 
-   cards.forEach(card => {
-      const name = card.querySelector('.card-recipe-body p').textContent.toLowerCase();
-      if (name.includes(searchValue)) {
-         card.style.display = 'block';
-      } else {
-         card.style.display = 'none';
-      }
+
+
+
+   } catch (error) {
+      console.error("Ereur de récupération de l'ingrédient:", error);
+   }
+}
+
+const recipeDisplay = async () => {
+   ingredientDetails = [];
+   await getRecipe();
+
+   document.title = recipe.name;
+   document.querySelector('h1').innerText = recipe.name;
+   document.querySelector('.type').innerText = recipe.type;
+   document.getElementById('section-img').innerHTML = `<img
+            src="${recipe.image}"
+   alt = "image de la recette : '${recipe.name}'"
+   class="recipe-photo"
+      /> `;
+
+   // ingredients
+   for (let ingredient of recipe.ingredients) {
+      await getIngredients(ingredient.name);
+
+      for (let i = 0; i < ingredientDetails.length; i++) {
+         if (ingredient.name === ingredientDetails[i].name) {
+            document.querySelector('.ingredients').insertAdjacentHTML("afterbegin", `<li class="ingredient-item">
+              <img
+                src="${ingredientDetails[i].image}"
+                alt="${ingredient.name}"
+              />
+              <span>${ingredient.quantity} ${ingredient.unit} de ${ingredient.name}</span>
+            </li>`);
+         };
+      };
+
+   };
+
+   recipe.steps.forEach((step, index) => {
+      document.querySelector('.steps').insertAdjacentHTML('beforeend', `<li class="step-item">
+            <div class="step-group">
+              <div class="step-number">${index + 1}</div>
+              ${step.description}
+            </div>
+            <div class="step-ingredients" id="step-ingredients-${index}"></div>
+          </li>`);
+
+      for (let ingredient of step.ingredients) {
+         console.log(ingredient);
+         // await getIngredients(ingredient.name);
+         let ingredientIndex = document.getElementById(`step-ingredients-${index}`);
+
+         for (let i = 0; i < ingredientDetails.length; i++) {
+            if (ingredient === ingredientDetails[i].name) {
+               document.getElementById(`step-ingredients-${index}`).insertAdjacentHTML("beforeend", `<img
+                src="${ingredientDetails[i].image}"
+                alt="${ingredient}"
+              />`);
+            };
+         };
+
+      };
    });
 };
-const searchInput = document.getElementById('search-item');
-searchInput.addEventListener('input', searchRecipes);
 
-
-
-
-
-
-
-
+recipeDisplay();

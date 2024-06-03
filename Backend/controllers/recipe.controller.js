@@ -2,14 +2,11 @@ const Recipe = require('../models/Recipe');
 
 exports.createRecipe = (req, res, next) => {
    const { name, ingredients, type, steps } = req.body;
-
-   // let imagepath = null; // Chemin par défaut
    let imagepath = 'http://localhost:5500/Frontend/images/Page recettes/default.jpg'; // Chemin par défaut
 
    if (req.file) {
       imagepath = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`;
    }
-
 
    const recipe = new Recipe({
       // userId: req.body.userId,
@@ -19,7 +16,6 @@ exports.createRecipe = (req, res, next) => {
       steps,
       image: imagepath
    });
-
 
    recipe.save()
       .then(() => res.status(201).json({ message: 'recette créée !' }))
