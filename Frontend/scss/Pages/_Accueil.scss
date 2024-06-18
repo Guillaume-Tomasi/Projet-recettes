@@ -1,25 +1,54 @@
-// Inscription
+// Header
 
-
-// .modal {
-//    position: fixed;
-//    // top: -20%;
-//    // left: 50%;
-//    border-radius: 12px;
-//    // transform: translate(-50%, -50%);
-//    background-color: $bg-clair;
-//    color: $bg-neutre;
-//    font-weight: bold;
-//    font-size: 1vw;
-//    width: 15vw;
-//    padding: 0.5vw 1vw;
-//    text-align: center;
-//    // animation-name: slide-down;
-//    // animation-duration: 5s;
-//    // animation-fill-mode: both;
-//    z-index: 900;
-// }
-
+header {
+   position: relative;
+   width: 100%;
+   height: 100vh;
+   color: $text-clair;
+   .image-header {
+      z-index: -1;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+      }
+   }
+   #menu {
+   border-bottom: 1px solid #fff;
+   display: flex;
+   justify-content: center;
+   font-size: 1.2rem;
+   height: 4rem;
+   #logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+      font-size: 3rem;
+   }
+   ul {
+      position: absolute;
+      width: 400px;
+      top: 5.5rem;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      li {
+         margin: 0.7rem;
+      }
+   }
+   }
+   .title {
+      margin-top: 220px;
+      font-size: 3rem;
+      text-align: center;
+   }
+}
 
 // Main
 
@@ -27,31 +56,76 @@
 
 #section-1 {
    background-color: $bg-neutre;
-   height: 57vw;
    @extend %flex-center;
    flex-direction: column;
    justify-content: center;
+   // padding: 6rem 0 12rem 0;
+   position: relative;
+   height: 80vh;
+   max-width: 100%;
+   overflow-x: hidden;
 
    h2 {
-      margin-top: -6.9vw;
-      padding-bottom: 5vw;
+      // padding-bottom: 6rem;
+      position: absolute;
+      top: 6rem;
       color: $text-clair;
-      font-size: 2vw;
+      font-size: 2.2rem;
+   }
+
+   .slider-btn {
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: none;
+      outline: none;
+      // color: $text-sombre;
+      color: $text-clair;
+      font-size: 8rem;
+      cursor: pointer;
+      z-index: 2;
+      &:hover {
+         text-shadow:
+               1px 1px 2px rgba(0, 0, 0, 0.7),
+               -1px -1px 2px rgba(0, 0, 0, 0.7),
+               1px -1px 2px rgba(0, 0, 0, 0.7),
+               -1px 1px 2px rgba(0, 0, 0, 0.7);
+      }
+   }
+   
+   #prev {
+      position: absolute;
+      left: 3rem;
+   }
+
+   #next {
+      position: absolute;
+      right: 3rem;
    }
 
    .bloc-section-1 {
-      background-color: $bg-clair;
-      padding: 3.8vw 0;
-      width: 75%;
+      // position: relative;
+      position: absolute;
+      overflow-x: hidden;
+      top: 50%;
+      transform: translateY(-50%);
+      // padding: 3rem 2rem;
+      // width: 57rem;
+      width: 85%;
+      // height: 100px;
+      // width: 400px;
       display: flex;
-      justify-content: space-evenly;
+      justify-content: flex-start;
       align-items: center;
-      border-radius: 12px;
-      @extend %boxshadow;
+      // border-radius: 28px;
+      // @extend %boxshadow;
+      // overflow: hidden;
 
+      
       .bloc-card {
          @extend %flex-center;
          flex-direction: column;
+         
          
 
          .bloc-recipe {
@@ -65,10 +139,17 @@
                @extend %flex-center;
                border-radius: 12px;
                flex-direction: column;
-               height: 22vw;
-               width: 17vw;
+               height: 30rem;
+               width: 25rem;
+               margin: 1rem;
                overflow: hidden;
+               transition: 0.1s ease-in-out;
                @extend %boxshadow;
+               &:hover {
+                     box-shadow:  0 0 4px $bg-clair;
+               
+                  }
+               
 
                .card-img {
                   width: 100%;
@@ -86,22 +167,26 @@
                   position: absolute;
                   bottom: 0;
                   width: 100%;
-                  padding: 1.5vw;
-                  backdrop-filter: blur(1px);
+                  padding: 1rem;
+                  // backdrop-filter: blur(1px);
                   line-height: 1;
 
                   p {
-                     color: white;
-                     font-weight: 700;
-                     font-size: calc(5px + 0.8vw);
+                     color: #fff;
+                     font-weight: bold;
+                     // font-size: calc(5px + 0.8vw);
+                     font-size: 1.5rem;
+                     text-shadow: 1px 1px 4px $text-sombre;
+
                   }
                }
             }
          }
 
-         button {
-            @extend %smallbutton;
-         }
+         // button {
+         //    margin-top: 2rem;
+         //    @extend %smallbutton;
+         // }
       }
    }
 }
@@ -112,7 +197,8 @@
    position: relative;
    overflow: hidden;
    @extend %flex-center;
-   height: 22vw;
+   // height: 22vw;
+   height: 25rem;
    width: 100%;
 
    #bg-section-2 {
@@ -135,10 +221,11 @@
    .bloc-stats {
       position: absolute;
       display: flex;
-      justify-content: space-evenly;
-      width: 75%;
+      justify-content: space-around;
+      // width: 75%;
+      width: 77rem;
       color: $text-clair;
-      height: 50%;
+      height: 30%;
 
       #bloc-qty-ingredients, #bloc-qty-recipes, #bloc-qty-users {
          display: flex;
@@ -146,24 +233,27 @@
          align-items: center;
          flex-direction: column;
          height: 100%;
-         width: 17vw;
       }
 
       .bg-qty {
          background-color: rgba(0, 0, 0, 0.6);
-         width: 6.5vw;
-         height: 6.5vw;
+         width: 8rem;
+         min-width: 8rem;
+         min-height: 8rem;
+         // padding: 3rem;
+         height: 8rem;
          @extend %flex-center;
          @extend %boxshadow;
 
          p {
-            font-size: calc(5px + 1.2vw);
+            // font-size: calc(5px + 1.2vw);
+            font-size: 1.5rem;
             font-weight: bold;
          }
       }
 
       p {
-         font-size: calc(5px + 0.8vw);
+         font-size: 1.5rem;
       }
    }
 }
@@ -173,62 +263,64 @@
 
 #step-1 {
    background-color: $bg-sombre;
-   height: 42vw;
-   position: relative;
+   padding: 6rem 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   
+   #bloc-step-1 {
+      position: relative;
+      width: 77rem;
+      height: 600px;
+      // border: 1px solid red;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+   }
 
    .img-deco {
       position: absolute;
       overflow: hidden;
-      top: 5vw;
-      left: 5vw;
+      top: 0;
+      left: 0;
       z-index: 2;
-      width: 34vw;
-      height: 22vw;
-      border-radius: 10vw 0 10vw 0;
+      width: 22rem;
+      height: 22rem;
+      border-radius: 50%;
       @extend %boxshadow;
 
       img {
          width: 100%;
+         height: 100%;
          object-fit: cover;
       }
    }
 
    .step-1 {
-      display: flex;
-      position: absolute;
-      right: 0;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
+      // display: flex;
+      // border: 1px solid blue;
+      // justify-content: center;
+      // align-items: center;
       width: 65%;
-      height: 100%;
-      padding: 5vw 5vw 5vw 0;
-
-      p {
-         color: $text-clair;
-         font-size: 4vw;
-         margin-right: 5vw;
-         position: absolute;
-         top: 8vw;
-      }
+      
+    
    }
-
+   
    .bloc-title {
-      position: absolute;
-      bottom: 5vw;
-      margin-right: 5vw;
+    
       @extend %flex-center;
       flex-direction: column;
       background-color: $bg-clair;
       width: 100%;
-      height: 18vw;
-      width: 100%;
+      height: 25rem;
       text-align: center;
-      border-radius: 8vw 8vw 0 0;
+      justify-content: space-evenly;
+      border-radius: 100px;
 
       h2 {
          color: $text-sombre;
-         font-size: 2vw;
+         font-size: 1.9rem;
+         padding-top: 1rem;
       }
 
       button {
@@ -240,66 +332,84 @@
 // section 4 - étape 2 
 
 #step-2 {
-   position: relative;
-   height: 42vw;
-   background-color: $bg-neutre;
+      padding: 6rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   #bloc-step-2 {
+         position: relative;
+         width: 77rem;
+         height: 600px;
+         display: flex;
+         justify-content: center;
+         align-items: flex-end;
+      }
 
-   .img-deco {
-      position: absolute;
-      overflow: hidden;
-      top: 5vw;
-      right: 5vw;
-      z-index: 2;
-      width: 34vw;
-      height: 22vw;
-      border-radius: 0 10vw 0 10vw;
-      @extend %boxshadow;
+      .img-deco {
+         position: absolute;
+         overflow: hidden;
+         top: 0;
+         right: 0;
+         z-index: 2;
+         width: 22rem;
+         height: 22rem;
+         border-radius: 50%;
+         @extend %boxshadow;
+         // border: 1px solid red;
 
       img {
          width: 100%;
+         height: 100%;
          object-fit: cover;
       }
    }
 
    .step-2 {
-      display: flex;
-      position: absolute;
-      left: 5vw;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
+      
+      // display: flex;
+      // position: absolute;
+      // // left: 0;
+      // bottom: 0;
+      // flex-direction: column;
+      // justify-content: space-between;
+      // align-items: center;
       width: 65%;
-      height: 100%;
-      padding: 5vw 5vw 5vw 0;
+      // height: 100%;
+      // padding: 5vw 5vw 5vw 0;
 
       p {
-         color: $text-clair;
-         font-size: 4vw;
-         margin-left: 5vw;
+      color: $text-clair;
+         font-size: 4rem;
+         // margin-right: 5vw;
          position: absolute;
-         top: 8vw;
+         top: -8rem;
       }
    }
 
    .bloc-title {
-      position: absolute;
-      bottom: 5vw;
-      margin-left: 5vw;
       @extend %flex-center;
-      flex-direction: column;
-      background-color: $bg-clair;
-      width: 100%;
-      height: 18vw;
-      width: 100%;
-      text-align: center;
-      border-radius: 8vw 0 0 0;
+         flex-direction: column;
+         background-color: $bg-clair;
+         width: 100%;
+         height: 25rem;
+         text-align: center;
+         justify-content: space-evenly;
+         border-radius: 100px;
 
       h2 {
+         // position: absolute;
+         padding-top: 1rem;
+         // left: 0;
+         // top: 5.6rem;
          color: $text-sombre;
-         font-size: 2vw;
+         font-size: 1.9rem;
+         width: 40rem;
+         
       }
 
       button {
+         // position: absolute;
+         bottom: 5rem;
          @extend %largebutton;
       }
    }
@@ -357,5 +467,75 @@
             @extend %largebutton;
          }
       }
+   }
+}
+
+/* Footer styles */
+.footer {
+   background-color: $bg-sombre;
+   color: $text-clair;
+   padding: 2rem 0 1rem 0;
+   position: relative;
+   bottom: 0;
+   width: 100%;
+}
+
+.footer-container {
+   display: flex;
+   justify-content: space-around;
+   flex-wrap: wrap;
+   max-width: 1200px;
+   margin: 0 auto;
+   padding: 0 1rem;
+}
+
+.footer h2 {
+   margin-bottom: 1rem;
+   font-size: 1.5rem;
+}
+
+.footer p {
+   margin-bottom: 0.5rem;
+   line-height: 1.6;
+}
+
+.footer ul {
+   list-style: none;
+   padding: 0;
+}
+
+.footer ul li {
+   margin-bottom: 0.5rem;
+}
+
+.footer ul li a {
+   color: $text-clair;
+   text-decoration: none;
+   transition: color 0.3s;
+}
+
+.footer ul li a:hover {
+   color: $btn;
+   /* Couleur de survol */
+}
+
+.footer-bottom {
+   text-align: center;
+   margin-top: 1rem;
+   border-top: 1px solid $bg-clair;
+   padding-top: 2rem;
+}
+
+@media (max-width: 768px) {
+   .footer-container {
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .footer-about,
+   .footer-links,
+   .footer-contact {
+      margin-bottom: 2rem;
+      text-align: center;
    }
 }

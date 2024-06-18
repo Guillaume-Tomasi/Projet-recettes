@@ -11,17 +11,17 @@
 
 // Header
 
-header {
-   @extend %header;
-   .image-header {
-      @extend %image-header;
-   }
-   #menu {
-      @extend %flex-center;
-      @extend %menu;
-   }
-   .title {
-      @extend %title;
-   }
-}
+// header {
+//    @extend %header;
+//    .image-header {
+//       @extend %image-header;
+//    }
+//    #menu {
+//       @extend %flex-center;
+//       @extend %menu;
+//    }
+//    .title {
+//       @extend %title;
+//    }
+// }
 

@@ -288,7 +288,9 @@
 
 // }
 
-
+{/* <a href="./recette-individuelle.html?id=${recipe._id}">
+   <button>Voir</button>
+</a> */}
 
 
 // Affichage stats site
@@ -304,22 +306,24 @@ const getAllIngredients = async () => {
    }
 };
 
-
+let cardWidth;
 const getAllRecipes = async () => {
    try {
       const response = await fetch('http://localhost:3000/api/recipe');
       const data = await response.json();
 
-      const recipes = data.recipes.slice(-3);
+      // const recipes = data.recipes.slice(-3);
+      const recipes = data.recipes;
 
       const blocSection = document.querySelector('.bloc-section-1');
-      blocSection.innerHTML = '';
+
+      // blocSection.innerHTML = '';
 
       recipes.forEach((recipe, index) => {
 
          let recipeCard = `<div id="card-${index}" class="bloc-card">
             <div class="bloc-recipe">
-              <div class="card">
+              <div id="recipe-${index}"class="card">
                 <div class="card-img">
                   <img src="${recipe.image}" />
                 </div>
@@ -328,24 +332,38 @@ const getAllRecipes = async () => {
                 </div>
               </div>
             </div>
-            <a href="./recette-individuelle.html?id=${recipe._id}">
-              <button>Voir</button>
-            </a>
+            
           </div>`;
          document.querySelector('.bloc-section-1').insertAdjacentHTML('afterbegin', recipeCard);
-         document.getElementById(`card-${index}`).style.cursor = "pointer";
-         document.getElementById(`card-${index}`).addEventListener('click', () => {
+         document.getElementById(`recipe-${index}`).style.cursor = "pointer";
+         document.getElementById(`recipe-${index}`).addEventListener('click', () => {
             window.location = `./recette-individuelle.html?id=${recipe._id}`;
          })
+         const cards = document.querySelectorAll('.card');
+
+
+         cards.forEach(card => {
+            cardWidth = card.offsetWidth;
+            const cardStyle = getComputedStyle(card);
+            cardMargin = parseInt(cardStyle.marginLeft) + parseInt(cardStyle.marginRight);
+         })
+
       });
 
       document.querySelector('#bloc-qty-recipes > .bg-qty > p').textContent = data.recipes.length;
+
+      document.getElementById('next').addEventListener('click', () => {
+         blocSection.scrollBy({ left: cardWidth + cardMargin, behavior: 'smooth' });
+      });
+
+      document.getElementById('prev').addEventListener('click', () => {
+         blocSection.scrollBy({ left: -(cardWidth + cardMargin), behavior: 'smooth' });
+      });
+
    } catch (err) {
       console.error('Error fetching recipes:', err);
    }
 };
-
-
 
 
 
@@ -363,6 +381,9 @@ const getAllUsers = async () => {
 getAllIngredients();
 getAllRecipes();
 getAllUsers();
+
+
+
 
 
 

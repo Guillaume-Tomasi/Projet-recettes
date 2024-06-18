@@ -18,9 +18,10 @@
         <img src="./images/Page accueil/header.jpg" alt="image de fond" />
       </div>
       <nav id="menu">
+        <div id="logo">Logo</div>
         <ul>
-          <li><a href="/Frontend/index.html">Accueil</a></li>
           <li><a href="/Frontend/ingredients.html">Ingrédients</a></li>
+          <li><a href="/Frontend/index.html">Accueil</a></li>
           <li><a href="/Frontend/recettes.html">Recettes</a></li>
           <!-- <li><a href="#">Courses</a></li> -->
         </ul>
@@ -33,8 +34,10 @@
     <main>
       <section id="section-1">
         <h2>Découvrez nos recettes</h2>
+        <button id="prev" class="slider-btn">&#10096;</button>
+        <button id="next" class="slider-btn">&#10097;</button>
         <div class="bloc-section-1">
-          <div id="card-1" class="bloc-card">
+          <!-- <div id="card-1" class="bloc-card">
             <div class="bloc-recipe">
               <div class="card">
                 <div class="card-img">
@@ -78,7 +81,7 @@
             <a href="#">
               <button>Voir</button>
             </a>
-          </div>
+          </div> -->
         </div>
       </section>
       <section id="section-2">
@@ -107,40 +110,42 @@
         </div>
       </section>
       <section id="step-1">
-        <div class="img-deco">
-          <img
-            src="./images/Page accueil/image-etape-1.jpg"
-            alt="image ingrédients"
-          />
-        </div>
-        <div class="step-1">
-          <p>1</p>
-          <div class="bloc-title">
-            <h2>
-              Parcourez notre liste d’ingrédients <br />
-              OU <br />
-              Ajoutez les vôtres
-            </h2>
-            <a href="/Frontend/ingredients.html">
-              <button>Découvrir nos ingrédients</button>
-            </a>
+        <div id="bloc-step-1">
+          <div class="img-deco">
+            <img
+              src="./images/Page accueil/image-etape-1.jpg"
+              alt="image ingrédients"
+            />
+          </div>
+          <div class="step-1">
+            <div class="bloc-title">
+              <h2>
+                Parcourez notre liste d’ingrédients <br />
+                OU <br />
+                Ajoutez les vôtres
+              </h2>
+              <a href="/Frontend/ingredients.html">
+                <button>Découvrir nos ingrédients</button>
+              </a>
+            </div>
           </div>
         </div>
       </section>
       <section id="step-2">
-        <div class="img-deco">
-          <img
-            src="./images/Page accueil/image-etape-2.jpg"
-            alt="image recette"
-          />
-        </div>
-        <div class="step-2">
-          <p>2</p>
-          <div class="bloc-title">
-            <h2>Créez vos recettes à partir des ingrédients sélectionnés</h2>
-            <a href="/Frontend/recettes.html">
-              <button>Découvrir nos recettes</button>
-            </a>
+        <div id="bloc-step-2">
+          <div class="img-deco">
+            <img
+              src="./images/Page accueil/image-etape-2.jpg"
+              alt="image recette"
+            />
+          </div>
+          <div class="step-2">
+            <div class="bloc-title">
+              <h2>Créez vos recettes à partir des ingrédients sélectionnés</h2>
+              <a href="/Frontend/recettes.html">
+                <button>Découvrir nos recettes</button>
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -162,6 +167,34 @@
         </div>
       </section> -->
     </main>
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-about">
+          <h2>À propos de Kwisto</h2>
+          <p>
+            Kwisto est une application de cuisine qui vous aide à organiser
+            facilement vos repas et à découvrir de nouvelles recettes.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h2>Liens rapides</h2>
+          <ul>
+            <li><a href="./index.html">Accueil</a></li>
+            <li><a href="./ingredients.html">Ingrédients</a></li>
+            <li><a href="./recettes.html">Recettes</a></li>
+            <!-- <li><a href="#">Courses</a></li> -->
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h2>Contactez-nous</h2>
+          <p>Email: contact@kwisto.123</p>
+          <p>Téléphone: +33 1 23 45 67 89</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Kwisto. Tous droits réservés.</p>
+      </div>
+    </footer>
     <script src="./js/index.js"></script>
     <script
       src="https://kit.fontawesome.com/8f6b4cabb0.js"
