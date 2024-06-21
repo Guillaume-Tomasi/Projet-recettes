@@ -1,15 +1,21 @@
 // Header
 
+
+
 header {
-   position: relative;
+   // position: relative;
+   // border: 1px solid red;
+   top: 0;
    width: 100%;
    height: 100vh;
+   max-height: 100vh;
    color: $text-clair;
    .image-header {
       z-index: -1;
-      position: absolute;
+      position: relative;
+      // top: 4rem;
       width: 100%;
-      height: 100%;
+      height: 100vh;
       img {
          width: 100%;
          height: 100%;
@@ -17,17 +23,27 @@ header {
       }
    }
    #menu {
-   border-bottom: 1px solid #fff;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 5;
+   border-bottom: 1px solid $text-clair;
    display: flex;
    justify-content: center;
-   font-size: 1.2rem;
+   font-size: 1.3rem;
    height: 4rem;
+   transition: 0.4s ease-in-out;
    #logo {
+      position: absolute;
+      top: 1.9rem;
+      left: 50%;
+      transform: translate(-50%, -50%);
       display: flex;
       justify-content: center;
       align-items: center;
       width: 100px;
       font-size: 3rem;
+      transition: 0.4s ease-in-out;
    }
    ul {
       position: absolute;
@@ -38,15 +54,38 @@ header {
       display: flex;
       justify-content: space-around;
       align-items: center;
+      transition: 0.4s ease-in-out;
       li {
          margin: 0.7rem;
+         text-shadow: 1px 1px 4px $text-sombre;
+         transition: 0.1s ease-in-out;
+         &:hover {
+            transform: scale(1.1);
+         }
       }
    }
    }
    .title {
-      margin-top: 220px;
+      // margin-top: 220px;
+      position: absolute;
+      top: 22rem;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      // margin-top: 17.5rem;
       font-size: 3rem;
       text-align: center;
+   }
+}
+
+#menu.scrolled {
+   background-color: $bg-sombre;
+   
+   #logo {
+         left: 1rem;
+         transform: translateY(-50%);
+   }
+   ul {
+      top: 2rem;
    }
 }
 
@@ -59,18 +98,19 @@ header {
    @extend %flex-center;
    flex-direction: column;
    justify-content: center;
+   // align-items: center;
    // padding: 6rem 0 12rem 0;
    position: relative;
-   height: 80vh;
+   height: 100vh;
    max-width: 100%;
    overflow-x: hidden;
 
    h2 {
       // padding-bottom: 6rem;
       position: absolute;
-      top: 6rem;
+      top: 10.6rem;
       color: $text-clair;
-      font-size: 2.2rem;
+      font-size: 2.5rem;
    }
 
    .slider-btn {
@@ -95,12 +135,15 @@ header {
    
    #prev {
       position: absolute;
-      left: 3rem;
+      left: 0;
+      margin: 0 30px;
+
    }
 
    #next {
       position: absolute;
-      right: 3rem;
+      right: 0;
+      margin: 0 30px;
    }
 
    .bloc-section-1 {
@@ -111,15 +154,19 @@ header {
       transform: translateY(-50%);
       // padding: 3rem 2rem;
       // width: 57rem;
-      width: 85%;
+      width: 87%;
+      // max-width: 1920px;
+      // height: 30rem;
       // height: 100px;
       // width: 400px;
       display: flex;
-      justify-content: flex-start;
+      // justify-content: flex-start;
+      justify-content: space-between;
       align-items: center;
       // border-radius: 28px;
       // @extend %boxshadow;
       // overflow: hidden;
+      margin: 0 30px;
 
       
       .bloc-card {
@@ -139,15 +186,14 @@ header {
                @extend %flex-center;
                border-radius: 12px;
                flex-direction: column;
-               height: 30rem;
-               width: 25rem;
+               height: 28rem;
+               width: 24rem;
                margin: 1rem;
                overflow: hidden;
                transition: 0.1s ease-in-out;
                @extend %boxshadow;
                &:hover {
                      box-shadow:  0 0 4px $bg-clair;
-               
                   }
                
 
@@ -224,6 +270,7 @@ header {
       justify-content: space-around;
       // width: 75%;
       width: 77rem;
+      max-width: 100%;
       color: $text-clair;
       height: 30%;
 
@@ -263,7 +310,7 @@ header {
 
 #step-1 {
    background-color: $bg-sombre;
-   padding: 6rem 0;
+   padding: 6rem 2rem;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -285,6 +332,8 @@ header {
       left: 0;
       z-index: 2;
       width: 22rem;
+      min-width: 22rem;
+      min-height: 22rem;
       height: 22rem;
       border-radius: 50%;
       @extend %boxshadow;
@@ -332,7 +381,7 @@ header {
 // section 4 - étape 2 
 
 #step-2 {
-      padding: 6rem 0;
+      padding: 6rem 2rem;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -352,7 +401,9 @@ header {
          right: 0;
          z-index: 2;
          width: 22rem;
+         min-width: 22rem;
          height: 22rem;
+         min-height: 22rem;
          border-radius: 50%;
          @extend %boxshadow;
          // border: 1px solid red;
@@ -377,13 +428,13 @@ header {
       // height: 100%;
       // padding: 5vw 5vw 5vw 0;
 
-      p {
-      color: $text-clair;
-         font-size: 4rem;
-         // margin-right: 5vw;
-         position: absolute;
-         top: -8rem;
-      }
+      // p {
+      // color: $text-clair;
+      //    font-size: 4rem;
+      //    // margin-right: 5vw;
+      //    position: absolute;
+      //    top: -8rem;
+      // }
    }
 
    .bloc-title {
@@ -398,12 +449,12 @@ header {
 
       h2 {
          // position: absolute;
+         color: $text-sombre;
          padding-top: 1rem;
          // left: 0;
          // top: 5.6rem;
-         color: $text-sombre;
          font-size: 1.9rem;
-         width: 40rem;
+         max-width: 40rem;
          
       }
 
@@ -526,7 +577,77 @@ header {
    padding-top: 2rem;
 }
 
-@media (max-width: 768px) {
+// Media queries 992px-1200px
+@media (min-width: 992px) and (max-width: 1200px) {
+
+#section-1 {
+
+      .bloc-section-1 {
+         width: 82%;
+      }
+   }
+
+   #step-1 #bloc-step-1 {
+         align-items: center;
+         justify-content: space-evenly;
+         .img-deco {
+            position: relative;
+            margin-right: 5px;
+
+         }
+      }
+      #step-2 #bloc-step-2 {
+         align-items: center;
+         justify-content: space-evenly;
+         flex-direction: row-reverse;
+         .img-deco {
+            position: relative;
+            margin-left: 5px;
+         }
+      }
+   }
+
+// Media queries 768px-992px
+@media  (max-width: 991.98px) {
+
+   #section-1 {
+   
+         .bloc-section-1 {
+            width: 82%;
+            max-width: 25rem;
+         }
+      }
+
+   #step-1 #bloc-step-1 {
+      width: 100vw;
+      align-items: center;
+      justify-content: center;
+      
+      .img-deco {
+         display: none;
+      }
+      .step-1 {
+         width: 100%;
+      }
+   }
+
+   #step-2 #bloc-step-2 {
+      align-items: center;
+      justify-content: center;
+      
+      .img-deco {
+         display: none;
+      }
+      .step-2 {
+         width: 100%;
+      }
+   }
+}
+
+// Media queries 576px-768px
+@media (max-width: 767.98px) {
+
+
    .footer-container {
       flex-direction: column;
       align-items: center;
@@ -539,3 +660,9 @@ header {
       text-align: center;
    }
 }
+
+// Media queries 375px-576px
+@media (max-width: 375px) {
+
+}
+

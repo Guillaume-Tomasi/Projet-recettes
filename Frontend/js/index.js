@@ -293,6 +293,19 @@
 </a> */}
 
 
+
+window.addEventListener('scroll', () => {
+   const logo = document.getElementById('logo');
+   const links = document.querySelector('nav > ul');
+
+   if (window.scrollY > 100) {
+      menu.classList.add('scrolled');
+   } else {
+      menu.classList.remove('scrolled');
+   }
+
+})
+
 // Affichage stats site
 
 const getAllIngredients = async () => {
@@ -307,6 +320,7 @@ const getAllIngredients = async () => {
 };
 
 let cardWidth;
+let cardMargin;
 const getAllRecipes = async () => {
    try {
       const response = await fetch('http://localhost:3000/api/recipe');
@@ -339,8 +353,8 @@ const getAllRecipes = async () => {
          document.getElementById(`recipe-${index}`).addEventListener('click', () => {
             window.location = `./recette-individuelle.html?id=${recipe._id}`;
          })
-         const cards = document.querySelectorAll('.card');
 
+         const cards = document.querySelectorAll('.card');
 
          cards.forEach(card => {
             cardWidth = card.offsetWidth;
@@ -349,6 +363,34 @@ const getAllRecipes = async () => {
          })
 
       });
+
+      // Handle touch events for horizontal scrolling on touch devices
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+
+      blocSection.addEventListener('touchstart', (e) => {
+         isDown = true;
+         startX = e.touches[0].pageX - blocSection.offsetLeft;
+         scrollLeft = blocSection.scrollLeft;
+      });
+
+      blocSection.addEventListener('touchmove', (e) => {
+         if (!isDown) return;
+         e.preventDefault();
+         const x = e.touches[0].pageX - blocSection.offsetLeft;
+         const walk = (x - startX) * 2; // Adjust the multiplier as needed
+         blocSection.scrollLeft = scrollLeft - walk;
+      });
+
+      blocSection.addEventListener('touchend', () => {
+         isDown = false;
+      });
+
+      blocSection.addEventListener('touchcancel', () => {
+         isDown = false;
+      });
+
 
       document.querySelector('#bloc-qty-recipes > .bg-qty > p').textContent = data.recipes.length;
 
