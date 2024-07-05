@@ -39,7 +39,7 @@ const searchIngredients = () => {
    cards.forEach(card => {
       const name = card.querySelector('.card-ingredient-body p').textContent.toLowerCase();
       if (name.includes(searchValue)) {
-         card.style.display = 'block';
+         card.style.display = 'flex';
       } else {
          card.style.display = 'none';
       }
@@ -64,8 +64,8 @@ let addIngredientText = `<section id="modal-page">
              <div class="input-div"> 
               <label for="image">image:</label>
               <input type="file" accept="image/*" id="add-photo-input" />
-              <div id="recipe-img">
-              <div id="photo-recipe">
+              <div id="ingredient-img">
+              <div id="photo-ingredient">
               <img
                 src="/Frontend/images/Page recettes/photo-1543339308-43e59d6b73a6.jpg"
                 alt=""
@@ -81,7 +81,20 @@ let addIngredientText = `<section id="modal-page">
           </form>
         </div>
         <div id="exit-addIngredient">
-          <i class="fa-solid fa-arrow-left"></i>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18 18 6M6 6l12 12"
+            />
+          </svg>
         </div>
         <div id="errorMsg"></div>
       </div>
@@ -164,7 +177,7 @@ addIngredientLink.addEventListener('click', () => {
 
 
    addPhotoInput = document.getElementById('add-photo-input');
-   const photoRecipeImg = document.querySelector('#photo-recipe img');
+   const photoIngredientImg = document.querySelector('#photo-ingredient img');
    const addPhotoBtn = document.getElementById('submit-photo-btn');
    const MAX_IMAGE_SIZE_MB = 5;
 
@@ -184,7 +197,7 @@ addIngredientLink.addEventListener('click', () => {
 
          reader.onload = (event) => {
             event.preventDefault();
-            photoRecipeImg.src = event.target.result;
+            photoIngredientImg.src = event.target.result;
          };
 
          reader.readAsDataURL(file);

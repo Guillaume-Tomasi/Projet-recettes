@@ -8,28 +8,34 @@
    // @extend %flex-center;
    justify-content: center;
    align-items: flex-start;
-   padding: 15%;
+   // padding: 15%;
    background-color: rgba(0, 0, 0, 0.8);
    z-index: 50;
 
    .modal-bloc {
       display: flex;
       flex-direction: column;
-      position: relative;
-
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       background-color: $bg-clair;
-      width: 27vw;
-      height: auto;
-      padding: 1vw 0;
+      // width: 27vw;
+      width: 500px;
+      max-width: 100%;
+      height: 710px;
+      // padding: 1vw 0;
+      padding: 25px 0;
       @extend %flex-center;
-      border-radius: 5px;
-      box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      // box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.2);
 
       .title {
-         font-size: 1.6vw;
+         font-size: 1.5rem;
          color: $text-sombre;
          font-weight: bold;
-         padding-bottom: 1.2vw;
+         // padding-bottom: 1.2vw;
+         padding-bottom: 20px;
          text-decoration: underline;
       }
 
@@ -48,29 +54,30 @@
 
             .input-div {
                width: 80%;
-               height: 100%;
+               // height: 100%;
                text-align: start;
-               margin: 0.5vw 0;
+               margin: 12px 0;
 
                label {
                   width: 100%;
-                  height: 100%;
-                  font-size: 0.9vw;
+                  // height: 100%;
+                  // font-size: 0.9vw;
+                  font-size: 1.1rem;
                   font-weight: bold;
                   text-align: start;
+                  margin-bottom: 8px;
                   color: $text-sombre;
                }
 
                input {
                   width: 100%;
-                  height: 2.5vw;
-                  padding: 1vw;
+                  height: 3rem;
+                  padding: 20px;
                   text-align: start;
-                  font-size: 1vw;
-                  font-weight: bold;
+                  font-size: 1.1rem;
                   border: none;
-                  margin: 0.3vw 0;
-                  border-radius: 20px;
+                  margin: 8px 0;
+                  border-radius: 12px;
 
                   // box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
                   &:focus {
@@ -84,7 +91,7 @@
                #password-errorMsg {
                   text-align: center;
                   color: $text-rouge;
-                  font-size: 0.9vw;
+                  font-size: 1.1rem;
                }
             }
 
@@ -93,13 +100,13 @@
          .signupBtn,
          .loginBtn,
          .addIngredientBtn {
-            margin-top: 1vw;
+            margin-top: 30px;
             border: none;
             background-color: $btn;
             @extend %flex-center;
             width: 30%;
-            height: 2vw;
-            font-size: 0.8vw;
+            height: 3rem;
+            font-size: 1rem;
             color: $text-clair;
             cursor: pointer;
             border-radius: 5px;
@@ -113,10 +120,15 @@
       #exit-login,
       #exit-addIngredient {
          position: absolute;
-         top: 0.8vw;
-         left: 1vw;
-         // width: 2vw;
-         height: 2vw;
+         // top: 0.8vw;
+         top: 15px;
+         // left: 1vw;
+         right: 15px;
+         font-weight: bold;
+         cursor: pointer;
+         width: 30px;
+         height: 30px;
+         // border: 1px solid red;
 
          .fa-arrow-left {
             cursor: pointer;
@@ -175,6 +187,22 @@
          p {
             font-size: 0.8vw;
          }
+      }
+   }
+}
+
+@media (max-width: 498px) {
+  #modal-page {
+   .modal-bloc {
+         border-radius: 0;
+      }
+  }
+}
+
+@media (max-height: 710px) {
+   #modal-page {
+      .modal-bloc {
+         
       }
    }
 }

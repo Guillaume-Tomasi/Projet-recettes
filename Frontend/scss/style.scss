@@ -8,20 +8,4 @@
 @import "./Pages/Nouvelle_recette";
 @import "./Pages/Recette_individuelle";
 @import "./Modale";
-
-// Header
-
-// header {
-//    @extend %header;
-//    .image-header {
-//       @extend %image-header;
-//    }
-//    #menu {
-//       @extend %flex-center;
-//       @extend %menu;
-//    }
-//    .title {
-//       @extend %title;
-//    }
-// }
-
+@import "./header";

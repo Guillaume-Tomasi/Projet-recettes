@@ -13,18 +13,58 @@
     <title>Kwisto | Accueil</title>
   </head>
   <body>
-    <header>
+    <header id="header">
       <div class="image-header">
         <img src="./images/Page accueil/header.jpg" alt="image de fond" />
       </div>
       <nav id="menu">
         <div id="logo">Logo</div>
-        <ul>
+        <ul class="nav-links">
           <li><a href="/Frontend/index.html">Accueil</a></li>
           <li><a href="/Frontend/ingredients.html">Ingrédients</a></li>
           <li><a href="/Frontend/recettes.html">Recettes</a></li>
           <!-- <li><a href="#">Courses</a></li> -->
         </ul>
+        <div class="header-burger">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+        </div>
+        <div class="mobile-menu">
+          <svg
+            class="quit-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18 18 6M6 6l12 12"
+            />
+          </svg>
+
+          <ul class="nav-links-mobile">
+            <li><a href="/Frontend/index.html">Accueil</a></li>
+            <li><a href="/Frontend/ingredients.html">Ingrédients</a></li>
+            <li><a href="/Frontend/recettes.html">Recettes</a></li>
+            <!-- <li><a href="#">Courses</a></li> -->
+          </ul>
+        </div>
       </nav>
       <div class="title">
         <h1>Kwisto</h1>
@@ -34,9 +74,11 @@
     <main>
       <section id="section-1">
         <h2>Découvrez nos recettes</h2>
-        <button id="prev" class="slider-btn">&#10096;</button>
-        <button id="next" class="slider-btn">&#10097;</button>
-        <div class="bloc-section-1"></div>
+        <div id="bloc-slider">
+          <button id="prev" class="slider-btn">&#10096;</button>
+          <div class="bloc-section-1"></div>
+          <button id="next" class="slider-btn">&#10097;</button>
+        </div>
       </section>
       <section id="section-2">
         <div id="bg-section-2">
@@ -150,6 +192,7 @@
       </div>
     </footer>
     <script src="./js/index.js"></script>
+    <script src="./js/header.js"></script>
     <script
       src="https://kit.fontawesome.com/8f6b4cabb0.js"
       crossorigin="anonymous"

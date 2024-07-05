@@ -14,21 +14,57 @@
   </head>
   <body>
     <header>
-      <div class="image-header">
-        <img src="./images/Page recettes/header.jpg" alt="image de fond" />
-      </div>
       <nav id="menu">
         <div id="logo">Logo</div>
-        <ul>
-          <li><a href="/Frontend/ingredients.html">Ingrédients</a></li>
+        <ul class="nav-links">
           <li><a href="/Frontend/index.html">Accueil</a></li>
+          <li><a href="/Frontend/ingredients.html">Ingrédients</a></li>
           <li><a href="/Frontend/recettes.html">Recettes</a></li>
           <!-- <li><a href="#">Courses</a></li> -->
         </ul>
+        <div class="header-burger">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+        </div>
+        <div class="mobile-menu">
+          <svg
+            class="quit-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18 18 6M6 6l12 12"
+            />
+          </svg>
+
+          <ul class="nav-links-mobile">
+            <li><a href="/Frontend/index.html">Accueil</a></li>
+            <li><a href="/Frontend/ingredients.html">Ingrédients</a></li>
+            <li><a href="/Frontend/recettes.html">Recettes</a></li>
+            <!-- <li><a href="#">Courses</a></li> -->
+          </ul>
+        </div>
       </nav>
       <div class="title">
-        <h1>Kwisto</h1>
-        <p>Créez vos recettes simplement</p>
+        <h1>Découvrez nos recettes</h1>
       </div>
     </header>
     <main id="ingredient-main">
@@ -94,6 +130,7 @@
       </div>
     </footer>
     <script src="./js/all-recipes-page.js"></script>
+    <script src="./js/header.js"></script>
     <script
       src="https://kit.fontawesome.com/8f6b4cabb0.js"
       crossorigin="anonymous"

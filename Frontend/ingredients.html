@@ -13,35 +13,64 @@
     <title>Kwisto | Ingrédients</title>
   </head>
   <body>
-    <header>
-      <div class="image-header">
-        <img src="./images/Page ingredients/header.jpg" alt="image de fond" />
-      </div>
+    <header id="header-ingredients">
       <nav id="menu">
         <div id="logo">Logo</div>
-        <ul>
-          <li><a href="/Frontend/ingredients.html">Ingrédients</a></li>
+        <ul class="nav-links">
           <li><a href="/Frontend/index.html">Accueil</a></li>
+          <li><a href="/Frontend/ingredients.html">Ingrédients</a></li>
           <li><a href="/Frontend/recettes.html">Recettes</a></li>
           <!-- <li><a href="#">Courses</a></li> -->
         </ul>
+        <div class="header-burger">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+        </div>
+        <div class="mobile-menu">
+          <svg
+            class="quit-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18 18 6M6 6l12 12"
+            />
+          </svg>
+
+          <ul class="nav-links-mobile">
+            <li><a href="/Frontend/index.html">Accueil</a></li>
+            <li><a href="/Frontend/ingredients.html">Ingrédients</a></li>
+            <li><a href="/Frontend/recettes.html">Recettes</a></li>
+            <!-- <li><a href="#">Courses</a></li> -->
+          </ul>
+        </div>
       </nav>
       <div class="title">
-        <h1>Kwisto</h1>
-        <p>Choisissez vos ingrédients</p>
+        <h1 class="title-ingredients">Découvrez nos ingrédients</h1>
       </div>
     </header>
     <main id="ingredient-main">
       <section id="section-1">
-        <h2>Découvrez nos ingrédients</h2>
         <div class="bloc-1">
-          <nav class="search">
-            <!-- <div class="filter">
-              <div class="img">
-                <i class="fa-solid fa-sliders"></i>
-              </div>
-              <button>Filtrer</button>
-            </div> -->
+          <div class="search">
             <div class="search-bar">
               <div class="img">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -55,44 +84,6 @@
             <div class="add">
               <button>Ajouter un ingrédient</button>
             </div>
-          </nav>
-          <div class="bloc-filters-active">
-            <!-- <div class="filter-active">
-              <p>Filtre 1</p>
-              <div class="delete-filter">
-                <i class="fa-regular fa-circle-xmark"></i>
-              </div>
-            </div>
-            <div class="filter-active">
-              <p>Filtre 1</p>
-              <div class="delete-filter">
-                <i class="fa-regular fa-circle-xmark"></i>
-              </div>
-            </div>
-            <div class="filter-active">
-              <p>Filtre orejfkjrfkj</p>
-              <div class="delete-filter">
-                <i class="fa-regular fa-circle-xmark"></i>
-              </div>
-            </div>
-            <div class="filter-active">
-              <p>Filtre 1</p>
-              <div class="delete-filter">
-                <i class="fa-regular fa-circle-xmark"></i>
-              </div>
-            </div>
-            <div class="filter-active">
-              <p>Filtre 1</p>
-              <div class="delete-filter">
-                <i class="fa-regular fa-circle-xmark"></i>
-              </div>
-            </div>
-            <div class="filter-active">
-              <p>Filtre 1</p>
-              <div class="delete-filter">
-                <i class="fa-regular fa-circle-xmark"></i>
-              </div>
-            </div> -->
           </div>
           <div id="card-ingredient-bloc"></div>
         </div>
@@ -128,6 +119,7 @@
     </footer>
     <!-- <script src="./js/index.js"></script> -->
     <script src="./js/ingredient-page.js"></script>
+    <script src="./js/header.js"></script>
     <script
       src="https://kit.fontawesome.com/8f6b4cabb0.js"
       crossorigin="anonymous"
