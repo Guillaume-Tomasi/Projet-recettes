@@ -50,55 +50,29 @@ searchInput.addEventListener('input', searchIngredients);
 
 
 let addedIngredient = `<div class="validateItem"><p>Ingrédient ajouté !</p></div>`;
-let addIngredientText = `<section id="modal-page">
-      <div class="modal-bloc">
-        <div class="title">Ajouter un ingrédient</div>
-        <div class="form">
-          <form>
-            <div class="input-div">
-              <label for="name">Nom :</label>
-              <input type="text" id="name" name="name" required />
-              <div id="name-errorMsg"></div>
-            </div>
-
-             <div class="input-div"> 
-              <label for="image">image:</label>
-              <input type="file" accept="image/*" id="add-photo-input" />
-              <div id="ingredient-img">
-              <div id="photo-ingredient">
-              <img
-                src="/Frontend/images/Page recettes/photo-1543339308-43e59d6b73a6.jpg"
-                alt=""
-              />
+let addIngredientText = `<form class="add-ingredient-form">
+              <div class="input-div">
+                <label for="name">Nom :</label>
+                <input type="text" id="name" name="name" required />
+                <div id="name-errorMsg"></div>
               </div>
-              <button type="button" id="submit-photo-btn">Ajouter</button>
+
+              <div class="input-div">
+                <label for="image">image:</label>
+                <input type="file" accept="image/*" id="add-photo-input" />
+                <div id="ingredient-img">
+                  <div id="photo-ingredient">
+                    <img
+                      src="/Frontend/images/Page recettes/photo-1543339308-43e59d6b73a6.jpg"
+                      alt=""
+                    />
+                  </div>
+                  <button type="button" id="submit-photo-btn">Ajouter</button>
+                </div>
               </div>
-              </div> 
 
-            
-
-            <input type="submit" value="Ajouter" class="addIngredientBtn" />
-          </form>
-        </div>
-        <div id="exit-addIngredient">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="size-6"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M6 18 18 6M6 6l12 12"
-            />
-          </svg>
-        </div>
-        <div id="errorMsg"></div>
-      </div>
-    </section>`;
+              <input type="submit" value="Ajouter" class="addIngredientBtn" />
+            </form>`;
 
 
 
@@ -168,11 +142,16 @@ const addNewIngredient = async (formData) => {
 
 
 
-const addIngredientLink = document.querySelector('.add');
+const addIngredientLink = document.querySelector('.add button');
 
 addIngredientLink.addEventListener('click', () => {
-   document.querySelector('header').insertAdjacentHTML("beforebegin", addIngredientText);
-   document.body.style.overflow = "hidden";
+   const addIngredientForm = document.querySelector('.add-ingredient-form');
+
+   if (addIngredientForm) {
+      return addIngredientForm.remove();
+
+   }
+   document.querySelector('.search').insertAdjacentHTML("beforeend", addIngredientText);
    const addBtn = document.querySelector('.addIngredientBtn');
 
 
@@ -218,12 +197,12 @@ addIngredientLink.addEventListener('click', () => {
    })
 
 
-   const exitAddIngredient = document.getElementById('exit-addIngredient');
+   // const exitAddIngredient = document.getElementById('exit-addIngredient');
 
-   exitAddIngredient.addEventListener('click', () => {
-      document.getElementById('modal-page').remove();
-      document.body.style.overflow = "visible";
-   });
+   // exitAddIngredient.addEventListener('click', () => {
+   //    document.getElementById('modal-page').remove();
+   //    document.body.style.overflow = "visible";
+   // });
 })
 
 

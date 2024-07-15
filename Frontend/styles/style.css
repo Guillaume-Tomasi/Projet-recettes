@@ -15,9 +15,7 @@ a {
   color: #F2E8CF;
 }
 
-#modal-page .modal-bloc .form .signupBtn,
-#modal-page .modal-bloc .form .loginBtn,
-#modal-page .modal-bloc .form .addIngredientBtn, #modal-page .modal-bloc, #add-recipe-main, #step-3 .step-3 .bloc-title, #step-2 .bloc-title, #step-1 .bloc-title, #section-2 .bloc-stats .bg-qty, #section-2, #section-1 .bloc-section-1 .bloc-card .bloc-recipe .card, #section-1 .bloc-section-1 .bloc-card, #section-1, #ingredient-main #section-1 .add button, #step-3 .step-3 .bloc-title button, #step-2 .bloc-title button, #step-1 .bloc-title button {
+#add-recipe-main, #ingredient-main #section-1 .search .add-ingredient-form .addIngredientBtn, #step-3 .step-3 .bloc-title, #step-2 .bloc-title, #step-1 .bloc-title, #section-2 .bloc-stats .bg-qty, #section-2, #section-1 .bloc-section-1 .bloc-card .bloc-recipe .card, #section-1 .bloc-section-1 .bloc-card, #section-1, #ingredient-main #section-1 .search .add button, #step-3 .step-3 .bloc-title button, #step-2 .bloc-title button, #step-1 .bloc-title button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,7 +25,7 @@ a {
   box-shadow: 0 0px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
-#ingredient-main #section-1 .add button, #step-3 .step-3 .bloc-title button, #step-2 .bloc-title button, #step-1 .bloc-title button {
+#ingredient-main #section-1 .search .add button, #step-3 .step-3 .bloc-title button, #step-2 .bloc-title button, #step-1 .bloc-title button {
   border: none;
   background-color: #BC3437;
   font-size: 1.3rem;
@@ -58,9 +56,11 @@ a {
 #header {
   height: 100vh;
   max-height: 100vh;
+  min-height: 576px;
 }
 #header .image-header {
   height: 100vh;
+  min-height: 576px;
 }
 #header .title {
   position: absolute;
@@ -79,6 +79,7 @@ a {
   text-align: center;
   position: relative;
   height: 100vh;
+  min-height: 576px;
   max-width: 100%;
   overflow-x: hidden;
 }
@@ -503,6 +504,14 @@ a {
     height: 6rem;
   }
 }
+@media (max-width: 400px) {
+  #step-1, #step-2 {
+    padding: 0;
+  }
+  #step-1 .bloc-title, #step-2 .bloc-title {
+    border-radius: 0;
+  }
+}
 #header-ingredients {
   position: relative;
   height: 300px;
@@ -540,16 +549,22 @@ a {
   padding: 0 50px 50px 50px;
 }
 #ingredient-main #section-1 .search {
-  display: flex;
-  flex-direction: row-reverse;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 10px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   width: 100%;
-  justify-content: space-between;
   padding: 30px 0;
   margin-bottom: 50px;
-  align-items: center;
+}
+#ingredient-main #section-1 .search .add button {
+  height: 3rem;
+  font-size: 1.1rem;
+  margin-right: 15px;
 }
 #ingredient-main #section-1 .search .search-bar {
+  justify-self: end;
   display: flex;
   align-items: center;
   width: 300px;
@@ -558,7 +573,6 @@ a {
   background: #fff;
   border-radius: 25px;
   padding-left: 5px;
-  justify-content: flex-start;
   overflow: hidden;
 }
 #ingredient-main #section-1 .search .search-bar .img {
@@ -583,10 +597,56 @@ a {
 #ingredient-main #section-1 .search .search-bar #search-item:focus {
   outline: none;
 }
-#ingredient-main #section-1 .add button {
-  height: 3rem;
+#ingredient-main #section-1 .search .add-ingredient-form {
+  display: grid;
+  grid-column: 1/3;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 50px;
+}
+#ingredient-main #section-1 .search .add-ingredient-form .input-div:nth-child(1) {
+  grid-column: 1/2;
+  justify-self: start;
+  margin-top: 20px;
+  width: 100%;
+  gap: 10px;
+}
+#ingredient-main #section-1 .search .add-ingredient-form .input-div:nth-child(1) label {
+  align-self: start;
   font-size: 1.1rem;
-  margin-right: 15px;
+}
+#ingredient-main #section-1 .search .add-ingredient-form .input-div:nth-child(1) #name {
+  border: none;
+  outline: none;
+  height: 2.5rem;
+  width: 100%;
+  border-radius: 8px;
+  text-align: start;
+  padding-left: 10px;
+  font-size: 1.1rem;
+}
+#ingredient-main #section-1 .search .add-ingredient-form .input-div:nth-child(2) {
+  grid-column: 1/2;
+  justify-self: center;
+  width: 100%;
+  gap: 10px;
+}
+#ingredient-main #section-1 .search .add-ingredient-form .input-div:nth-child(2) label {
+  align-self: start;
+  font-size: 1.1rem;
+}
+#ingredient-main #section-1 .search .add-ingredient-form .addIngredientBtn {
+  grid-column: 1/2;
+  justify-self: center;
+  border: none;
+  background-color: #BC3437;
+  width: 50%;
+  height: 3rem;
+  font-size: 1rem;
+  color: #F2E8CF;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
 }
 #ingredient-main #section-1 #card-ingredient-bloc {
   width: 100%;
@@ -645,11 +705,12 @@ a {
   background-color: white;
   border-radius: 12px;
   margin-top: 8px;
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   overflow: hidden;
   position: relative;
   display: flex;
+  justify-self: end;
   justify-content: center;
   align-items: center;
 }
@@ -686,26 +747,55 @@ a {
 
 @media (max-width: 768px) {
   #ingredient-main #section-1 .search {
-    flex-direction: column-reverse;
-    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    /* Les éléments sont inversés, la barre de recherche sera en bas */
+    align-items: center;
+    gap: 20px;
+  }
+  #ingredient-main #section-1 .add {
+    order: 2;
     align-items: center;
   }
-  #ingredient-main #section-1 .search .add button {
-    margin-bottom: 30px;
+  #ingredient-main #section-1 .add button {
     width: 100%;
+  }
+  #ingredient-main #section-1 .search-bar {
+    order: 1;
+    /* Met la barre de recherche en second */
+    margin-top: 20px;
+    /* Ajoute un espace au-dessus de la barre de recherche */
+  }
+  #ingredient-main #section-1 .search .add-ingredient-form {
+    order: 3;
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+  #ingredient-main #section-1 .search .add-ingredient-form .input-div:nth-child(1) {
+    display: grid;
+    width: 100%;
+  }
+  #ingredient-main #section-1 .search .add-ingredient-form .input-div:nth-child(2) {
+    display: grid;
+    justify-content: center;
   }
 }
 @media (max-width: 576px) {
   #ingredient-main #section-1 .bloc-1 {
     padding: 0 0 50px 0;
+    max-width: 100%;
+    width: 100%;
+  }
+  #ingredient-main #section-1 .bloc-1 .search .add-ingredient-form .input-div:nth-child(1) #name {
+    width: 50%;
+    min-width: 300px;
+    justify-self: center;
   }
 }
 @media (max-width: 400px) {
   #ingredient-main #section-1 .search {
     overflow: hidden;
-  }
-  #ingredient-main #section-1 .search .search-bar {
-    border-radius: 0;
   }
 }
 #card-recipe-bloc {
@@ -1579,168 +1669,6 @@ body {
      object-fit: cover;
 }
 
-#modal-page {
-  width: 100vw;
-  height: 100%;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 50;
-}
-#modal-page .modal-bloc {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #F2E8CF;
-  width: 500px;
-  max-width: 100%;
-  height: 710px;
-  padding: 25px 0;
-  border-radius: 12px;
-}
-#modal-page .modal-bloc .title {
-  font-size: 1.5rem;
-  color: #201E1F;
-  font-weight: bold;
-  padding-bottom: 20px;
-  text-decoration: underline;
-}
-#modal-page .modal-bloc .form {
-  display: flex;
-  width: 90%;
-  height: 90%;
-}
-#modal-page .modal-bloc .form form {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-#modal-page .modal-bloc .form form .input-div {
-  width: 80%;
-  text-align: start;
-  margin: 12px 0;
-}
-#modal-page .modal-bloc .form form .input-div label {
-  width: 100%;
-  font-size: 1.1rem;
-  font-weight: bold;
-  text-align: start;
-  margin-bottom: 8px;
-  color: #201E1F;
-}
-#modal-page .modal-bloc .form form .input-div input {
-  width: 100%;
-  height: 3rem;
-  padding: 20px;
-  text-align: start;
-  font-size: 1.1rem;
-  border: none;
-  margin: 8px 0;
-  border-radius: 12px;
-}
-#modal-page .modal-bloc .form form .input-div input:focus {
-  box-shadow: 0 0 4px 0 #58703e;
-  outline: none;
-}
-#modal-page .modal-bloc .form form .input-div #pseudo-errorMsg,
-#modal-page .modal-bloc .form form .input-div #email-errorMsg,
-#modal-page .modal-bloc .form form .input-div #password-errorMsg {
-  text-align: center;
-  color: #BC4749;
-  font-size: 1.1rem;
-}
-#modal-page .modal-bloc .form .signupBtn,
-#modal-page .modal-bloc .form .loginBtn,
-#modal-page .modal-bloc .form .addIngredientBtn {
-  margin-top: 30px;
-  border: none;
-  background-color: #BC3437;
-  width: 30%;
-  height: 3rem;
-  font-size: 1rem;
-  color: #F2E8CF;
-  cursor: pointer;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
-}
-#modal-page .modal-bloc #exit-signup,
-#modal-page .modal-bloc #exit-login,
-#modal-page .modal-bloc #exit-addIngredient {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  font-weight: bold;
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-}
-#modal-page .modal-bloc #exit-signup .fa-arrow-left,
-#modal-page .modal-bloc #exit-login .fa-arrow-left,
-#modal-page .modal-bloc #exit-addIngredient .fa-arrow-left {
-  cursor: pointer;
-  color: #201E1F;
-  width: 100%;
-  height: 100%;
-}
-#modal-page .modal-bloc #errorMsg {
-  padding-top: 1vw;
-  text-align: center;
-  font-size: 0.9vw;
-  color: #BC4749;
-}
-
-.validateItem {
-  color: #58703e;
-  font-size: 1.2vw;
-}
-
-.ingredient-list-bloc {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  row-gap: 1vw;
-  justify-items: center;
-  width: 85%;
-}
-.ingredient-list-bloc .ingredient-list-card {
-  width: 7vw;
-  margin-bottom: 0.8vw;
-}
-.ingredient-list-bloc .ingredient-list-card .img-ingredient-list {
-  width: 100%;
-  height: 5vw;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-  margin-bottom: 0.5vw;
-}
-.ingredient-list-bloc .ingredient-list-card .img-ingredient-list img {
-  -o-object-fit: cover;
-     object-fit: cover;
-  width: 100%;
-  height: 100%;
-}
-.ingredient-list-bloc .ingredient-list-card .ing-body {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.ingredient-list-bloc .ingredient-list-card .ing-body p {
-  font-size: 0.8vw;
-}
-
-@media (max-width: 498px) {
-  #modal-page .modal-bloc {
-    border-radius: 0;
-  }
-}
 header {
   top: 0;
   width: 100%;

@@ -3,8 +3,10 @@
 #header {
    height: 100vh;
    max-height: 100vh;
+   min-height: 576px;
    .image-header {
       height: 100vh;
+      min-height: 576px;
    }
 
       .title {
@@ -34,6 +36,7 @@
    // padding: 6rem 0 12rem 0;
    position: relative;
    height: 100vh;
+   min-height: 576px;
    max-width: 100%;
    overflow-x: hidden;
 
@@ -630,3 +633,12 @@
    }
 }
 
+@media (max-width: 400px) {
+   #step-1, #step-2 {
+         padding: 0;
+
+         .bloc-title {
+            border-radius: 0;
+         }
+      }
+}
