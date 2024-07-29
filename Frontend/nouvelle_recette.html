@@ -13,26 +13,61 @@
     <title>Kwisto | Ajouter une recette</title>
   </head>
   <body>
-    <!-- <header>
-      <div class="image-header">
-        <img src="./images/Page ingredients/header.jpg" alt="image de fond" />
-      </div>
+    <header id="header-ingredients">
       <nav id="menu">
-        <ul>
+        <div id="logo">Logo</div>
+        <ul class="nav-links">
           <li><a href="/Frontend/index.html">Accueil</a></li>
           <li><a href="/Frontend/ingredients.html">Ingrédients</a></li>
           <li><a href="/Frontend/recettes.html">Recettes</a></li>
-          <li><a href="#">Courses</a></li>
+          <!-- <li><a href="#">Courses</a></li> -->
         </ul>
+        <div class="header-burger">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+        </div>
+        <div class="mobile-menu">
+          <svg
+            class="quit-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18 18 6M6 6l12 12"
+            />
+          </svg>
+
+          <ul class="nav-links-mobile">
+            <li><a href="/Frontend/index.html">Accueil</a></li>
+            <li><a href="/Frontend/ingredients.html">Ingrédients</a></li>
+            <li><a href="/Frontend/recettes.html">Recettes</a></li>
+            <!-- <li><a href="#">Courses</a></li> -->
+          </ul>
+        </div>
       </nav>
       <div class="title">
-        <h1>Kwisto</h1>
-        <p>Choisissez vos ingrédients</p>
+        <h1 class="title-ingredients">Nouvelle recette</h1>
       </div>
-    </header> -->
-
+    </header>
     <main id="add-recipe-main">
-      <h1>Nouvelle recette</h1>
       <div id="bloc-add-ingredient-page">
         <div id="add-ingredient-page">
           <div id="add-ingredient-header">
@@ -50,62 +85,64 @@
             </div>
           </div>
 
-          <div class="bloc-new-ingredient">
-            <div class="add-name-ingredient">
-              <label for="ingredient">Ingrédient</label>
-              <input
-                type="text"
-                name="ingredient"
-                id="ingredient"
-                placeholder="Sel, tomates..."
-                required
-              />
-              <ul id="suggestions"></ul>
-            </div>
-            <div class="add-qty-ingredient">
-              <label for="qty">Quantité</label>
-              <input
-                type="number"
-                name="quantity"
-                id="qty"
-                inputmode="decimal"
-                min="0.1"
-                step="any"
-                max="1000"
-                placeholder="100"
-                required
-              />
-            </div>
-
-            <div class="add-unity-ingredient">
-              <label for="unity">Unité</label>
-              <select name="unity" id="unity" required>
-                <option value="" selected>Choisir</option>
-                <option value="g">g</option>
-                <option value="mg">mg</option>
-                <option value="kg">kg</option>
-                <option value="cl">cl</option>
-                <option value="ml">ml</option>
-                <option value="L">L</option>
-                <option value="Cuillère à café">Cuillère à café</option>
-                <option value="Cuillère à soupe">Cuillère à soupe</option>
-                <option value="Pincée">Pincée</option>
-              </select>
-            </div>
-            <button type="button" class="add-new-ingredient">
-              <div class="add-new-ingredient-icon">
-                <svg
-                  class="add-icon"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
-                >
-                  <path
-                    d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"
-                  />
-                </svg>
+          <div id="ingredients-list">
+            <div class="bloc-new-ingredient">
+              <div class="add-name-ingredient">
+                <label for="ingredient">Ingrédient</label>
+                <input
+                  type="text"
+                  name="ingredient"
+                  id="ingredient"
+                  placeholder="Sel, tomates..."
+                  required
+                />
+                <ul id="suggestions"></ul>
               </div>
-              <span>Ajouter</span>
-            </button>
+              <div class="add-qty-ingredient">
+                <label for="qty">Quantité</label>
+                <input
+                  type="number"
+                  name="quantity"
+                  id="qty"
+                  inputmode="decimal"
+                  min="0.1"
+                  step="any"
+                  max="1000"
+                  placeholder="100"
+                  required
+                />
+              </div>
+
+              <div class="add-unity-ingredient">
+                <label for="unity">Unité</label>
+                <select name="unity" id="unity" required>
+                  <option value="" selected>Choisir</option>
+                  <option value="g">g</option>
+                  <option value="mg">mg</option>
+                  <option value="kg">kg</option>
+                  <option value="cl">cl</option>
+                  <option value="ml">ml</option>
+                  <option value="L">L</option>
+                  <option value="Cuillère à café">Cuillère à café</option>
+                  <option value="Cuillère à soupe">Cuillère à soupe</option>
+                  <option value="Pincée">Pincée</option>
+                </select>
+              </div>
+              <button type="button" class="add-new-ingredient">
+                <div class="add-new-ingredient-icon">
+                  <svg
+                    class="add-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                  >
+                    <path
+                      d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"
+                    />
+                  </svg>
+                </div>
+                <span>Ajouter</span>
+              </button>
+            </div>
           </div>
           <div class="submit-btn">
             <button type="button" id="submit-new-ingredients">Valider</button>
@@ -129,6 +166,7 @@
               </svg>
             </div>
           </div>
+          <div id="steps-list"></div>
           <div class="submit-btn" id="submit-new-step">
             <button type="button" id="submit-new-step-btn">Valider</button>
             <div class="step-err-message"></div>
@@ -226,14 +264,43 @@
           </div>
         </section>
 
-        <div class="submit-btn" id="submit-recipe">
+        <div id="submit-recipe">
           <button type="button" form="form-recipe" id="submit-recipe-btn">
             Enregistrer
           </button>
         </div>
       </form>
     </main>
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-about">
+          <h2>À propos de Kwisto</h2>
+          <p>
+            Kwisto est une application de cuisine qui vous aide à organiser
+            facilement vos repas et à découvrir de nouvelles recettes.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h2>Liens rapides</h2>
+          <ul>
+            <li><a href="./index.html">Accueil</a></li>
+            <li><a href="./ingredients.html">Ingrédients</a></li>
+            <li><a href="./recettes.html">Recettes</a></li>
+            <!-- <li><a href="#">Courses</a></li> -->
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h2>Contactez-nous</h2>
+          <p>Email: contact@kwisto.123</p>
+          <p>Téléphone: +33 1 23 45 67 89</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Kwisto. Tous droits réservés.</p>
+      </div>
+    </footer>
     <script src="./js/new-recipe-page.js"></script>
+    <script src="./js/header.js"></script>
     <script
       src="https://kit.fontawesome.com/8f6b4cabb0.js"
       crossorigin="anonymous"

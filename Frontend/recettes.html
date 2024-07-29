@@ -13,7 +13,7 @@
     <title>Kwisto | Recettes</title>
   </head>
   <body>
-    <header>
+    <header id="header-recipe">
       <nav id="menu">
         <div id="logo">Logo</div>
         <ul class="nav-links">
@@ -64,39 +64,27 @@
         </div>
       </nav>
       <div class="title">
-        <h1>Découvrez nos recettes</h1>
+        <h1 class="title-recipe">Découvrez nos recettes</h1>
       </div>
     </header>
-    <main id="ingredient-main">
+    <main id="recipe-main">
       <section id="section-1">
-        <h2>Découvrez nos recettes</h2>
         <div class="bloc-1">
-          <nav class="search">
-            <!-- <div class="filter">
-              <div class="img">
-                <img
-                  src="/Frontend/images/icons/sliders-solid.svg"
-                  alt="Icône filtres"
-                />
-              </div>
-              <button>Filtrer</button>
-            </div> -->
+          <div class="search">
+            <div class="add">
+              <button>Ajouter une recette</button>
+            </div>
             <div class="search-bar">
               <div class="img">
-                <img
-                  src="/Frontend/images/icons/magnifying-glass-solid.svg"
-                  alt="Icône recherche"
-                />
+                <i class="fa-solid fa-magnifying-glass"></i>
               </div>
-              <input type="text" id="search-item" placeholder="Rechercher" />
+              <input
+                type="text"
+                id="search-item"
+                placeholder="Rechercher une recette"
+              />
             </div>
-            <div class="add">
-              <a href="/Frontend/nouvelle_recette.html">
-                <button>Ajouter une recette</button>
-              </a>
-            </div>
-          </nav>
-          <div class="bloc-filters-active"></div>
+          </div>
           <div id="card-recipe-bloc"></div>
         </div>
       </section>

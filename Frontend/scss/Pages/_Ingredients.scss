@@ -2,9 +2,7 @@
 #header-ingredients {
    position: relative;
    height: 300px;
-   // border: 1px solid red;
    display: flex;
-   // margin-bottom: 50px;
    
 
 .title {
@@ -31,7 +29,6 @@
 
 .bloc-1 {
    background-color: $bg-clair;
-   padding-bottom: 3vw;
    width: 75%;
    max-width: 1000px;
    display: flex;
@@ -184,7 +181,6 @@
 #card-ingredient-bloc {
    width: 100%;
    display: grid;
-   // grid-template-columns: repeat(5, 1fr);
    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
    justify-items: center;
    row-gap: 1.5rem;
@@ -296,21 +292,9 @@
 @media (max-width: 768px) {
 
    #ingredient-main #section-1 {
-      // .search {
-      //    flex-direction: column-reverse;
-      //    justify-content: space-between;
-      //    align-items: center;
-
-      //    .add button {
-      //       margin-bottom: 30px;
-      //       width: 100%;
-
-      //    }
-      // }
              .search {
                display: flex;
                   flex-direction: column;
-                  /* Les éléments sont inversés, la barre de recherche sera en bas */
                   align-items: center;
                   gap: 20px;
              }
@@ -325,9 +309,7 @@
       
              .search-bar {
                 order: 1;
-                /* Met la barre de recherche en second */
                 margin-top: 20px;
-                /* Ajoute un espace au-dessus de la barre de recherche */
              }
                         .search .add-ingredient-form {
                             order: 3;
@@ -362,16 +344,5 @@
                justify-self: center;         
             }
       }
-      }
-}
-
-@media (max-width: 400px) {
-   #ingredient-main #section-1 {
-   
-         .search {
-            overflow: hidden;
-           
-               
-         }
       }
 }

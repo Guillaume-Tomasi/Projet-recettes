@@ -2,7 +2,7 @@
 const blocAddIngredients = document.querySelector('.bloc-add-ingredients');
 const blocAddIngredientPage = document.querySelector('#bloc-add-ingredient-page');
 const addIngredientPage = document.querySelector('#add-ingredient-page');
-const quitIcon = document.querySelector('.quit-icon');
+const quitIcon = document.querySelector('.quit-icon-img');
 const inputNameIngredient = document.querySelector('#ingredient');
 const suggestionsContainer = document.querySelector('#suggestions');
 const qtyInput = document.querySelector('#qty');
@@ -11,6 +11,7 @@ const addIngredientBtn = document.querySelector('.add-new-ingredient');
 const form = document.querySelector('.bloc-new-ingredient');
 const submitNewIngredients = document.getElementById('submit-new-ingredients');
 const blocIngredients = document.getElementById('bloc-added-ingredients');
+const stepsList = document.getElementById('steps-list');
 
 
 
@@ -671,7 +672,7 @@ blocAddSteps.addEventListener('click', () => {
 
    document.querySelector('#add-step-header .quit-icon').addEventListener('click', closeAddStepPage);
 
-   submitNewStepBtn.insertAdjacentHTML('beforebegin', blocNewStepText);
+   stepsList.insertAdjacentHTML('beforeend', blocNewStepText);
    updateSteps();
    numberOfSteps();
 
@@ -819,7 +820,7 @@ const verifForm = async () => {
 
       // Verification type recette
       if (!typeInput) {
-         document.querySelector('#bloc-type > .err-message').innerHTML = 'veuillez selectionner le type de recette';
+         document.querySelector('#bloc-type > .err-message').innerHTML = 'Veuillez selectionner le type de recette';
       }
 
       // Verification ingredients

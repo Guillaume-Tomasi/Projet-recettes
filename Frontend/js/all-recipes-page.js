@@ -33,6 +33,12 @@ const getRecipes = async () => {
 getRecipes();
 
 
+const newRecipeLink = document.querySelector('.add button');
+
+newRecipeLink.addEventListener('click', () => {
+   window.location = './nouvelle_recette.html';
+})
+
 const searchRecipes = () => {
    const searchValue = searchInput.value.toLowerCase();
    const cards = document.querySelectorAll('.card-recipe-link');
