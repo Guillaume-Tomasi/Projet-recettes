@@ -19,11 +19,9 @@
    }
 }
 
-
 #recipe-main #section-1 {
    height: auto;
    margin: 80px 0;
-
 
    .bloc-1 {
       background-color: $bg-clair;
@@ -40,26 +38,22 @@
       padding: 0 50px 50px 50px;
    }
 
-
-   // Nav
-
    .search {
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: center;
       gap: 10px;
       border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-      // border: 1px solid red;
       width: 100%;
       padding: 30px 0;
       margin-bottom: 50px;
 
       .add button {
-            height: 3rem;
-            font-size: 1.1rem;
-            margin-right: 15px;
-            @extend %largebutton;
-         }
+         height: 3rem;
+         font-size: 1.1rem;
+         margin-right: 15px;
+         @extend %largebutton;
+      }
 
       .search-bar {
          justify-self: end;
@@ -109,50 +103,48 @@
    width: 100%;
    display: grid;
    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      justify-items: center;
-      row-gap: 1.4rem;
-.card-recipe {
-   position: relative;
-   display: flex;
-   flex-direction: column;
-   border-radius: 5px;
-   border: 1px solid rgba(0, 0, 0, 0.2);
-   width: 280px;
-   height: 300px;
-   overflow: hidden;
+   justify-items: center;
+   row-gap: 1.4rem;
+   
+   .card-recipe {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      border-radius: 5px;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      width: 280px;
+      height: 300px;
+      overflow: hidden;
 
-   .card-recipe-img {
-      width: 100%;
-      height: 100%;
-
-      img {
+      .card-recipe-img {
          width: 100%;
          height: 100%;
-         object-fit: cover;
 
+         img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+         }
       }
-   }
 
-   .card-recipe-body {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      background: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: start;
-      text-align: left;
-      color: $text-sombre;
-      padding: 0.8rem;
-      font-size: 1.3rem;
+      .card-recipe-body {
+         position: absolute;
+         bottom: 0;
+         width: 100%;
+         background: #fff;
+         display: flex;
+         align-items: center;
+         justify-content: start;
+         text-align: left;
+         color: $text-sombre;
+         padding: 0.8rem;
+         font-size: 1.3rem;
       }
    }
 }
 
 @media (max-width: 768px) {
-
    #recipe-main #section-1 {
-
       .search {
          display: flex;
          flex-direction: column;

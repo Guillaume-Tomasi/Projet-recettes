@@ -7,8 +7,7 @@ window.addEventListener('scroll', () => {
    } else {
       menu.classList.remove('scrolled');
    }
-
-})
+});
 
 const burgerMenu = document.querySelector('.header-burger');
 const quitIconMenu = document.querySelector('.quit-icon');
@@ -39,11 +38,8 @@ document.addEventListener('click', (e) => {
    if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && e.target !== mobileMenu && e.target !== burgerMenu) {
       const clickEvent = new Event('click');
       quitIconMenu.dispatchEvent(clickEvent);
-      // console.log('ITSOKER');
    }
 });
 
 window.addEventListener('resize', toggleBurgerMenu);
-
-
 toggleBurgerMenu();

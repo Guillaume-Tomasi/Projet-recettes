@@ -1,31 +1,27 @@
 // Header
-
 #header {
    height: 100vh;
    max-height: 100vh;
    min-height: 576px;
+
    .image-header {
       height: 100vh;
       min-height: 576px;
    }
 
-      .title {
-         // margin-top: 220px;
-         position: absolute;
-         top: 22rem;
-         left: 50%;
-         transform: translate(-50%, -50%);
-         // margin-top: 17.5rem;
-         font-size: 3rem;
-         text-align: center;
-      }
+   .title {
+      position: absolute;
+      top: 22rem;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3rem;
+      text-align: center;
+   }
 }
-
 
 // Main
 
 // Section 1
-
 #section-1 {
    background-color: $bg-neutre;
    @extend %flex-center;
@@ -33,7 +29,6 @@
    justify-content: space-evenly;
    align-items: center;
    text-align: center;
-   // padding: 6rem 0 12rem 0;
    position: relative;
    height: 100vh;
    min-height: 576px;
@@ -41,22 +36,19 @@
    overflow-x: hidden;
 
    h2 {
-      // padding-bottom: 6rem;
-      // position: absolute;
-      // top: 10.6rem;
       color: $text-clair;
       font-size: 2.5rem;
    }
-#bloc-slider {
-   width: 100%;
-   overflow-x: hidden;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   // padding: 0 2%;   
-}
+
+   #bloc-slider {
+      width: 100%;
+      overflow-x: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+
    .slider-btn {
-     
       margin: 0 2%;
       border: none;
       background: none;
@@ -65,34 +57,27 @@
       font-size: 8rem;
       cursor: pointer;
       z-index: 2;
+
       &:hover {
-         text-shadow:
-               1px 1px 2px rgba(0, 0, 0, 0.7),
-               -1px -1px 2px rgba(0, 0, 0, 0.7),
-               1px -1px 2px rgba(0, 0, 0, 0.7),
-               -1px 1px 2px rgba(0, 0, 0, 0.7);
+         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7),
+            -1px -1px 2px rgba(0, 0, 0, 0.7),
+            1px -1px 2px rgba(0, 0, 0, 0.7),
+            -1px 1px 2px rgba(0, 0, 0, 0.7);
       }
    }
-   
+
    .bloc-section-1 {
       overflow-x: hidden;
-      // top: 50%;
-      // transform: translateY(-50%);
       width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      // margin: 0 30px;
 
-      
       .bloc-card {
          @extend %flex-center;
          flex-direction: column;
-         
-         
 
          .bloc-recipe {
-            
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -109,10 +94,10 @@
                overflow: hidden;
                transition: 0.1s ease-in-out;
                @extend %boxshadow;
+
                &:hover {
-                     box-shadow:  0 0 4px $bg-clair;
-                  }
-               
+                  box-shadow: 0 0 4px $bg-clair;
+               }
 
                .card-img {
                   width: 100%;
@@ -131,36 +116,26 @@
                   bottom: 0;
                   width: 100%;
                   padding: 1rem;
-                  // backdrop-filter: blur(1px);
                   line-height: 1;
 
                   p {
                      color: #fff;
                      font-weight: bold;
-                     // font-size: calc(5px + 0.8vw);
                      font-size: 1.5rem;
                      text-shadow: 1px 1px 4px $text-sombre;
-
                   }
                }
             }
          }
-
-         // button {
-         //    margin-top: 2rem;
-         //    @extend %smallbutton;
-         // }
       }
    }
 }
 
-// section 2
-
+// Section 2
 #section-2 {
    position: relative;
    overflow: hidden;
    @extend %flex-center;
-   // height: 22vw;
    height: 25rem;
    width: 100%;
 
@@ -173,7 +148,6 @@
       img {
          width: 100%;
          height: 100%;
-         // position: fixed;
          object-fit: cover;
          top: 0;
          z-index: -5;
@@ -185,20 +159,21 @@
       position: absolute;
       display: flex;
       justify-content: space-around;
-      // width: 75%;
       width: 77rem;
       max-width: 100%;
       color: $text-clair;
       height: 30%;
 
-      #bloc-qty-ingredients, #bloc-qty-recipes, #bloc-qty-users {
+      #bloc-qty-ingredients,
+      #bloc-qty-recipes,
+      #bloc-qty-users {
          display: flex;
          justify-content: space-evenly;
          align-items: center;
          flex-direction: column;
          height: 100%;
       }
-      
+
       .bg-qty {
          background-color: rgba(0, 0, 0, 0.6);
          width: 8rem;
@@ -209,7 +184,6 @@
          @extend %boxshadow;
 
          p {
-            // font-size: calc(5px + 1.2vw);
             font-size: 1.5rem;
             font-weight: bold;
          }
@@ -221,21 +195,18 @@
    }
 }
 
-
-// section 3 - etape 1
-
+// Section 3 - étape 1
 #step-1 {
    background-color: $bg-sombre;
    padding: 6rem 2rem;
    display: flex;
    justify-content: center;
    align-items: center;
-   
+
    #bloc-step-1 {
       position: relative;
       width: 77rem;
       height: 600px;
-      // border: 1px solid red;
       display: flex;
       justify-content: center;
       align-items: flex-end;
@@ -262,17 +233,10 @@
    }
 
    .step-1 {
-      // display: flex;
-      // border: 1px solid blue;
-      // justify-content: center;
-      // align-items: center;
       width: 65%;
-      
-    
    }
-   
+
    .bloc-title {
-    
       @extend %flex-center;
       flex-direction: column;
       background-color: $bg-clair;
@@ -296,35 +260,34 @@
    }
 }
 
-// section 4 - étape 2 
-
+// Section 4 - étape 2 
 #step-2 {
-      padding: 6rem 2rem;
+   padding: 6rem 2rem;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   #bloc-step-2 {
+      position: relative;
+      width: 77rem;
+      height: 600px;
       display: flex;
       justify-content: center;
-      align-items: center;
-   #bloc-step-2 {
-         position: relative;
-         width: 77rem;
-         height: 600px;
-         display: flex;
-         justify-content: center;
-         align-items: flex-end;
-      }
+      align-items: flex-end;
+   }
 
-      .img-deco {
-         position: absolute;
-         overflow: hidden;
-         top: 0;
-         right: 0;
-         z-index: 2;
-         width: 22rem;
-         min-width: 22rem;
-         height: 22rem;
-         min-height: 22rem;
-         border-radius: 50%;
-         @extend %boxshadow;
-         // border: 1px solid red;
+   .img-deco {
+      position: absolute;
+      overflow: hidden;
+      top: 0;
+      right: 0;
+      z-index: 2;
+      width: 22rem;
+      min-width: 22rem;
+      height: 22rem;
+      min-height: 22rem;
+      border-radius: 50%;
+      @extend %boxshadow;
 
       img {
          width: 100%;
@@ -334,59 +297,35 @@
    }
 
    .step-2 {
-      
-      // display: flex;
-      // position: absolute;
-      // // left: 0;
-      // bottom: 0;
-      // flex-direction: column;
-      // justify-content: space-between;
-      // align-items: center;
       width: 65%;
-      // height: 100%;
-      // padding: 5vw 5vw 5vw 0;
-
-      // p {
-      // color: $text-clair;
-      //    font-size: 4rem;
-      //    // margin-right: 5vw;
-      //    position: absolute;
-      //    top: -8rem;
-      // }
    }
 
    .bloc-title {
       @extend %flex-center;
-         flex-direction: column;
-         background-color: $bg-clair;
-         width: 100%;
-         height: 25rem;
-         text-align: center;
-         justify-content: space-evenly;
-         border-radius: 100px;
-         padding: 10px;
+      flex-direction: column;
+      background-color: $bg-clair;
+      width: 100%;
+      height: 25rem;
+      text-align: center;
+      justify-content: space-evenly;
+      border-radius: 100px;
+      padding: 10px;
 
       h2 {
-         // position: absolute;
          color: $text-sombre;
          padding-top: 1rem;
-         // left: 0;
-         // top: 5.6rem;
          font-size: 1.9rem;
          max-width: 40rem;
-         
       }
 
       button {
-         // position: absolute;
-         bottom: 5rem;
          @extend %largebutton;
+         bottom: 5rem;
       }
    }
 }
 
-// Section 5 - etape 3
-
+// Section 5 - étape 3
 #step-3 {
    position: relative;
    height: 42vw;
@@ -486,69 +425,40 @@
 
 .footer ul li a:hover {
    color: $btn;
-   /* Couleur de survol */
-}
-
-.footer-bottom {
-   text-align: center;
-   margin-top: 1rem;
-   border-top: 1px solid $bg-clair;
-   padding-top: 2rem;
 }
 
 // Media queries 992px-1200px
 @media (min-width: 992px) and (max-width: 1200px) {
-
-#section-1 {
-
-      .bloc-section-1 {
-         width: 82%;
-      }
+   #section-1 .bloc-section-1 {
+      width: 82%;
    }
 
-   #step-1 #bloc-step-1 {
-         align-items: center;
-         justify-content: space-evenly;
-         .img-deco {
-            position: relative;
-            margin-right: 5px;
+   #step-1 #bloc-step-1,
+   #step-2 #bloc-step-2 {
+      align-items: center;
+      justify-content: space-evenly;
 
-         }
-      }
-      #step-2 #bloc-step-2 {
-         align-items: center;
-         justify-content: space-evenly;
-         flex-direction: row-reverse;
-         .img-deco {
-            position: relative;
-            margin-left: 5px;
-         }
+      .img-deco {
+         position: relative;
+         margin: 0 5px;
       }
    }
+}
 
 // Media queries 768px-992px
 @media (max-width: 991.98px) {
 
-   #step-1 #bloc-step-1 {
+   #step-1 #bloc-step-1,
+   #step-2 #bloc-step-2 {
       width: 100vw;
       align-items: center;
       justify-content: center;
-      
-      .img-deco {
-         display: none;
-      }
-      .step-1 {
-         width: 100%;
-      }
-   }
 
-   #step-2 #bloc-step-2 {
-      align-items: center;
-      justify-content: center;
-      
       .img-deco {
          display: none;
       }
+
+      .step-1,
       .step-2 {
          width: 100%;
       }
@@ -557,28 +467,14 @@
 
 // Media queries 576px-768px
 @media (max-width: 767.98px) {
-
-//   header #menu .nav-links {
-//       display: none;
-//    }
-
-//    header #menu .header-burger {
-//       display: block;
-      
-//    }
-
-  #section-1 {
-   .bloc-section-1 {
+   #section-1 .bloc-section-1 {
       max-width: 55%;
 
       .card {
-         // width: 12rem;
-            // height: 24rem;
-            max-height: 22rem;
-            max-width: 18rem;
+         max-height: 22rem;
+         max-width: 18rem;
       }
    }
-  }
 
    .footer-container {
       flex-direction: column;
@@ -595,50 +491,39 @@
 
 // Media queries 375px-576px
 @media (max-width: 576px) {
-#section-1 {
-   #bloc-slider {
-      #prev, #next {
-         display: none;
-      }
-      .bloc-section-1 {
-         justify-content: flex-start;
-               // width: 100%;
-               min-width: 100%;
-      
-               .card {
-                  // width: 12rem;
-                  margin: 0 15px;
-                  // height: 24rem;
-               }
-            }
-   }
-   
+
+   #section-1 #bloc-slider #prev,
+   #next {
+      display: none;
    }
 
-   #section-2 {
-      .bloc-stats {
-         
-         #bloc-qty-ingredients,
-         #bloc-qty-recipes,
-         #bloc-qty-users {
-            .bg-qty {
-               min-width: 6rem;
-               min-height: 6rem;
-               width: 6rem;
-               height: 6rem;
-                  }
-               }
-      
-            }
+   #section-1 .bloc-section-1 {
+      justify-content: flex-start;
+      min-width: 100%;
+
+      .card {
+         margin: 0 15px;
+      }
+   }
+
+   #section-2 .bloc-stats #bloc-qty-ingredients,
+   #bloc-qty-recipes,
+   #bloc-qty-users .bg-qty {
+      min-width: 6rem;
+      min-height: 6rem;
+      width: 6rem;
+      height: 6rem;
    }
 }
 
 @media (max-width: 400px) {
-   #step-1, #step-2 {
-         padding: 0;
 
-         .bloc-title {
-            border-radius: 0;
-         }
+   #step-1,
+   #step-2 {
+      padding: 0;
+
+      .bloc-title {
+         border-radius: 0;
       }
+   }
 }

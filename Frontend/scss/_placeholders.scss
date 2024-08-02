@@ -1,7 +1,7 @@
 %flex-center {
    display: flex;
-      justify-content: center;
-      align-items: center;
+   justify-content: center;
+   align-items: center;
 }
 
 %boxshadow {
@@ -9,7 +9,6 @@
 }
 
 %smallbutton {
-   // margin-top: 2vw;
    border: none;
    background-color: $btn;
    @extend %flex-center;
@@ -22,7 +21,6 @@
 }
 
 %largebutton {
-   // margin-top: 2vw;
    border: none;
    background-color: $btn;
    @extend %flex-center;
@@ -33,44 +31,3 @@
    padding: 1rem 1rem;
    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
 }
-
-// header
-
-// %header {
-//    overflow: hidden;
-//       position: relative;
-//       color: $text-clair;
-//       max-height: max-content;
-//       height: 57vw;
-//       max-height: 100vh;
-// }
-
-// %image-header {
-//    position: absolute;
-//       top: 0;
-//       z-index: -1;
-//       width: 100vw;  
-//       img {
-//          width: 100%;
-//          height: 57vw;
-//          max-height: 100vh;
-//       }
-// }
-
-// %menu {
-//    padding: 1% 0;  
-//       ul {
-//          display: flex;
-//          justify-content: space-evenly;
-//          width: 50%;  
-//          li {
-//             font-size: 1.2vw;
-//          }
-//       }
-// }
-
-// %title {
-//    margin-top: 8%;
-//    font-size: 2.5vw;
-//    text-align: center;
-// }
