@@ -2017,13 +2017,14 @@ header #menu {
 }
 header #menu #logo {
   position: absolute;
-  top: 1.9rem;
+  top: 2rem;
   left: 50%;
+  width: 3.9rem;
+  height: 3.9rem;
   transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100px;
   font-size: 3rem;
   transition: 0.4s ease-in-out;
 }
