@@ -27,3 +27,9 @@ exports.getAllIngredients = (req, res, next) => {
       .then(ingredients => res.status(200).json({ ingredients }))
       .catch(err => res.status(404).json({ err }));
 }
+
+exports.deleteIngredient = (req, res, next) => {
+   Ingredient.findByIdAndDelete({ _id: req.params.id })
+      .then(() => res.status(200).json({ message: 'Ingrédient supprimé !' }))
+      .catch(error => res.status(400).json({ error }));
+};

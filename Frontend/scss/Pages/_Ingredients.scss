@@ -158,6 +158,7 @@
       row-gap: 1.5rem;
 
       .card-ingredient {
+         position: relative;
          display: flex;
          flex-direction: column;
          align-items: center;
@@ -168,13 +169,14 @@
          overflow: hidden;
 
          .card-ingredient-img {
+            position: relative;
             width: 100px;
             height: 100px;
             min-height: 100px;
             min-width: 100px;
             border-radius: 50%;
             overflow: hidden;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(0, 0, 0, 0.1);
 
             img {
                width: 100%;
@@ -191,6 +193,23 @@
             align-items: center;
             justify-content: center;
             font-size: 1.2rem;
+            flex-wrap: wrap;
+         }
+
+         .delete-ingredient-icon {
+            display: none;
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 0;
+            right: 15px;
+            fill: $text-sombre;
+            cursor: pointer;
+         }
+         &:hover {
+            .delete-ingredient-icon{
+               display: block;
+            }
          }
       }
    }

@@ -64,7 +64,7 @@ const getAllRecipes = async () => {
          if (!isDown) return;
          e.preventDefault();
          const x = e.touches[0].pageX - blocSection.offsetLeft;
-         const walk = (x - startX) * 2; // Adjust the multiplier as needed
+         const walk = (x - startX) * 2;
          blocSection.scrollLeft = scrollLeft - walk;
       });
 

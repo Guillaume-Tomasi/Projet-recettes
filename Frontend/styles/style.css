@@ -619,6 +619,7 @@ a {
   row-gap: 1.5rem;
 }
 #ingredient-main #section-1 #card-ingredient-bloc .card-ingredient {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -629,13 +630,14 @@ a {
   overflow: hidden;
 }
 #ingredient-main #section-1 #card-ingredient-bloc .card-ingredient .card-ingredient-img {
+  position: relative;
   width: 100px;
   height: 100px;
   min-height: 100px;
   min-width: 100px;
   border-radius: 50%;
   overflow: hidden;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 #ingredient-main #section-1 #card-ingredient-bloc .card-ingredient .card-ingredient-img img {
   width: 100%;
@@ -651,6 +653,20 @@ a {
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
+  flex-wrap: wrap;
+}
+#ingredient-main #section-1 #card-ingredient-bloc .card-ingredient .delete-ingredient-icon {
+  display: none;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 0;
+  right: 15px;
+  fill: #201E1F;
+  cursor: pointer;
+}
+#ingredient-main #section-1 #card-ingredient-bloc .card-ingredient:hover .delete-ingredient-icon {
+  display: block;
 }
 #ingredient-main #section-1 #add-photo-input {
   display: none;
