@@ -41,3 +41,10 @@ DB_CONNECT= "Votre adresse de connexion MongoDB"
 npm start
 ```
 - Ouvrir l'application dans le navigateur
+
+## À venir
+
+- Modification ingrédients
+- Modification/ Suppression recettes
+- Création/ Gestion comptes utilisateurs
+- Planning pour organiser les repas à la semaine
