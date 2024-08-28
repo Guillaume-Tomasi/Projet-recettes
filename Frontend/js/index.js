@@ -91,16 +91,16 @@ const getAllRecipes = async () => {
    }
 };
 
-const getAllUsers = async () => {
-   try {
-      const response = await fetch('http://localhost:3000/api/user');
-      const data = await response.json();
-      document.querySelector('#bloc-qty-users > .bg-qty > p').textContent = data.length;
-   } catch (err) {
-      console.error('Error fetching users:', err);
-   }
-};
+// const getAllUsers = async () => {
+//    try {
+//       const response = await fetch('http://localhost:3000/api/user');
+//       const data = await response.json();
+//       document.querySelector('#bloc-qty-users > .bg-qty > p').textContent = data.length;
+//    } catch (err) {
+//       console.error('Error fetching users:', err);
+//    }
+// };
 
 getAllIngredients();
 getAllRecipes();
-getAllUsers();
+// getAllUsers();

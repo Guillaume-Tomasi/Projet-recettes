@@ -4,7 +4,7 @@ require('./config/dbConfig');
 const path = require('path');
 const cors = require('cors');
 
-const userRoutes = require('./routes/user.routes');
+// const userRoutes = require('./routes/user.routes');
 const ingredientRoutes = require('./routes/ingredient.routes');
 const recipeRoutes = require('./routes/recipe.routes');
 
