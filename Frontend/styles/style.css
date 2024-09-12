@@ -348,7 +348,6 @@ a {
   color: #201E1F;
   font-size: 2vw;
 }
-/* Footer styles */
 .footer {
   background-color: #201E1F;
   color: #F2E8CF;
@@ -365,6 +364,11 @@ a {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 15px;
 }
 
 .footer h2 {
@@ -611,6 +615,58 @@ a {
   border-radius: 5px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
 }
+#ingredient-main #section-1 .search .add-ingredient-form #add-photo-input {
+  display: none;
+}
+#ingredient-main #section-1 .search .add-ingredient-form .input-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#ingredient-main #section-1 .search .add-ingredient-form #ingredient-img {
+  border: 1px solid white;
+  background-color: white;
+  border-radius: 12px;
+  margin-top: 8px;
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-self: end;
+  justify-content: center;
+  align-items: center;
+}
+#ingredient-main #section-1 .search .add-ingredient-form #ingredient-img #photo-ingredient {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+#ingredient-main #section-1 .search .add-ingredient-form #ingredient-img #photo-ingredient img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#ingredient-main #section-1 .search .add-ingredient-form #ingredient-img input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+#ingredient-main #section-1 .search .add-ingredient-form #ingredient-img #submit-photo-btn {
+  background-color: #BC3437;
+  color: #F2E8CF;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  text-align: center;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 1;
+  margin: 0;
+  padding: 0.8rem 2rem;
+}
 #ingredient-main #section-1 #card-ingredient-bloc {
   width: 100%;
   display: grid;
@@ -667,58 +723,6 @@ a {
 }
 #ingredient-main #section-1 #card-ingredient-bloc .card-ingredient:hover .delete-ingredient-icon {
   display: block;
-}
-#ingredient-main #section-1 #add-photo-input {
-  display: none;
-}
-#ingredient-main #section-1 .input-div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-#ingredient-main #section-1 #ingredient-img {
-  border: 1px solid white;
-  background-color: white;
-  border-radius: 12px;
-  margin-top: 8px;
-  width: 250px;
-  height: 250px;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  justify-self: end;
-  justify-content: center;
-  align-items: center;
-}
-#ingredient-main #section-1 #ingredient-img #photo-ingredient {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-#ingredient-main #section-1 #ingredient-img #photo-ingredient img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-#ingredient-main #section-1 #ingredient-img input {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: none;
-}
-#ingredient-main #section-1 #ingredient-img #submit-photo-btn {
-  background-color: #BC3437;
-  color: #F2E8CF;
-  border: none;
-  border-radius: 12px;
-  font-size: 1rem;
-  text-align: center;
-  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  z-index: 1;
-  margin: 0;
-  padding: 0.8rem 2rem;
 }
 
 @media (max-width: 768px) {

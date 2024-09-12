@@ -379,7 +379,7 @@
    }
 }
 
-/* Footer styles */
+// Footer
 .footer {
    background-color: $bg-sombre;
    color: $text-clair;
@@ -396,6 +396,11 @@
    max-width: 1200px;
    margin: 0 auto;
    padding: 0 1rem;
+}
+
+.footer-bottom {
+   text-align: center;
+   margin-top: 15px;
 }
 
 .footer h2 {
